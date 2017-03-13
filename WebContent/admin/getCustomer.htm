@@ -1,0 +1,23 @@
+<center ng-include="'admin/homeLogo.htm'"></center>
+<center>
+<!-- get Customer -->
+<form method="Post">
+&emsp;Customer ID : <input type="number" name="customerID" ng-model="customerID"/>
+<input type="submit" value="Click Here To Get Information" ng-click="getCustomer()"/>
+&emsp;<table>
+<tr>
+		<th>ID</th>
+    	<th>Name</th>
+    	<th>Password</th>
+        
+</tr>
+
+  <tr>
+    
+    <td>   {{ customerDetails.customerName }}</td>
+    <td>  {{ customerDetails.customerPassword }}</td>
+    <td>  {{ customerDetails.customerID }}</td>
+  </tr>
+</table>
+</form>
+</center>

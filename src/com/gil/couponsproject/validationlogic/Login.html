@@ -1,0 +1,13 @@
+<div ng-controller="LoginController">
+
+    <form method="Post">
+        <input type="text" name="userName" ng-model="user.userName"></input>
+        <input type="password" name="userPassword" ng-model="user.userPassword" /></input>
+        <input type="radio" name="type" ng-model="user.type" value="ADMIN">Admin
+        <input type="radio" name="type" ng-model="user.type" value="COMPANY">Company
+        <input type="radio" name="type" ng-model="user.type" value="CUSTOMER">Customer
+        <input type="submit" value="Login" ng-click="submit()">
+
+    </form>
+
+</div>

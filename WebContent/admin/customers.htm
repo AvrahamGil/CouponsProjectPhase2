@@ -1,0 +1,32 @@
+<center ng-include="'admin/homeLogo.htm'"></center>
+
+<center>
+<table>
+    <tr>
+    	<th>customerID</th>
+    	<th>Name</th>
+        <th>Email</th>
+    </tr>
+
+  <tr ng-repeat="x in customersDetails">
+  
+    <td>{{ x.customerID}}</td>
+    <td>{{ x.customerName}}</td>
+    <td>{{ x.customerEmail }}</td>
+  
+
+
+    <td ng-if="$odd" style="background-color: white">
+	<button ng-click="deleteCustomer(x.customerID , x.customerName)" type="button" class="btn btn-default btn-sm">
+	<span class="glyphicon glyphicon-trash"></span> Remove </button>
+	</td>
+	<td ng-if="$even" style ="background-color: #dddddd"> <button ng-click="deleteCustomer(x.customerID , x.customerName)" type="button" class="btn btn-default btn-sm">
+	<span class="glyphicon glyphicon-trash"></span> Remove </button>
+	</td>
+
+	
+ 
+  </tr>
+</table>
+
+</center>

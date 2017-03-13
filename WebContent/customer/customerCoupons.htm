@@ -1,0 +1,33 @@
+<center ng-include="'customer/homeLogo.htm'"></center>
+
+<center>
+ 
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Type</th>
+        <th>StartDate</th>
+        <th>EndDate</th>
+        <th>Price</th>
+        <th>Amount</th>
+        <th>Message</th>
+        
+        
+    </tr>
+
+  <tr>
+  
+    <td>{{ couponscustomerDetails.couponTitle }}</td>
+    <td> {{ couponscustomerDetails.couponTypeByNumber }}</td>
+    <td>  {{ couponscustomerDetails.startDate }}</td>
+    <td> {{ couponscustomerDetails.endDate }}</td>
+    <td> {{ couponscustomerDetails.couponPrice }}</td>
+    <td>{{ couponscustomerDetails.couponAmount }}</td>
+    <td>{{ couponscustomerDetails.couponMessage }}</td>
+  
+
+   
+  </tr>
+</table>
+</center>

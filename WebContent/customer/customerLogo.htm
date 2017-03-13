@@ -1,0 +1,34 @@
+
+<div id="hornav" class="container no-padding">
+    <div class="row">
+        <div class="col-md-12 no-padding">
+            <div class="text-center visible-lg">
+                <ul id="hornavmenu" class="nav navbar-nav">
+                    <li>
+                        <a href="http://localhost:8080/CouponsProjectPhase2/" ng-click="logOut()" class="fa-sign-out">LogOut</a>
+                    </li> 
+                    <li>
+                        <span class="fa-gears">Coupon</span>
+                        <ul>
+                            <li>
+                                <a href="#customer/couponList">Coupon List</a>
+                            </li>
+                        </ul>
+                    </li>     
+                    <li>
+                        <span class="fa-gears">Profile</span>
+                        <ul>
+                            <li>
+                                <a href="#customer/Profile">MyProfile</a>
+                            </li>
+                            <li>
+                                <a href="#customer/customerCoupons">MyCoupons</a>
+                            </li>
+                        </ul>
+                    </li> 
+                    <li><a><span class="fa-user"></span> {{name}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

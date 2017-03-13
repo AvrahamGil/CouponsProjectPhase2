@@ -1,0 +1,12 @@
+<center ng-include="'company/homeLogo.htm'"></center>
+
+<!-- Update coupon -->
+<form method="Post">
+Coupon ID : <input type="number" name="couponID" ng-model="updateCoupons.couponID"/>
+Coupon endDate : <input type="number"  name="endDate" ng-model="updateCoupons.endDate" />
+Coupon Price : <input type="text"  name="couponPrice" ng-model="updateCoupons.couponPrice" />
+
+<input type="submit" value="updateCoupon" ng-click="updateCoupon()"/>
+
+<p>Status : {{ServerResponse}}</p>
+</form>

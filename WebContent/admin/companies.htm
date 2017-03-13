@@ -1,0 +1,26 @@
+<center ng-include="'admin/homeLogo.htm'"></center>
+<center>
+<table>
+ <tr>
+ 		<th>ID</th>
+    	<th>Name</th>
+        <th>Email</th>
+
+    </tr>
+
+  <tr ng-repeat="x in companiesDetails">
+    
+    <td> {{ x.companyName }}</td>
+    <td>{{ x.companyEmail }}</td>
+    <td>{{ x.companyID }}</td>
+    
+    <td ng-if="$odd" style="background-color: white">
+	<button ng-click="deleteCompany(x.companyID , x.companyTitle )" type="button" class="btn btn-default btn-sm">
+	<span class="glyphicon glyphicon-trash"></span> Remove </button>
+	</td>
+	<td ng-if="$even" style ="background-color: #dddddd"> <button ng-click="deleteCompany(x.companyID , x.companyTitle)" type="button" class="btn btn-default btn-sm">
+	<span class="glyphicon glyphicon-trash"></span> Remove </button>
+	</td>
+  </tr>
+</table>
+</center>

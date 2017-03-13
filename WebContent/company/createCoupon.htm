@@ -1,0 +1,65 @@
+<center ng-include="'company/homeLogo.htm'"></center>
+
+<!-- create Coupon -->
+ <div id="post_header" class="container" style="height: 40px">
+ <!-- Spacing below header -->
+</div>
+
+<div class="headline">
+<h2>Create Coupon</h2>
+</div>
+<form method ="Post">
+&emsp;<label>Coupon Title : </label>
+<div class="row margin-bottom-20">
+ <div class="col-md-6 col-md-offset-0">
+<input type="text" class="form-control"  name="couponTitle" ng-model="coupon.couponTitle" />
+<span style="color: green;" id="user-availability-status"> * Must be 6-10 characters.</span>
+<br>
+<span style="color: green;" id="user-availability-status"> * You have to include capital letter.</span>
+</div>
+</div>
+ &emsp;<label>
+  End Date: 
+  <span class="color-red">*</span>
+  </label>
+<div class="row margin-bottom-20">
+<div class="col-md-6 col-md-offset-0">
+<input type="number" class="form-control"  name="endDate" ng-model="coupon.endDate" /> 
+<span style="color: green;" id="user-availability-status"> * The date has to be tomorrow +  .</span>
+</div>
+</div>
+&emsp;<label>Coupon Price: </label>
+  <div class="row margin-bottom-20">
+ <div class="col-md-6 col-md-offset-0">
+ <input type="text"  class="form-control" name="couponPrice" ng-model="coupon.couponPrice"  />
+  <span style="color: green;" id="user-availability-status"> * Must be between 500-1000$  .</span>
+</div>
+</div>
+&emsp;<label>Coupon Message: </label>
+  <div class="row margin-bottom-20">
+ <div class="col-md-6 col-md-offset-0">
+ <input type="text"  class="form-control" name="couponMessage" ng-model="coupon.couponMessage"  />
+ <span style="color: green;" id="user-availability-status"> * Must be 6-10 characters.</span>
+</div>
+</div>
+&emsp;<label>Coupon Type: </label>
+  <div class="row margin-bottom-20">
+ <div class="col-md-6 col-md-offset-0">
+ <select class="form-control"  ng-model="coupon.couponTypeByNumber" >
+ <option value ="1">Restaurant</option>
+ <option value ="2">Traveling</option>
+ <option value ="3">Holiday</option>
+ </select>
+</div>
+</div>
+&emsp;<label>Coupon Amount: </label>
+  <div class="row margin-bottom-20">
+ <div class="col-md-6 col-md-offset-0">
+ <input type="number"  class="form-control" name="couponAmount" ng-model="coupon.couponAmount"  />
+ <span style="color: green;" id="user-availability-status"> * Must be between 500-10000 coupons  .</span>
+
+<br>
+<input type="submit" class="btn btn-primary" value="Create Coupon" ng-click="createCoupon()" />
+</div>
+</div>
+</form>

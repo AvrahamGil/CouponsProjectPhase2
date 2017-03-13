@@ -1,0 +1,27 @@
+<center ng-include="'admin/homeLogo.htm'"></center>
+<center>
+<!-- get Company -->
+<form method="Post">
+&emsp;Company ID : <input type="number" name="companyID" ng-model="companyID"/>
+<input type="submit" value="Click Here To Get Information" ng-click="getCompany()"/>
+&emsp;<table>
+<tr>
+
+		<th>ID</th>
+    	<th>Name</th>
+        <th>Email</th>
+</tr>
+  <tr>
+     <td>  {{ companyDetail.companyID }}</td>
+    <td>  {{ companyDetail.companyName }}</td>
+    <td> {{ companyDetail.companyEmail }}</td>
+   
+    
+    
+    <td ng-if="$odd"> <button ng-click="deleteCompany(x.companyID , x.companyTitle)" type="button" class="btn btn-default btn-sm">
+	<span class="glyphicon glyphicon-trash"></span> Remove </button>
+	</td>
+  </tr>
+</table>
+</form>
+</center>

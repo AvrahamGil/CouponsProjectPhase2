@@ -1,0 +1,28 @@
+<center ng-include="'customer/homeLogo.htm'"></center>
+
+<center>
+ 
+
+<table>
+ <tr>
+        <th>Name</th>
+        <th>Password</th>
+        <th>ID</th>
+        <th>Edit</th>
+       
+    </tr>
+
+  <tr>
+    <td>  {{ customerDetails.customerName }}</td>
+    <td>  {{ customerDetails.customerPassword }}</td>
+    <td>  {{ customerDetails.customerID }}</td>
+  
+
+      <td style="background-color:#dddddd">
+          <button href="#" data-toggle="modal" data-target="#login-modal"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+      </td>
+      
+  
+  </tr>
+</table>
+</center>

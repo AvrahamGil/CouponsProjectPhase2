@@ -1,0 +1,63 @@
+ <div class="text-center">
+<h2>Coupons Project</h2>
+</div>
+<p class="text-center">
+Please Login
+</p>
+<br>
+
+
+<div class="col-md-6 col-md-offset-3 col-sm-offset-3">
+
+<div ng-controller="LoginController">
+
+<form  method="Post" class="login-page">
+<div class="login-header margin-bottom-30">
+<h2>Login</h2>
+</div>
+<div class="input-group margin-bottom-20">
+<span class="input-group-addon">
+<i class="fa fa-user"></i>
+ </span>
+<input type="text" placeholder="Username" name="userName" ng-model="user.userName"></input>
+</div>
+<div class="input-group margin-bottom-20">
+ <span class="input-group-addon">
+<i class="fa fa-lock"></i>
+</span>
+<input type="password"placeholder="Password" name="userPassword" ng-model="user.userPassword"/></input>
+</div>
+<div class="portfolio-filter-container margin-top-20">
+ <ul class="portfolio-filter">
+<li class="portfolio-filter-label label label-primary">
+Type:
+ </li>
+<input type="radio" name="type" class="portfolio-selected btn btn-default" ng-model="user.type" value="ADMIN">Admin
+<input type="radio" name="type" class="portfolio-selected btn btn-default" ng-model="user.type" value="COMPANY">Company
+<input type="radio" name="type" class="portfolio-selected btn btn-default" ng-model="user.type" value="CUSTOMER">Customer
+<input type="submit" value="Sign In"class="btn btn-primary pull-right" ng-click="submit()">
+     <label class="checkbox">
+       You Dont have acoount yet?, <a href="#PickRegister" >SignUp</a>
+     </label>
+</ul>
+</div>
+</form>
+</div>
+<div class="row">
+<div class="col-md-6">
+<label class="checkbox">
+Notice! User Name and Password must be at last 6-50 letters
+</label>
+</div>
+</div>
+</div>
+<div class="col-md-3">
+  <div class="panel panel-default">
+<div class="panel-heading">
+ <h3 class="panel-title">About</h3>
+ </div>
+ <div class="panel-body">
+This page is like our home page, if you want to do something.. you should log in First
+</div>
+</div>
+</div>

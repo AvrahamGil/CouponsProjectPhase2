@@ -1,0 +1,37 @@
+<center ng-include="'admin/homeLogo.htm'"></center>
+<center>
+<!-- get coupon -->
+<form method="Post">
+&emsp;Coupon ID : <input type="number" name="couponID" ng-model="couponID"/>
+<input type="submit" value="Click Here To Get Information" ng-click="getCoupon()"/>
+
+
+&emsp;<table>
+ <tr>
+    	<th>couponID</th>
+    	<th>companyID</th>
+        <th>Title</th>
+        <th>Type</th>
+        <th>StartDate</th>
+        <th>EndDate</th>
+        <th>Price</th>
+        <th>Amount</th>
+        <th>Message</th>
+        <th>Remove</th>
+        <th>Edit</th>
+    </tr>
+
+  <tr>
+    
+    <td>{{ couponDetails.couponTitle }}</td>
+    <td>  {{ couponDetails.couponPassword }}</td>
+    <td>  {{ couponDetails.startDate }}</td>
+    <td> {{ couponDetails.endDate }}</td>
+    <td>  {{ couponDetails.couponPrice }}</td>
+    <td>  {{ couponDetails.couponAmount }}</td>
+    <td>  {{ couponDetails.couponMessage }}</td>
+    <td>{{ couponDetails.couponID }}</td>
+  </tr>
+</table>
+</form>
+</center>
