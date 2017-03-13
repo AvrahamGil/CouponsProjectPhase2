@@ -150,7 +150,7 @@ function customersControllerList($http, $scope, $location) {
 
     $scope.deleteCustomer = function (customerID, customerName) {
         bootbox.confirm({
-            message: "Are you sure you want to delete " + customerName + " coupon?",
+            message: "Are you sure you want to delete " + customerName + "?",
             buttons: {
                 confirm: {
                     label: 'Yes',
@@ -164,10 +164,7 @@ function customersControllerList($http, $scope, $location) {
                 if (result == true) {
                     $http.delete('/CouponsProjectPhase2/rest/api/Customers/' + customerID).then(function (success) {
                         bootbox.alert("Remove Done");
-                    }).then(function (error) {
-                        bootbox.alert("Remove Failed");
                     })
-
                 }
                 return;
 
@@ -179,9 +176,9 @@ function customersControllerList($http, $scope, $location) {
 
 
 
-angular.module("myApp").controller('couponList', couponControllerList);
-couponControllerList.$inject = ['$http', '$scope', '$location'];
-function couponControllerList($http, $scope, $location) {
+angular.module("myApp").controller('couponList', couponList);
+couponList.$inject = ['$http', '$scope', '$location'];
+function couponList($http, $scope, $location) {
 
     (
     $scope.getListOfAllCoupons = function () {
@@ -193,7 +190,7 @@ function couponControllerList($http, $scope, $location) {
     })();
 
 
-    $scope.deleteCoupon = function (couponID, couponTitle) {
+    $scope.deleteCoupons = function (couponID, couponTitle) {
         bootbox.confirm({
             message: "Are you sure you want to delete " + couponTitle + " coupon?",
             buttons: {
@@ -207,7 +204,6 @@ function couponControllerList($http, $scope, $location) {
                 }
             }, callback: function (result) {
                 if (result == true) {
-                    //       var deleteCo = JSON.stringify($scope.couponID);
                     $http.delete('/CouponsProjectPhase2/rest/api/Coupons/' + couponID).then(function (success) {
                         bootbox.alert("Remove Done");
                     }).then(function (error) {

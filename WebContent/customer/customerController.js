@@ -115,7 +115,7 @@ angular.module("myApp").controller('couponList', ['$http', '$scope', function ($
 
     $scope.buyCoupon = function (couponID,endDate, couponTitle) {
         bootbox.confirm({
-            message: "Are you sure you want to delete " + couponTitle + " coupon?",
+            message: "Are you sure you want to buy " + couponTitle + " coupon?",
             buttons: {
                 confirm: {
                     label: 'Yes',

@@ -16,15 +16,15 @@
         
     </tr>
 
-  <tr>
+  <tr ng-repeat="x in couponscustomerDetails">
   
-    <td>{{ couponscustomerDetails.couponTitle }}</td>
-    <td> {{ couponscustomerDetails.couponTypeByNumber }}</td>
-    <td>  {{ couponscustomerDetails.startDate }}</td>
-    <td> {{ couponscustomerDetails.endDate }}</td>
-    <td> {{ couponscustomerDetails.couponPrice }}</td>
-    <td>{{ couponscustomerDetails.couponAmount }}</td>
-    <td>{{ couponscustomerDetails.couponMessage }}</td>
+    <td>{{ x.couponTitle }}</td>
+    <td> {{ x.couponTypeByNumber }}</td>
+    <td>  {{ x.startDate }}</td>
+    <td> {{x.endDate }}</td>
+    <td> {{ x.couponPrice }}</td>
+    <td>{{ x.couponAmount }}</td>
+    <td>{{ x.couponMessage }}</td>
   
 
    

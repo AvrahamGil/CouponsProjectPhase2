@@ -122,7 +122,6 @@ angular.module("myApp").controller('couponController', ['$http', '$scope', '$loc
                 }
             }, callback: function (result) {
                 if (result == true) {
-                    //       var deleteCo = JSON.stringify($scope.couponID);
                     $http.delete('/CouponsProjectPhase2/rest/api/Coupons/' + couponID).then(function (success) {
                         bootbox.alert("Remove Done");
                     }).then(function (error) {

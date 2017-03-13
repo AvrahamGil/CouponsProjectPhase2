@@ -10,9 +10,10 @@
 
   <tr ng-repeat="x in companiesDetails">
     
+    <td>{{ x.companyID }}</td>
     <td> {{ x.companyName }}</td>
     <td>{{ x.companyEmail }}</td>
-    <td>{{ x.companyID }}</td>
+    
     
     <td ng-if="$odd" style="background-color: white">
 	<button ng-click="deleteCompany(x.companyID , x.companyTitle )" type="button" class="btn btn-default btn-sm">
