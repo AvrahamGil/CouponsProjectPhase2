@@ -73,19 +73,23 @@ angular.module("myApp").controller('couponList', ['$http', '$scope', function ($
     (
     $scope.getListOfAllCoupons = function () {
         $http.get('/CouponsProjectPhase2/rest/api/Coupons').then(function (response) {
-            $scope.listOfCoupons = response.data.coupon;
+            $scope.coupons = [];
+            $scope.listOfCoupons = $scope.coupons.concat(response.data.coupon);
         });
 
     })();
 
     $scope.type = function (couponTypeByNumber) {
         $http.get('/CouponsProjectPhase2/rest/api/Coupons/CouonType/' + couponTypeByNumber).then(function (response) {
-            $scope.listOfCouponsType = response.data;
+            $scope.coupons = [];
+            $scope.listOfCouponsType = $scope.coupons.concat(response.data.coupon);
+            
         })
     }
     $scope.price = function (couponPrice) {
         $http.get('/CouponsProjectPhase2/rest/api/Coupons/CouonPrice/' + couponPrice).then(function (response) {
-            $scope.listOfCouponsPrice = response.data;
+            $scope.coupons = [];
+            $scope.listOfCouponsPrice = $scope.coupons.concat(response.data.coupon);
         })
     }
 
@@ -145,7 +149,8 @@ angular.module("myApp").controller('mycouponList', ['$http', '$scope', function 
     (
         $scope.getCustomerCoupons = function () {
             $http.get('/CouponsProjectPhase2/rest/api/Coupons/CustomerCoupons').then(function (response) {
-                $scope.couponscustomerDetails = response.data.coupon;
+                $scope.coupons = [];
+                $scope.couponscustomerDetails = $scope.coupons.concat(response.data.coupon);
             });
 
         })();

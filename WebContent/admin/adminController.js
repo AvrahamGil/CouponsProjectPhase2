@@ -94,7 +94,8 @@ function companyControllerList ($http, $scope, $location) {
     (
     $scope.getListOfAllCompanies = function () {
         $http.get('/CouponsProjectPhase2/rest/api/Companies').then(function (response) {
-            $scope.companiesDetails = response.data.company;
+            $scope.company = [];
+            $scope.companiesDetails = $scope.company.concat(response.data.company); 
         });
     })();
 
@@ -140,7 +141,8 @@ function customersControllerList($http, $scope, $location) {
     (
     $scope.getListOfAllCustomers = function () {
         $http.get('/CouponsProjectPhase2/rest/api/Customers').then(function (response) {
-            $scope.customersDetails = response.data.customer;
+            $scope.customer = [];
+            $scope.customersDetails = $scope.customer.concat(response.data.customer);
         });
 
     })();
@@ -184,7 +186,8 @@ function couponControllerList($http, $scope, $location) {
     (
     $scope.getListOfAllCoupons = function () {
         $http.get('/CouponsProjectPhase2/rest/api/Coupons').then(function (response) {
-            $scope.listOfCoupons = response.data.coupon;
+            $scope.coupons = [];
+            $scope.listOfCoupons = $scope.coupons.concat(response.data.coupon);
         });
 
     })();

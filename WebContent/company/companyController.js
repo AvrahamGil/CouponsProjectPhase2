@@ -92,8 +92,9 @@ angular.module("myApp").controller('couponController', ['$http', '$scope', '$loc
 
     ( 
             $scope.getCompanyCoupon = function () {
-            $http.get('/CouponsProjectPhase2/rest/api/Coupons/CompanyCoupons').then(function (response) {
-                $scope.couponsDetails = response.data.coupon;
+                $http.get('/CouponsProjectPhase2/rest/api/Coupons/CompanyCoupons').then(function (response) {
+                    $scope.coupons = [];
+                    $scope.couponsDetails = $scope.coupons.concat(response.data.coupon);
             });
 
             })();
