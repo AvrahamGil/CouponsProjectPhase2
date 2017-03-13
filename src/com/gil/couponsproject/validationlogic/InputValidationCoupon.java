@@ -73,7 +73,7 @@ public class InputValidationCoupon {
 		//--------------------------------------------------------------------------------------
 			CouponDaoValidation couponDaoSecurity = new CouponDaoValidation();
 			int maxPrice = 1000;
-			int minPrice= 500;
+			int minPrice= 0;
 	   //--------------------------------------------------------------------------------------	
 			boolean correct = true;
 			couponPrice = couponDaoSecurity.securityCouponPrice(couponPrice);
@@ -88,7 +88,7 @@ public class InputValidationCoupon {
 		checkingCouponTitle(coupon.getCouponTitle());
 		checkingCouponAmount(coupon.getCouponAmount());
 		checkingCouponMessage(coupon.getCouponMessage());
-		checkingCouponPrice(coupon.getCouponPrice());
+		checkingCouponPrice(coupon.getcouponPrice());
 		
 	}
 }

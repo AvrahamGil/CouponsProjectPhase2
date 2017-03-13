@@ -152,7 +152,7 @@ public class TestCreateAndGetCoupon {
 		coupon.setCouponAmount(5000);
 		coupon.setCouponTypeByNumber(7);
 		coupon.setCouponMessage("hello world");
-		coupon.setCouponPrice(500);
+		coupon.setcouponPrice(500);
 		
 		//				create the coupon
 		couponDao.createCoupon(coupon);

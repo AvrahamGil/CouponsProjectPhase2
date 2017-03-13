@@ -10,7 +10,7 @@ public class Coupon {
 	private String couponTitle;
 	private long startDate;
 	private long endDate;
-	private double couponPrice;
+	private int couponPrice;
 	private String couponMessage;
 	private int couponTypeByNumber;
 	private int couponAmount;
@@ -20,7 +20,7 @@ public class Coupon {
 	}
 
 	public Coupon(long couponID, long companyID, String couponTitle, long startDate, long endDate,
-			String couponMessage, int couponTypeByNumber, int couponAmount, double couponPrice) {
+			String couponMessage, int couponTypeByNumber, int couponAmount, int couponPrice) {
 		this.setcouponID(couponID);
 		this.setcompanyID(companyID);
 		this.setCouponTitle(couponTitle);
@@ -29,23 +29,23 @@ public class Coupon {
 		this.setCouponMessage(couponMessage);
 		this.setCouponTypeByNumber(couponTypeByNumber);
 		this.setCouponAmount(couponAmount);
-		this.setCouponPrice(couponPrice);
+		this.setcouponPrice(couponPrice);
 
 	}
 	
 	public Coupon(String couponTitle, long startDate, long endDate, String couponMessage, int couponTypeByNumber,
-			int couponAmount, double couponPrice) {
+			int couponAmount, int couponPrice) {
 		this.setCouponTitle(couponTitle);
 		this.setStartDate(startDate);
 		this.setEndDate(endDate);
 		this.setCouponMessage(couponMessage);
 		this.setCouponTypeByNumber(couponTypeByNumber);
 		this.setCouponAmount(couponAmount);
-		this.setCouponPrice(couponPrice);
+		this.setcouponPrice(couponPrice);
 	}
 
 	public Coupon(long companyID , String couponTitle, long startDate, long endDate,
-			String couponMessage, int couponTypeByNumber, int couponAmount, double couponPrice ) {
+			String couponMessage, int couponTypeByNumber, int couponAmount, int couponPrice ) {
 		this.setcompanyID(companyID);
 		this.setCouponTitle(couponTitle);
 		this.setStartDate(startDate);
@@ -53,7 +53,7 @@ public class Coupon {
 		this.setCouponMessage(couponMessage);
 		this.setCouponTypeByNumber(couponTypeByNumber);
 		this.setCouponAmount(couponAmount);
-		this.setCouponPrice(couponPrice);
+		this.setcouponPrice(couponPrice);
 		
 	}
 	
@@ -99,11 +99,11 @@ public class Coupon {
 		this.endDate = endDate;
 	}
 
-	public double getCouponPrice() {
+	public int getcouponPrice() {
 		return couponPrice;
 	}
 
-	public void setCouponPrice(double couponPrice) {
+	public void setcouponPrice(int couponPrice) {
 		this.couponPrice = couponPrice;
 	}
 

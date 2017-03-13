@@ -143,7 +143,7 @@ public class CouponDaoValidation implements ICouponSecurity {
 			preparedStatement = connection.prepareStatement(sql);
 
 			// we should have the same parameters that we have in the syntax
-			preparedStatement.setDouble(1, coupon.getCouponPrice());
+			preparedStatement.setDouble(1, coupon.getcouponPrice());
 
 			// if we have problems "catch" will tell us
 		} catch (SQLException e) {

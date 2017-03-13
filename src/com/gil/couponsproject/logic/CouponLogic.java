@@ -123,7 +123,7 @@ public class CouponLogic {
 		
 	}
 	//---------------------------------------------get list of coupons by price----------------------------
-		public List<Coupon>listOfCouponsByPrice(double couponPrice) throws ApplicationException {
+		public List<Coupon>listOfCouponsByPrice(int couponPrice) throws ApplicationException {
 			CouponDao couponDao = new CouponDao();
 			List<Coupon>getListOfCouponsByPrice = couponDao.getListOfCouponsByPrice(couponPrice);
 			System.out.println(getListOfCouponsByPrice);
@@ -170,7 +170,7 @@ public class CouponLogic {
 		long couponStartDate = System.currentTimeMillis();
 		// we have to choose a number 
 		// to get all the coupons that lower from our number
-		double couponPrice = coupon.getCouponPrice();
+		double couponPrice = coupon.getcouponPrice();
 		// checking if company exist
 		if (companyDao.getCompany(companyID) == null) {
 			throw new ApplicationException("Error in CouponLogic,ListOfCompanyCouponsByTypePriceAndDate,check your company ID again"
@@ -194,7 +194,7 @@ public class CouponLogic {
 		Coupon coupon = new Coupon();
 		// we need to put a number to get all the coupons that lower from our
 		// number
-		double couponPrice = coupon.getCouponPrice() ;
+		double couponPrice = coupon.getcouponPrice() ;
 		// check if customer exist
 		if (customerDao.getCustomer(customerID) == null) {
 			throw new ApplicationException("Error in CouponLogic,listOfCustomerCouponsByTypeAndPrice,check your customer ID again"

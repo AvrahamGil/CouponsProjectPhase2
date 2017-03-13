@@ -3,9 +3,11 @@
 
 
 <center>
-<form>
+<form class="range-slider">
 
-&emsp;Max Price  :  <input type="number" ng-model="coupon.couponPrice"/>
+&emsp;Max Price  :  <input class="range-slider__range" type="range" min="0" max="1000" ng-model="coupon.couponPrice"/>
+<span class="range-slider__value">500</span>
+<br>
  <input type="submit" value="Click To Get List" ng-click="price(coupon.couponPrice)"/>
 <table>
     <tr>

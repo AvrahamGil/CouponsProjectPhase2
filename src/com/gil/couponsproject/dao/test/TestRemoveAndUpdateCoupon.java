@@ -93,7 +93,7 @@ public class TestRemoveAndUpdateCoupon {
 		coupon.setCouponAmount(100);
 		coupon.setCouponTypeByNumber(8);
 		coupon.setCouponMessage("hi");
-		coupon.setCouponPrice(150);
+		coupon.setcouponPrice(150);
 		coupon.setcouponID(2);
 		
 		//				run it	

@@ -55,7 +55,7 @@ public class CouponDao implements ICoupon {
 			preparedStatement.setInt(5, coupon.getCouponAmount());
 			preparedStatement.setInt(6, coupon.getCouponTypeByNumber());
 			preparedStatement.setString(7, coupon.getCouponMessage());
-			preparedStatement.setDouble(8, coupon.getCouponPrice());
+			preparedStatement.setDouble(8, coupon.getcouponPrice());
 			
 
 			// DB Updated
@@ -148,7 +148,7 @@ public class CouponDao implements ICoupon {
 			preparedStatement.setInt(4, coupon.getCouponAmount());
 			preparedStatement.setInt(5, coupon.getCouponTypeByNumber());
 			preparedStatement.setString(6, coupon.getCouponMessage());
-			preparedStatement.setDouble(7, coupon.getCouponPrice());
+			preparedStatement.setDouble(7, coupon.getcouponPrice());
 			preparedStatement.setLong(8, coupon.getcouponID());
 
 			// DB Updated
@@ -306,7 +306,7 @@ public class CouponDao implements ICoupon {
 
 	}
 	// make a list of coupons
-		public List<Coupon> getListOfCouponsByPrice(double couponPrice) throws ApplicationException {
+		public List<Coupon> getListOfCouponsByPrice(int couponPrice) throws ApplicationException {
 
 			// turn on connections
 			Connection connection = null;
@@ -328,7 +328,7 @@ public class CouponDao implements ICoupon {
 				preparedStatement = connection.prepareStatement(sql);
 
 				// we should have the same parameters that we have in the syntax
-				preparedStatement.setDouble(1, couponPrice);
+				preparedStatement.setInt(1, couponPrice);
 				
 
 				// DB respond +  information on coupons
@@ -828,7 +828,7 @@ public class CouponDao implements ICoupon {
 
 			// we should have the same parameters that we have in the syntax
 			preparedStatement.setLong(1, coupon.getEndDate());
-			preparedStatement.setDouble(2, coupon.getCouponPrice());
+			preparedStatement.setDouble(2, coupon.getcouponPrice());
 			preparedStatement.setLong(3, coupon.getcouponID());
 
 			// DB Updated
@@ -1020,7 +1020,7 @@ public class CouponDao implements ICoupon {
 		coupon.setCouponAmount(resultSet.getInt("COUPON_AMOUNT"));
 		coupon.setCouponTypeByNumber(resultSet.getInt("COUPON_TYPE"));
 		coupon.setCouponMessage(resultSet.getString("COUPON_MESSAGE"));
-		coupon.setCouponPrice(resultSet.getDouble("COUPON_PRICE"));
+		coupon.setcouponPrice(resultSet.getInt("COUPON_PRICE"));
 		
 
 		return coupon;

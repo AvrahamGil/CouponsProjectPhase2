@@ -39,7 +39,7 @@ public class CouponApi {
 		coupon.getCouponTitle();
 		coupon.setStartDate(startDate);
 		coupon.getEndDate();
-		coupon.getCouponPrice();
+		coupon.getcouponPrice();
 		coupon.getCouponMessage();
 		coupon.getCouponTypeByNumber();
 		coupon.getCouponAmount();
@@ -68,7 +68,7 @@ public class CouponApi {
 		long couponID = sessionLogin.getUserLogin(request);
 		coupon.setcouponID(couponID);
 		coupon.getEndDate();
-		coupon.getCouponPrice();
+		coupon.getcouponPrice();
 		
 		couponLogic.updateCoupon(coupon);
 
@@ -99,8 +99,8 @@ public class CouponApi {
 		return getListOfCouponsByType;
 	}
 	@GET
-	@Path("/CouonPrice/{couponprice}")
-	public List<Coupon> getListOfCouponsByPrice(@PathParam("couponPrice")double couponPrice) throws ApplicationException {
+	@Path("/CouonPrice/{couponPrice}")
+	public List<Coupon> getListOfCouponsByPrice(@PathParam("couponPrice")int couponPrice) throws ApplicationException {
 		List<Coupon> getListOfCouponsByPrice = new ArrayList<Coupon>();
 		CouponLogic couponLogic = new CouponLogic();
 		getListOfCouponsByPrice = couponLogic.listOfCouponsByPrice(couponPrice);
