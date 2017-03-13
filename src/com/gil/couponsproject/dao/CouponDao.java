@@ -259,7 +259,7 @@ public class CouponDao implements ICoupon {
 	}
 
 	// make a list of coupons
-	public List<Coupon> getListOfCouponByType(int couponType) throws ApplicationException {
+	public List<Coupon> getListOfCouponsByType(int couponType) throws ApplicationException {
 
 		// turn on connections
 		Connection connection = null;
@@ -305,6 +305,54 @@ public class CouponDao implements ICoupon {
 		return listOfCouponsByType;
 
 	}
+	// make a list of coupons
+		public List<Coupon> getListOfCouponsByPrice(double couponPrice) throws ApplicationException {
+
+			// turn on connections
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+			ResultSet resultSet = null;
+			Coupon coupon = new Coupon();
+
+			// make a list of coupons
+			List<Coupon> listOfCouponsByPrice = new ArrayList<Coupon>();
+
+			try {
+				// try to connect to our DB
+				connection = JdbcAndConnection.getConnection();
+
+				// sql syntax -->in this way we talk with our DB
+				String sql ="SELECT * FROM COUPON  WHERE COUPON_PRICE < ?";
+
+				// combining between syntax and our connection
+				preparedStatement = connection.prepareStatement(sql);
+
+				// we should have the same parameters that we have in the syntax
+				preparedStatement.setDouble(1, couponPrice);
+				
+
+				// DB respond +  information on coupons
+				resultSet = preparedStatement.executeQuery();
+				while (resultSet.next()) {
+					coupon = extractCouponFromResultSet(resultSet);
+					listOfCouponsByPrice.add(coupon);
+				}
+
+				// if we have problems "catch" will tell us
+			} catch (SQLException e) {
+				e.printStackTrace();
+				throw new ApplicationException("Error In CouponDao(),listOfCouponsByPrice();, no such LIST",
+						ErrorType.MISSING_LIST);
+
+				// turn off connections
+			} finally {
+				JdbcAndConnection.closeConnection(connection);
+				JdbcAndConnection.closePreparedStatement(preparedStatement);
+				JdbcAndConnection.closeResultSet(resultSet);
+			}
+			return listOfCouponsByPrice;
+
+		}
 
 	public List<Coupon> getListOfCompanyCoupons(long companyID) throws ApplicationException {
 		// turn on connections

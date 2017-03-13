@@ -174,7 +174,7 @@ public class TestCreateAndGetCoupon {
 	}
 	public  void getCouponsByType (int couponType) throws ApplicationException {
 		CouponDao couponDao = new CouponDao();
-		List<Coupon>couponTypeList = couponDao.getListOfCouponByType(couponType);
+		List<Coupon>couponTypeList = couponDao.getListOfCouponsByType(couponType);
 		System.out.println(couponTypeList);
 	}
 	public  void getCompanyCoupons(long companyID) throws ApplicationException {

@@ -18,7 +18,7 @@ public interface ICoupon {
 	
 	public List<Coupon>getListOfAllCoupons() throws ApplicationException;
 	
-	public List<Coupon>getListOfCouponByType(int couponType) throws ApplicationException;;
+	public List<Coupon>getListOfCouponsByType(int couponType) throws ApplicationException;;
 	
 }
 

@@ -1,11 +1,16 @@
 <center ng-include="'customer/homeLogo.htm'"></center>
 
 
-<button><a href = "#customer/ByType">ByType</a></button>
-<button><a href = "#customer/ByPrice">ByPrice</a></button>
 
 <center>
- 
+<form>
+
+&emsp;Type :  <select class="form-control"  ng-model="coupon.couponTypeByNumber" >
+ <option value ="1">Restaurant</option>
+ <option value ="2">Traveling</option>
+ <option value ="3">Holiday</option>
+ </select>
+ <input type="submit" value="Click To Get Type" ng-click="type(coupon.couponTypeByNumber)"/>
 <table>
     <tr>
         <th>ID</th>
@@ -20,12 +25,12 @@
         
     </tr>
 
-  <tr ng-repeat="x in listOfCoupons">
+  <tr ng-repeat="x in listOfCouponsType">
   
     <td>{{ x.couponID }}</td>
     <td>{{ x.couponTitle }}</td>
     <td> {{ x.couponTypeByNumber }}</td>
-    <td>  {{ x.startDate }}</td>
+    <td> {{ x.startDate }}</td>
     <td> {{ x.endDate }}</td>
     <td> {{ x.couponPrice }}</td>
     <td>{{ x.couponAmount }}</td>
@@ -39,7 +44,8 @@
     <span class="glyphicon glyphicon-trash"></span> Buy</button></td>
 
    
-   
+   <button><a href = "#customer/couponList">Back</a></button>
   </tr>
 </table>
+</form>
 </center>

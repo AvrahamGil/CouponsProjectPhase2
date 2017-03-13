@@ -114,6 +114,22 @@ public class CouponLogic {
 			System.out.println("Success! you buy a new coupon");
 		
 	}
+	//---------------------------------------------get list of coupons by type----------------------------
+	public List<Coupon>listOfCouponsByType(int couponType) throws ApplicationException {
+		CouponDao couponDao = new CouponDao();
+		List<Coupon>getListOfCouponsByType = couponDao.getListOfCouponsByType(couponType);
+		System.out.println(getListOfCouponsByType);
+		return getListOfCouponsByType;
+		
+	}
+	//---------------------------------------------get list of coupons by price----------------------------
+		public List<Coupon>listOfCouponsByPrice(double couponPrice) throws ApplicationException {
+			CouponDao couponDao = new CouponDao();
+			List<Coupon>getListOfCouponsByPrice = couponDao.getListOfCouponsByPrice(couponPrice);
+			System.out.println(getListOfCouponsByPrice);
+			return getListOfCouponsByPrice;
+			
+		}
 
 	// -----------------------------------------------company coupons--------------------------------------
 	public List<Coupon> listOfCompanyCoupons(long companyID) throws ApplicationException {
@@ -142,6 +158,7 @@ public class CouponLogic {
 		System.out.println(listofCustomer);
 		return listofCustomer;
 	}
+	
 
 	// -----------------------------------------company coupons by date price and type------------------------
 	public void listOfCompanyCouponsByTypePriceAndDate(long companyID, int couponType) throws ApplicationException {

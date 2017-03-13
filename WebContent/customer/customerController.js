@@ -19,8 +19,18 @@ angular.module("myApp").config(function ($routeProvider) {
     .when("/customer/customerCoupons", {
         templateUrl: "customer/customerCoupons.htm",
         controller: "mycouponList"
+    })
+        .when("/customer/ByType", {
+        templateUrl: "customer/ByType.htm",
+        controller: "couponList"
 
-    });
+    }).when("/customer/ByPrice", {
+        templateUrl: "customer/ByPrice.htm",
+        controller: "couponList"
+
+    })
+
+    ;
 
 
 });
@@ -58,6 +68,8 @@ function customerController($http, $scope, serviceName) {
 
 angular.module("myApp").controller('couponList', ['$http', '$scope', function ($http, $scope) {
 
+
+
     (
     $scope.getListOfAllCoupons = function () {
         $http.get('/CouponsProjectPhase2/rest/api/Coupons').then(function (response) {
@@ -65,6 +77,17 @@ angular.module("myApp").controller('couponList', ['$http', '$scope', function ($
         });
 
     })();
+
+    $scope.type = function (couponTypeByNumber) {
+        $http.get('/CouponsProjectPhase2/rest/api/Coupons/CouonType/' + couponTypeByNumber).then(function (response) {
+            $scope.listOfCouponsType = response.data;
+        })
+    }
+    $scope.price = function (couponPrice) {
+        $http.get('/CouponsProjectPhase2/rest/api/Coupons/CouonPrice/' + couponPrice).then(function (response) {
+            $scope.listOfCouponsPrice = response.data;
+        })
+    }
 
     $scope.buyCoupon = function (couponID,endDate, couponTitle) {
         bootbox.confirm({

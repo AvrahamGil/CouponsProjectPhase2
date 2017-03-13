@@ -91,6 +91,24 @@ public class CouponApi {
 	}
 	
 	@GET
+	@Path("/CouonType/{couponType}")
+	public List<Coupon> getListOfCouponsByType(@PathParam("couponType")int couponType) throws ApplicationException {
+		List<Coupon> getListOfCouponsByType = new ArrayList<Coupon>();
+		CouponLogic couponLogic = new CouponLogic();
+		getListOfCouponsByType = couponLogic.listOfCouponsByType(couponType);
+		return getListOfCouponsByType;
+	}
+	@GET
+	@Path("/CouonPrice/{couponprice}")
+	public List<Coupon> getListOfCouponsByPrice(@PathParam("couponPrice")double couponPrice) throws ApplicationException {
+		List<Coupon> getListOfCouponsByPrice = new ArrayList<Coupon>();
+		CouponLogic couponLogic = new CouponLogic();
+		getListOfCouponsByPrice = couponLogic.listOfCouponsByPrice(couponPrice);
+		return getListOfCouponsByPrice;
+	}
+	
+	
+	@GET
 	@Path("/CompanyCoupons")
 	public List<Coupon>getCompanyCoupons(@Context HttpServletRequest request) throws ApplicationException {
 		List<Coupon>companyCoupons = new ArrayList<Coupon>();
@@ -111,5 +129,6 @@ public class CouponApi {
 		customerCoupons = couponLogic.listOfCustomerCoupons(companyID);
 		return customerCoupons;
 	}
+	
 
 }
