@@ -3,6 +3,7 @@ package com.gil.couponsproject.api;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -36,6 +37,12 @@ public class CouponApi {
 		SessonLogin sessionLogin = new SessonLogin();
 		long startDate = System.currentTimeMillis();
 		
+	//	SimpleDateFormat dateFormat = new SimpleDateFormat("dd:MM:yyyy");
+		
+		//Calendar calendar = Calendar.getInstance();
+	//	calendar.setTime(coupon.getEndDate());
+		
+		 
 		coupon.getCouponTitle();
 		coupon.setStartDate(startDate);
 		coupon.getEndDate();
@@ -44,8 +51,8 @@ public class CouponApi {
 		coupon.getCouponTypeByNumber();
 		coupon.getCouponAmount();
 		
-		long couponID = sessionLogin.getUserLogin(request);
-		coupon.setcompanyID(couponID);
+		long companyID = sessionLogin.getUserLogin(request);
+		coupon.setcompanyID(companyID);
 
 		couponLogic.createCoupon(coupon);
 	}

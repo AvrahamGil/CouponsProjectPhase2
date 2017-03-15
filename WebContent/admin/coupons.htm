@@ -2,10 +2,12 @@
 
 
 <center>
+ 
 
 <table>
     <tr>
-    	 <th>ID</th>
+    	<th>couponID</th>
+    	<th>companyID</th>
         <th>Title</th>
         <th>Type</th>
         <th>StartDate</th>
@@ -19,7 +21,8 @@
 
   <tr ng-repeat="x in listOfCoupons">
   
-     <td>{{ x.couponID }}</td>
+    <td>{{ x.couponID }}</td>
+    <td>{{ x.companyID }}</td>
     <td>{{ x.couponTitle }}</td>
     <td> {{ x.couponTypeByNumber }}</td>
     <td>  {{ x.startDate }}</td>
@@ -27,16 +30,17 @@
     <td> {{ x.couponPrice }}</td>
     <td>{{ x.couponAmount }}</td>
     <td>{{ x.couponMessage }}</td>
-  
- <td ng-if="$odd" style="background-color: white">
-	<button ng-click="deleteCoupons(x.couponID , x.couponTitle)" type="button" class="btn btn-default btn-sm">
+
+
+    <td ng-if="$odd" style="background-color: white">
+	<button ng-click="deleteCoupons(x.couponID , x.couponTitle) " type="button" class="btn btn-default btn-sm">
 	<span class="glyphicon glyphicon-trash"></span> Remove </button>
 	</td>
-	<td ng-if="$even" style ="background-color: #dddddd"> <button ng-click="deleteCoupons(x.couponID , x.couponTitle)" type="button" class="btn btn-default btn-sm">
+	<td ng-if="$even"> <button ng-click="deleteCoupons(x.couponID , x.couponTitle)" type="button" class="btn btn-default btn-sm">
 	<span class="glyphicon glyphicon-trash"></span> Remove </button>
 	</td>
 
-   
+
    
   </tr>
 </table>

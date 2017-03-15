@@ -10,7 +10,7 @@ var app = angular.module("myApp").config(function ($routeProvider) {
    })
    .when("/admin/coupons", {
        templateUrl: "admin/coupons.htm",
-       controller: "couponList"
+       controller: "coupons"
 
    })
     .when("/admin/getCompany", {
@@ -176,9 +176,9 @@ function customersControllerList($http, $scope, $location) {
 
 
 
-angular.module("myApp").controller('couponList', couponList);
-couponList.$inject = ['$http', '$scope', '$location'];
-function couponList($http, $scope, $location) {
+angular.module("myApp").controller('coupons', coupons);
+coupons.$inject = ['$http', '$scope', '$location'];
+function coupons($http, $scope, $location) {
 
     (
     $scope.getListOfAllCoupons = function () {
