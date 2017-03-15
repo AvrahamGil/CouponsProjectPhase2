@@ -1,5 +1,9 @@
 package com.gil.couponsproject.beans;
 
+
+
+import java.util.Date;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -10,6 +14,7 @@ public class Coupon {
 	private String couponTitle;
 	private long startDate;
 	private long endDate;
+	private String endDateString;
 	private int couponPrice;
 	private String couponMessage;
 	private int couponTypeByNumber;
@@ -20,7 +25,7 @@ public class Coupon {
 	}
 
 	public Coupon(long couponID, long companyID, String couponTitle, long startDate, long endDate,
-			String couponMessage, int couponTypeByNumber, int couponAmount, int couponPrice) {
+			String couponMessage, int couponTypeByNumber, int couponAmount, int couponPrice,String endDateString) {
 		this.setcouponID(couponID);
 		this.setcompanyID(companyID);
 		this.setCouponTitle(couponTitle);
@@ -30,10 +35,10 @@ public class Coupon {
 		this.setCouponTypeByNumber(couponTypeByNumber);
 		this.setCouponAmount(couponAmount);
 		this.setcouponPrice(couponPrice);
-
+		this.setEndDateString(endDateString);
 	}
 	
-	public Coupon(String couponTitle, long startDate, long endDate, String couponMessage, int couponTypeByNumber,
+	public Coupon(String couponTitle, long startDate, long endDate, String couponMessage, int couponTypeByNumber,String endDateString,
 			int couponAmount, int couponPrice) {
 		this.setCouponTitle(couponTitle);
 		this.setStartDate(startDate);
@@ -42,10 +47,11 @@ public class Coupon {
 		this.setCouponTypeByNumber(couponTypeByNumber);
 		this.setCouponAmount(couponAmount);
 		this.setcouponPrice(couponPrice);
+		this.setEndDateString(endDateString);
 	}
 
 	public Coupon(long companyID , String couponTitle, long startDate, long endDate,
-			String couponMessage, int couponTypeByNumber, int couponAmount, int couponPrice ) {
+			String couponMessage, int couponTypeByNumber, int couponAmount, int couponPrice , String endDateString) {
 		this.setcompanyID(companyID);
 		this.setCouponTitle(couponTitle);
 		this.setStartDate(startDate);
@@ -54,7 +60,7 @@ public class Coupon {
 		this.setCouponTypeByNumber(couponTypeByNumber);
 		this.setCouponAmount(couponAmount);
 		this.setcouponPrice(couponPrice);
-		
+		this.setEndDateString(endDateString);
 	}
 	
 	
@@ -132,6 +138,14 @@ public class Coupon {
 	}
 
 
+
+	public String getEndDateString() {
+		return endDateString;
+	}
+
+	public void setEndDateString(String endDateString) {
+		this.endDateString = endDateString;
+	}
 
 	public String toString() {
 		return "Coupon [couponID=" + couponID  + ", companyID=" + companyID

@@ -88,8 +88,8 @@ public class TestRemoveAndUpdateCoupon {
 		CouponDao couponDao= new CouponDao();
 		//				change details in the coupon
 		coupon.setCouponTitle("Dont Drink And Drive");
-		coupon.setStartDate(startDate);
-		coupon.setEndDate(endDate);
+	//	coupon.setStartDate(startDate);
+	//	coupon.setEndDate(endDate);
 		coupon.setCouponAmount(100);
 		coupon.setCouponTypeByNumber(8);
 		coupon.setCouponMessage("hi");

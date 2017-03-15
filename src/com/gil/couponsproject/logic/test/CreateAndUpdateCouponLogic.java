@@ -36,8 +36,8 @@ public class CreateAndUpdateCouponLogic {
 		CouponLogic couponLogic = new CouponLogic();
 	
 		coupon.setCouponTitle("Gilcoup");
-		coupon.setStartDate(15/8/1992);
-		coupon.setEndDate(25/8/2016);
+	//	coupon.setStartDate(15/8/1992);
+	//	coupon.setEndDate(25/8/2016);
 		coupon.setCouponAmount(500);
 		coupon.setCouponTypeByNumber(1);
 		coupon.setcouponPrice(600);
@@ -51,7 +51,7 @@ public class CreateAndUpdateCouponLogic {
 		CouponLogic couponLogic = new CouponLogic();
 		coupon.setcouponID(1);
 		coupon.setcouponPrice(51000);
-		coupon.setEndDate(12/7/2020);
+	///	coupon.setEndDate(12/7/2020);
 		couponLogic.updateCoupon(coupon);
 	}
 

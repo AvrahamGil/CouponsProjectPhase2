@@ -35,17 +35,18 @@ public class CouponApi {
 	public void createCoupon(Coupon coupon , @Context HttpServletRequest request) throws ApplicationException, ParseException {
 		CouponLogic couponLogic = new CouponLogic();
 		SessonLogin sessionLogin = new SessonLogin();
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 		long startDate = System.currentTimeMillis();
-		
-	//	SimpleDateFormat dateFormat = new SimpleDateFormat("dd:MM:yyyy");
-		
-		//Calendar calendar = Calendar.getInstance();
-	//	calendar.setTime(coupon.getEndDate());
+
+		Date date = dateFormat.parse(coupon.getEndDateString());
+		long endDate = date.getTime();
 		
 		 
+		
 		coupon.getCouponTitle();
 		coupon.setStartDate(startDate);
-		coupon.getEndDate();
+		coupon.setEndDate(endDate);
 		coupon.getcouponPrice();
 		coupon.getCouponMessage();
 		coupon.getCouponTypeByNumber();

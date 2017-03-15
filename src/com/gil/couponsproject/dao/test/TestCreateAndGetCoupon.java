@@ -147,8 +147,8 @@ public class TestCreateAndGetCoupon {
 		//				create the details in the coupon
 		
 		coupon.setCouponTitle("gil coupon");
-		coupon.setStartDate(startDate);
-		coupon.setEndDate(endDate);
+	//	coupon.setEndDate(startDate);
+	//	coupon.setEndDate(endDate);
 		coupon.setCouponAmount(5000);
 		coupon.setCouponTypeByNumber(7);
 		coupon.setCouponMessage("hello world");
