@@ -16,7 +16,7 @@ public class TestJdbcTransecationManagerTest {
 			this.connection = JdbcAndConnection.getConnection();
 			this.connection.setAutoCommit(false);
 		} catch (SQLException e) {
-			throw new ApplicationException("TransecationManager failed to connection", ErrorType.GENERAL_ERROR);
+			throw new ApplicationException(ErrorType.GENERAL_ERROR, "TransecationManager failed to connection");
 		}
 	}
 
@@ -25,7 +25,7 @@ public class TestJdbcTransecationManagerTest {
 		if (this.connection != null) {
 			return connection;
 		}
-		throw new ApplicationException("connection is null", ErrorType.GENERAL_ERROR);
+		throw new ApplicationException(ErrorType.GENERAL_ERROR, "connection is null");
 
 	}
 
@@ -38,7 +38,7 @@ public class TestJdbcTransecationManagerTest {
 			closeConnection();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new ApplicationException("commit error", ErrorType.GENERAL_ERROR);
+			throw new ApplicationException(ErrorType.GENERAL_ERROR, "commit error");
 		}
 	}
 
@@ -53,7 +53,7 @@ public class TestJdbcTransecationManagerTest {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new ApplicationException("TranseactionManager failed to rollback", ErrorType.GENERAL_ERROR);
+			throw new ApplicationException(ErrorType.GENERAL_ERROR, "TranseactionManager failed to rollback");
 		}
 	}
 

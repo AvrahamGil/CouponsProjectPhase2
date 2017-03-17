@@ -9,7 +9,7 @@ public class ApplicationException extends  Exception  {
 
 	private ErrorType errortype;
 	
-	public ApplicationException(String message , ErrorType errortype) {
+	public ApplicationException( ErrorType errortype , String message ) {
 	
 	super(message);
 	this.setErrortype(errortype);

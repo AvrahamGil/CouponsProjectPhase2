@@ -27,9 +27,9 @@ public class InputValidationCustomerRegistration  {
 			if (customerName.matches(userNameValid)) {
 				return correct;
 			}
-			throw new ApplicationException ("Error in SecurityCustomerRegistration,securityName();,invalid username" , ErrorType.SECURITY_ERROR);
+			throw new ApplicationException (ErrorType.SECURITY_ERROR , "Error in SecurityCustomerRegistration,securityName();,invalid username");
 		}
-		throw new ApplicationException ("Error in SecurityCustomerRegistration,securityName();,you should put 6-20 letter" , ErrorType.SECURITY_ERROR);
+		throw new ApplicationException (ErrorType.SECURITY_ERROR , "Error in SecurityCustomerRegistration,securityName();,you should put 6-20 letter");
 	}
 
 	//UserPassword have to be with lower case and capital letter
@@ -50,9 +50,9 @@ public class InputValidationCustomerRegistration  {
 			if (customerPassword.matches(passwordValid)) {
 				return correct;
 			}
-			throw new ApplicationException ("Error in SecurityCustomerRegistration,SecurityPassword,invalid password" , ErrorType.SECURITY_ERROR);
+			throw new ApplicationException (ErrorType.SECURITY_ERROR , "Error in SecurityCustomerRegistration,SecurityPassword,invalid password");
 		}
-		throw new ApplicationException ("Error in SecurityCustomerRegistration,SecurityPassword,you should put 6-20 letter" , ErrorType.SECURITY_ERROR);
+		throw new ApplicationException (ErrorType.SECURITY_ERROR , "Error in SecurityCustomerRegistration,SecurityPassword,you should put 6-20 letter");
 	}
 
 	

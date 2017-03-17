@@ -32,7 +32,7 @@ public class InputValidationCompanyRegistration  {
 		if (companyName.length() >= allowMoreThenNumberLetter && allowedUpToNumberLetter  > companyName.length() && companyName != null) {
 			return correct;
 		}
-		throw new ApplicationException ("Error in SecurityCompanyRegistration,securityName();,you should put 6-20 letter" , ErrorType.SECURITY_ERROR);
+		throw new ApplicationException (ErrorType.SECURITY_ERROR , "Error in SecurityCompanyRegistration,securityName();,you should put 6-20 letter");
 	}
 
 	//UserPassword have to be with lower case and capital letter
@@ -53,9 +53,9 @@ public class InputValidationCompanyRegistration  {
 			if (companyPassword.matches(passwordValid)) {
 				return correct;
 			}
-			throw new ApplicationException ("Error in SecurityCompanyRegistration,SecurityPassword,invalid password" , ErrorType.SECURITY_ERROR);
+			throw new ApplicationException (ErrorType.SECURITY_ERROR , "Error in SecurityCompanyRegistration,SecurityPassword,invalid password");
 		}
-		throw new ApplicationException ("Error in SecurityCompanyRegistration,SecurityPassword,you should put 6-20 letter" , ErrorType.SECURITY_ERROR);
+		throw new ApplicationException (ErrorType.SECURITY_ERROR , "Error in SecurityCompanyRegistration,SecurityPassword,you should put 6-20 letter");
 	}
 
 	//UserEmail have to be with lower case and capital letter, and "@" + .com
@@ -77,9 +77,9 @@ public class InputValidationCompanyRegistration  {
 			if (companyEmail.matches(emailValid)) {
 			return correct;
 			}
-		throw new ApplicationException ("Error in SecurityCompanyRegistration,SecurityPassword,invalid password" , ErrorType.SECURITY_ERROR);
+		throw new ApplicationException (ErrorType.SECURITY_ERROR , "Error in SecurityCompanyRegistration,SecurityPassword,invalid password");
 		}
-	throw new ApplicationException ("Error in SecurityCompanyRegistration,SecurityEmailyou should put 6-20 letter" , ErrorType.SECURITY_ERROR);
+	throw new ApplicationException (ErrorType.SECURITY_ERROR , "Error in SecurityCompanyRegistration,SecurityEmailyou should put 6-20 letter");
 	}
 
 	public  void checkIfTheInformationisCurrect (Company company) throws ApplicationException {

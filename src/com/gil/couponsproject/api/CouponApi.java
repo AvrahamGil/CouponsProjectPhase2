@@ -69,13 +69,19 @@ public class CouponApi {
 	}
 
 	@PUT
-	public void updateCoupon(@Context HttpServletRequest request,Coupon coupon) throws ApplicationException {
+	public void updateCoupon(@Context HttpServletRequest request,Coupon coupon) throws ApplicationException, ParseException {
 		CouponLogic couponLogic = new CouponLogic();
 		SessonLogin sessionLogin = new SessonLogin();
 		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+		
+
+		Date date = dateFormat.parse(coupon.getEndDateString());
+		long endDate = date.getTime();
+		
 		long couponID = sessionLogin.getUserLogin(request);
 		coupon.setcouponID(couponID);
-		coupon.getEndDate();
+		coupon.setEndDate(endDate);
 		coupon.getcouponPrice();
 		
 		couponLogic.updateCoupon(coupon);

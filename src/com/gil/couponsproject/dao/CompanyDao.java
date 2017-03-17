@@ -57,8 +57,8 @@ public class CompanyDao implements ICompany {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(
-					"Error in companyDao.createCompany();,create compnay failed, check your company DETAILS again",
-					ErrorType.CREATE_ERROR);
+					ErrorType.CREATE_ERROR,
+					"Error in companyDao.createCompany();,create compnay failed, check your company DETAILS again");
 		}
 		// turn off our connections
 		finally {
@@ -96,8 +96,8 @@ public class CompanyDao implements ICompany {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(
-					"Error in CompanyDao, removeCompany();removeCompnay failed,please check your ID again",
-					ErrorType.REMOVE_ERROR);
+					ErrorType.REMOVE_ERROR,
+					"Error in CompanyDao, removeCompany();removeCompnay failed,please check your ID again");
 			// time to turn off our connections
 		} finally {
 			JdbcAndConnection.closeConnection(connection);
@@ -142,8 +142,8 @@ public class CompanyDao implements ICompany {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(
-					"Error in CompanyDao, UpdateCompany();,update company failed, check  your ID",
-					ErrorType.UPDATE_ERROR);
+					ErrorType.UPDATE_ERROR,
+					"Error in CompanyDao, UpdateCompany();,update company failed, check  your ID");
 		}
 		// time to turn off our connections
 		finally {
@@ -185,8 +185,8 @@ public class CompanyDao implements ICompany {
 			// if we have problems "catch" will tell us
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new ApplicationException("Error in CompanyDao, GetCompany();,check your company ID again ",
-					ErrorType.GET_ERROR);
+			throw new ApplicationException(ErrorType.GET_ERROR,
+					"Error in CompanyDao, GetCompany();,check your company ID again ");
 		}
 		// time to turn off our connections
 		finally {
@@ -228,8 +228,8 @@ public class CompanyDao implements ICompany {
 			// if we have problems "catch" will tell us
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new ApplicationException("Error In CompanyDao(),ListOfAllCompanies();, no such LIST",
-					ErrorType.MISSING_LIST);
+			throw new ApplicationException(ErrorType.MISSING_LIST,
+					"Error In CompanyDao(),ListOfAllCompanies();, no such LIST");
 
 			// time to turn off our connections
 		} finally {
@@ -271,8 +271,8 @@ public class CompanyDao implements ICompany {
 			// if we have problems "catch" will tell us
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new ApplicationException("Error in CompanyDao isCompanyExistbyName (); , company NAME alreadyExsit ",
-					ErrorType.COMPANY_NAME_ALREADY_IN_USE);
+			throw new ApplicationException(ErrorType.COMPANY_NAME_ALREADY_IN_USE,
+					"Error in CompanyDao isCompanyExistbyName (); , company NAME alreadyExsit ");
 		}
 		// time to turn off our connections
 		finally {
@@ -304,8 +304,8 @@ public class CompanyDao implements ICompany {
 			// if we have problems "catch" will tell us
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new ApplicationException("Error in CompanySecurity, GetCompanyName();,check your company name again ",
-					ErrorType.GET_ERROR);
+			throw new ApplicationException(ErrorType.GET_ERROR,
+					"Error in CompanySecurity, GetCompanyName();,check your company name again ");
 		}
 		// turn off our connections
 		finally {
@@ -351,8 +351,8 @@ public class CompanyDao implements ICompany {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(
-					"Error in CompanyDao, isCompanyExist;. please check your details again",
-					ErrorType.INVAILD_PASSWORD);
+					ErrorType.INVAILD_PASSWORD,
+					"Error in CompanyDao, isCompanyExist;. please check your details again");
 
 			// time to turn off our connections
 		} finally {
@@ -390,8 +390,8 @@ public class CompanyDao implements ICompany {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(
-					"Error in CompanyDao, removeCouponByCompany();..removeCompnayCoupon failed.. please check your ID again",
-					ErrorType.REMOVE_ERROR);
+					ErrorType.REMOVE_ERROR,
+					"Error in CompanyDao, removeCouponByCompany();..removeCompnayCoupon failed.. please check your ID again");
 
 			// time to turn off our connections
 		} finally {

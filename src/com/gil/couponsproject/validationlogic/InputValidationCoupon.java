@@ -25,7 +25,7 @@ public class InputValidationCoupon {
 		if (couponTitle.length() >= allowMoreThenNumberLetter && allowedUpToNumberLetter  > couponTitle.length() && couponTitle != null) {
 			return correct;
 		}
-		throw new ApplicationException ("Error in SecurityCouponRegistration,securityTitle;,you should put 6-10 letter" , ErrorType.SECURITY_ERROR);
+		throw new ApplicationException (ErrorType.SECURITY_ERROR , "Error in SecurityCouponRegistration,securityTitle;,you should put 6-10 letter");
 	}
 
 	//Coupon amount only with numbers
@@ -41,7 +41,7 @@ public class InputValidationCoupon {
 		if (couponAmount >= minAmount && couponAmount  < maxAmount ) {
 			return correct;
 		}
-		throw new ApplicationException ("Error in SecurityCouponRegistration,SecurityAmount,you should put 6-10 letter" , ErrorType.SECURITY_ERROR);
+		throw new ApplicationException (ErrorType.SECURITY_ERROR , "Error in SecurityCouponRegistration,SecurityAmount,you should put 6-10 letter");
 	}
 
 	//Coupon message have to be with lower case and capital letter, and "@" + .com
@@ -62,9 +62,9 @@ public class InputValidationCoupon {
 			if (couponMessage.matches(MESSAGE_VALID)) {
 			return correct;
 			}
-		throw new ApplicationException ("Error in SecurityCouponRegistration,SecurityPassword,invalid message" , ErrorType.SECURITY_ERROR);
+		throw new ApplicationException (ErrorType.SECURITY_ERROR , "Error in SecurityCouponRegistration,SecurityPassword,invalid message");
 		}
-	throw new ApplicationException ("Error in SecurityCouponRegistration,SecurityMessage you should put 6-10 letter" , ErrorType.SECURITY_ERROR);
+	throw new ApplicationException (ErrorType.SECURITY_ERROR , "Error in SecurityCouponRegistration,SecurityMessage you should put 6-10 letter");
 	}
 	
 	//Coupon price  only with numbers
@@ -80,7 +80,7 @@ public class InputValidationCoupon {
 			if (couponPrice >= minPrice && couponPrice  < maxPrice ) {
 				return correct;
 			}
-			throw new ApplicationException ("Error in SecurityCouponRegistration,SecurityPrice,coupon price is between 500$-1000$" , ErrorType.SECURITY_ERROR);
+			throw new ApplicationException (ErrorType.SECURITY_ERROR , "Error in SecurityCouponRegistration,SecurityPrice,coupon price is between 500$-1000$");
 		}
 	
 

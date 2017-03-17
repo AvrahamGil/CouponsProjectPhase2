@@ -40,8 +40,8 @@ public class CompanyDaoValidation implements ICompanySecurity {
 			// if we have problems "catch" will tell us
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new ApplicationException("Error in CompanySecurity, GetCompanyName();,check your company name again ",
-					ErrorType.GET_ERROR);
+			throw new ApplicationException(ErrorType.GET_ERROR,
+					"Error in CompanySecurity, GetCompanyName();,check your company name again ");
 		}
 		// turn off our connections
 		finally {
@@ -77,8 +77,8 @@ public class CompanyDaoValidation implements ICompanySecurity {
 			// if we have problems "catch" will tell us
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new ApplicationException("Error in CompanySecurity, GetCompanyName();,check your company name again ",
-					ErrorType.GET_ERROR);
+			throw new ApplicationException(ErrorType.GET_ERROR,
+					"Error in CompanySecurity, GetCompanyName();,check your company name again ");
 		}
 		// turn off our connections
 		finally {
@@ -113,8 +113,8 @@ public class CompanyDaoValidation implements ICompanySecurity {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(
-					"Error in CompanySecurity, GetCompanyEmail();,check your company email again ",
-					ErrorType.GET_ERROR);
+					ErrorType.GET_ERROR,
+					"Error in CompanySecurity, GetCompanyEmail();,check your company email again ");
 		}
 		// turn off our connections
 		finally {

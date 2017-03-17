@@ -35,8 +35,8 @@ public class CustomerDaoValidation implements ICustomerSecurity {
 			// if we have problems "catch" will tell us
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new ApplicationException("Error in CustomerSecurity, GetCustomerName();,check your name again ",
-					ErrorType.SECURITY_ERROR);
+			throw new ApplicationException(ErrorType.SECURITY_ERROR,
+					"Error in CustomerSecurity, GetCustomerName();,check your name again ");
 		}
 		// turn off our connections
 		finally {
@@ -76,8 +76,8 @@ public class CustomerDaoValidation implements ICustomerSecurity {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(
-					"Error in CustomerSecurity, GetCustomerPassword();,check your password again ",
-					ErrorType.SECURITY_ERROR);
+					ErrorType.SECURITY_ERROR,
+					"Error in CustomerSecurity, GetCustomerPassword();,check your password again ");
 		}
 		// turn off our connections
 		finally {

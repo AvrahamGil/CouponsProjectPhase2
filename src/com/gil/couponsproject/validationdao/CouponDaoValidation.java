@@ -38,8 +38,8 @@ public class CouponDaoValidation implements ICouponSecurity {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(
-					"Error in CouponSecurity, securityUpdateUserID();,cant create a coupon,check your coupon ID again",
-					ErrorType.CREATE_ERROR);
+					ErrorType.CREATE_ERROR,
+					"Error in CouponSecurity, securityUpdateUserID();,cant create a coupon,check your coupon ID again");
 		}
 
 		// turn off our connections
@@ -75,8 +75,8 @@ public class CouponDaoValidation implements ICouponSecurity {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(
-					"Error in CouponSecurity, securityUpdateUserID();,cant create a coupon,check your coupon ID again",
-					ErrorType.CREATE_ERROR);
+					ErrorType.CREATE_ERROR,
+					"Error in CouponSecurity, securityUpdateUserID();,cant create a coupon,check your coupon ID again");
 		}
 
 		// turn off our connections
@@ -113,8 +113,8 @@ public class CouponDaoValidation implements ICouponSecurity {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(
-					"Error in CouponSecurity, securityUpdateUserID();,cant create a coupon,check your coupon ID again",
-					ErrorType.CREATE_ERROR);
+					ErrorType.CREATE_ERROR,
+					"Error in CouponSecurity, securityUpdateUserID();,cant create a coupon,check your coupon ID again");
 		}
 
 		// turn off our connections
@@ -149,8 +149,8 @@ public class CouponDaoValidation implements ICouponSecurity {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(
-					"Error in CouponSecurity, securityUpdateUserID();,cant create a coupon,check your coupon ID again",
-					ErrorType.CREATE_ERROR);
+					ErrorType.CREATE_ERROR,
+					"Error in CouponSecurity, securityUpdateUserID();,cant create a coupon,check your coupon ID again");
 		}
 
 		// turn off our connections

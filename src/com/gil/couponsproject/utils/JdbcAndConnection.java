@@ -38,7 +38,7 @@ public class JdbcAndConnection {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new ApplicationException("Close Connection failed", ErrorType.CONNECTION_ERROR);
+			throw new ApplicationException(ErrorType.CONNECTION_ERROR, "Close Connection failed");
 		}
 
 	}
@@ -50,7 +50,7 @@ public class JdbcAndConnection {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new ApplicationException("close PreapredStatment failed", ErrorType.CONNECTION_ERROR);
+			throw new ApplicationException(ErrorType.CONNECTION_ERROR, "close PreapredStatment failed");
 		}
 
 	}
@@ -64,7 +64,7 @@ public class JdbcAndConnection {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new ApplicationException("close connectionResult failed", ErrorType.ERROR);
+			throw new ApplicationException(ErrorType.ERROR, "close connectionResult failed");
 		}
 	}
 

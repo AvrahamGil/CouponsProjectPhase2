@@ -50,8 +50,8 @@ public class CustomerDao implements ICustomer {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(
-					"Error in CustomerDao,createCustomer();create customer failed, check your ID and PASSWORD again",
-					ErrorType.CREATE_ERROR);
+					ErrorType.CREATE_ERROR,
+					"Error in CustomerDao,createCustomer();create customer failed, check your ID and PASSWORD again");
 
 			// turn off connections
 		} finally {
@@ -89,8 +89,8 @@ public class CustomerDao implements ICustomer {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(
-					"Error in CustomerDao,removeCustomer(),remove customer failed.. please check your customer ID again",
-					ErrorType.REMOVE_ERROR);
+					ErrorType.REMOVE_ERROR,
+					"Error in CustomerDao,removeCustomer(),remove customer failed.. please check your customer ID again");
 
 			// time to turn off our connections
 		} finally {
@@ -135,8 +135,8 @@ public class CustomerDao implements ICustomer {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(
-					"Error in CustomerDao,UpdateCustomer();,update customer failed, check  your ID is again",
-					ErrorType.UPDATE_ERROR);
+					ErrorType.UPDATE_ERROR,
+					"Error in CustomerDao,UpdateCustomer();,update customer failed, check  your ID is again");
 		}
 
 		// time to turn off our connections
@@ -179,8 +179,8 @@ public class CustomerDao implements ICustomer {
 			// if we have problems "catch" will tell us
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new ApplicationException("Error in CustomerDao,getCustomer();,check your customer ID again",
-					ErrorType.GET_ERROR);
+			throw new ApplicationException(ErrorType.GET_ERROR,
+					"Error in CustomerDao,getCustomer();,check your customer ID again");
 
 			// time to turn off our connections
 		} finally {
@@ -223,8 +223,8 @@ public class CustomerDao implements ICustomer {
 			// if we have problems "catch" will tell us
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new ApplicationException("Error In CustomerDao,listofAllCustomers, no such LIST",
-					ErrorType.MISSING_LIST);
+			throw new ApplicationException(ErrorType.MISSING_LIST,
+					"Error In CustomerDao,listofAllCustomers, no such LIST");
 
 			// time to turn off our connections
 		} finally {
@@ -268,8 +268,8 @@ public class CustomerDao implements ICustomer {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(
-					"Error in CustomerDao isCustomerExistbyName (); , customer NAME already exist ",
-					ErrorType.CUSTOMER_NAME_ALREADY_IN_USE);
+					ErrorType.CUSTOMER_NAME_ALREADY_IN_USE,
+					"Error in CustomerDao isCustomerExistbyName (); , customer NAME already exist ");
 		}
 		// time to turn off our connections
 		finally {
@@ -313,8 +313,8 @@ public class CustomerDao implements ICustomer {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(
-					"Error in CustomerDao isCustomerExist (); , check your customer PASSWORD again ",
-					ErrorType.INVAILD_PASSWORD);
+					ErrorType.INVAILD_PASSWORD,
+					"Error in CustomerDao isCustomerExist (); , check your customer PASSWORD again ");
 		}
 		// time to turn off our connections
 		finally {
@@ -357,8 +357,8 @@ public class CustomerDao implements ICustomer {
 			// if we have problems "catch" will tell us
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new ApplicationException("Error in CustomerDao,isCouponExistByCustomer();,customer ID already exist",
-					ErrorType.CUSTOMER_NAME_ALREADY_IN_USE);
+			throw new ApplicationException(ErrorType.CUSTOMER_NAME_ALREADY_IN_USE,
+					"Error in CustomerDao,isCouponExistByCustomer();,customer ID already exist");
 
 			// time to turn off our connections
 		} finally {
@@ -403,8 +403,8 @@ public class CustomerDao implements ICustomer {
 			// if we have problems "catch" will tell us
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new ApplicationException("Error in CustomerDao,getCustomerCoupon();,customer ID already in use",
-					ErrorType.CUSTOMER_NAME_ALREADY_IN_USE);
+			throw new ApplicationException(ErrorType.CUSTOMER_NAME_ALREADY_IN_USE,
+					"Error in CustomerDao,getCustomerCoupon();,customer ID already in use");
 
 			// time to turn off our connections
 		} finally {
@@ -441,8 +441,8 @@ public class CustomerDao implements ICustomer {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(
-					"Error in CustomerDao, removeCustomerCoupons();removeCustomerCoupon failed.. please check your ID again",
-					ErrorType.REMOVE_ERROR);
+					ErrorType.REMOVE_ERROR,
+					"Error in CustomerDao, removeCustomerCoupons();removeCustomerCoupon failed.. please check your ID again");
 
 			// if we have problems "catch" will tell us
 		} finally {

@@ -18,31 +18,31 @@
         <th>Edit</th>
     </tr>
 
-  <tr ng-repeat="x in couponsDetails">
+  <tr ng-repeat="coupon in couponsDetails">
   
-    <td>{{ x.couponID }}</td>
-    <td>{{ x.companyID }}</td>
-    <td>{{ x.couponTitle }}</td>
-    <td> {{ x.couponTypeByNumber }}</td>
-    <td>  {{ x.startDate }}</td>
-    <td> {{ x.endDate }}</td>
-    <td> {{ x.couponPrice }}</td>
-    <td>{{ x.couponAmount }}</td>
-    <td>{{ x.couponMessage }}</td>
+    <td>{{ coupon.couponID }}</td>
+    <td>{{ coupon.companyID }}</td>
+    <td>{{ coupon.couponTitle }}</td>
+    <td> {{ coupon.couponTypeByNumber }}</td>
+    <td>  {{ coupon.startDate }}</td>
+    <td> {{ coupon.endDate }}</td>
+    <td> {{ coupon.couponPrice }}</td>
+    <td>{{ coupon.couponAmount }}</td>
+    <td>{{ coupon.couponMessage }}</td>
 
 
     <td ng-if="$odd" style="background-color: white">
-	<button ng-click="deleteCoupon(x.couponID , x.couponTitle) " type="button" class="btn btn-default btn-sm">
+	<button ng-click="deleteCoupon(coupon.couponID , coupon.couponTitle) " type="button" class="btn btn-default btn-sm">
 	<span class="glyphicon glyphicon-trash"></span> Remove </button>
 	</td>
-	<td ng-if="$even"> <button ng-click="deleteCoupon(x.couponID , x.couponTitle)" type="button" class="btn btn-default btn-sm">
+	<td ng-if="$even"> <button ng-click="deleteCoupon(coupon.couponID , coupon.couponTitle)" type="button" class="btn btn-default btn-sm">
 	<span class="glyphicon glyphicon-trash"></span> Remove </button>
 	</td>
 
-	<td ng-if="$odd" style="background-color: white"><button ng-click="updateCoupon(x)" href="#"
+	<td ng-if="$odd" style="background-color: white"><button ng-click="updateCoupon(coupon)" href="#"
 	data-toggle="modal" data-target="#Update-modal"> <span class="glyphicon glyphicon-edit"></span> Edit</button>
 	</td>
-	<td ng-if="$even"> <button ng-click="updateCoupon(x)" href="#" data-toggle="modal" data-target="#Update-modal">
+	<td ng-if="$even"> <button ng-click="updateCoupon(coupon)" href="#" data-toggle="modal" data-target="#Update-modal">
 	<span class="glyphicon glyphicon-edit"></span> Edit </button>
 	</td>
  

@@ -19,8 +19,8 @@ public class CompanyLogic {
 		CompanyDao companyDao = new CompanyDao();
 		if (companyDao.isCompanyExistsByName(company.getCompanyName())) {
 			throw new ApplicationException(
-					"Error In companyDao, companyExsitByName(); ,cant createCompany,companyName already existt" + company,
-					ErrorType.COMPANY_NAME_ALREADY_IN_USE);
+					ErrorType.COMPANY_NAME_ALREADY_IN_USE,
+					"Error In companyDao, companyExsitByName(); ,cant createCompany,companyName already existt" + company);
 		}
 		//check if the information is correct , help us to protect our server from hacker's.
 		secureRegistraion.checkIfTheInformationisCurrect(company);
@@ -37,8 +37,8 @@ public class CompanyLogic {
 		CompanyDao companyDao = new CompanyDao();
 		CustomerDao customerDao = new CustomerDao();
 		if (companyDao.getCompany(companyID) == null) {
-			throw new ApplicationException("Error in CompanyLogic, removeCompany();,check your company ID again" + companyID,
-					ErrorType.COMPANY_DOSENT_EXIST);
+			throw new ApplicationException(ErrorType.COMPANY_DOSENT_EXIST,
+					"Error in CompanyLogic, removeCompany();,check your company ID again" + companyID);
 		}
 		customerDao.removeCustomerCoupons(customerID);
 		companyDao.removeCompanyCoupons(companyID);
@@ -51,15 +51,15 @@ public class CompanyLogic {
 		CompanyDao companyDao = new CompanyDao();
 
 		if (companyDao.getCompany(company.getCompanyID()) == null) {
-			throw new ApplicationException("Error in CompanyLogic,updateCompany(),check your companyID again" + company,
-					ErrorType.COMPANY_DOSENT_EXIST);
+			throw new ApplicationException(ErrorType.COMPANY_DOSENT_EXIST,
+					"Error in CompanyLogic,updateCompany(),check your companyID again" + company);
 		}
 
 		else if (companyDao.isCompanyExistsByName(company.getCompanyName())) {
 			companyDao.updateCompany(company);
 		} else {
-			throw new ApplicationException("Error in CompanyLogic.updateCompany(),you cant change your company name",
-					ErrorType.UPDATE_ERROR);
+			throw new ApplicationException(ErrorType.UPDATE_ERROR,
+					"Error in CompanyLogic.updateCompany(),you cant change your company name");
 		}
 
 	}
@@ -69,8 +69,8 @@ public class CompanyLogic {
 		CompanyDao companyDao = new CompanyDao();
 		Company company = new Company();
 		if (companyDao.getCompany(companyID) == null) {
-			throw new ApplicationException("Error in CompanyLogic,getCompany();,  check your id again" + companyID,
-					ErrorType.COMPANY_DOSENT_EXIST);
+			throw new ApplicationException(ErrorType.COMPANY_DOSENT_EXIST,
+					"Error in CompanyLogic,getCompany();,  check your id again" + companyID);
 		}
 
 		company = companyDao.getCompany(companyID);

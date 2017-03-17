@@ -31,7 +31,7 @@ public class LoginApi {
 		System.out.println("hi from login api");
 		loginOutPut = user.userLogin(loginDetails.getUserName(), loginDetails.getUserPassword(), loginDetails.getType());
 		if (loginOutPut == null  ) {
-			throw new ApplicationException("Error" , ErrorType.LOGIN_ERROR);
+			throw new ApplicationException(ErrorType.LOGIN_ERROR , "Error");
 		} else {
 			request.getSession();
 			request.getSession(false).setAttribute("userID", loginOutPut.getuserID());
