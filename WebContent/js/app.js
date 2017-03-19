@@ -43,27 +43,39 @@
     function LoginController (serviceName,$http, $scope, $location, $rootScope  ) {
 
         var vm = this;
-    //    vm.user = null;
+        
         vm.user = { userName: "" };
         vm.user.userName = '';
+        vm.errorMessage = null;
+        vm.loginStatus = null;
+        
 
         $scope.submit = function () {
             var user = JSON.stringify($scope.user);
             $http.post('/CouponsProjectPhase2/rest/Login', $scope.user).then(function (response) {
-                if ($scope.user.type === 'ADMIN') {
-                    $location.path('/admin');
+                if ($scope.user != null) {
+
+                    if ($scope.user.type === 'ADMIN') {
+                        $location.path('/admin');
+                    }
+                    else if ($scope.user.type === 'COMPANY') {
+                        $location.path('/company');
+                    }
+                    else {
+                        $location.path('/customer');
+                    }
+
+                    vm.user.userName = response.data.userName;
+                    serviceName.name = vm.user.userName;
+                     vm.loginStatus = 'success';
+                } else {
+                    alert('here!!');
+                    vm.errorMessage = response.data.message;
+                    var message = vm.errorMessage;
+                     vm.loginStatus = 'fail';
                 }
-                else if ($scope.user.type === 'COMPANY') {
-                    $location.path('/company');
-                }
-                else {
-                    $location.path('/customer');
-                }
-                vm.user.userName =  response.data.userName;
-          //      vm.user.userID =    response.data.userID;
-                
-           //    $rootScope.globals.user = vm.user;
-                serviceName.name = vm.user.userName;
+
+ 
             })
 
         }

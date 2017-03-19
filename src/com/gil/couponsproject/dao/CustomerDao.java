@@ -415,7 +415,7 @@ public class CustomerDao implements ICustomer {
 		return coupon;
 	}
 
-	public void removeCustomerCoupons(long customerID) throws ApplicationException {
+	public void removeCustomerCoupons(long companyID) throws ApplicationException {
 		// turn on connections
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -425,13 +425,13 @@ public class CustomerDao implements ICustomer {
 			connection = JdbcAndConnection.getConnection();
 
 			// sql syntax -->in this way we talk with our DB
-			String sql = "DELETE FROM CUSTOMER_COUPONS WHERE CUSTOMER_ID = ?";
+			String sql = "DELETE  FROM customer_coupons  where COUPON_ID in (select coupon_id from coupon WHERE company_id = ?);";
 
 			// combining between syntax and our connection
 			preparedStatement = connection.prepareStatement(sql);
 
 			// we should have the same parameters that we have in the syntax
-			preparedStatement.setLong(1, customerID);
+			preparedStatement.setLong(1, companyID);
 
 			// DB Updated
 			preparedStatement.executeUpdate();

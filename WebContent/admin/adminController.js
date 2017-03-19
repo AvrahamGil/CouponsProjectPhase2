@@ -115,9 +115,8 @@ function companyControllerList ($http, $scope, $location) {
             }, callback: function (result) {
                 if (result == true)  {
                     var deleteCo = JSON.stringify($scope.deleteCompanies);
-                    var deleteCu = JSON.stringify($scope.deleteCustomers);
 
-                    $http.delete('/CouponsProjectPhase2/rest/api/Companies/' + deleteCu + '/' + deleteCo).then(function (success)
+                    $http.delete('/CouponsProjectPhase2/rest/api/Companies/' + companyID).then(function (success)
                     {
                         bootbox.alert("Remove Done");
                     }).then(function (error) {

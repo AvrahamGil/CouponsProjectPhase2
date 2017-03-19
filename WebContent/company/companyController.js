@@ -90,6 +90,8 @@ function companyController($http, $scope, $location, $rootScope, serviceName) {
 
 angular.module("myApp").controller('couponController', ['$http', '$scope', '$location', function ($http, $scope, $location) {
 
+
+
     ( 
             $scope.getCompanyCoupon = function () {
                 $http.get('/CouponsProjectPhase2/rest/api/Coupons/CompanyCoupons').then(function (response) {
@@ -108,93 +110,24 @@ angular.module("myApp").controller('couponController', ['$http', '$scope', '$loc
         });
     }
     */
-    /*
-    $scope.updateCoupon = function (coupon) {
-        var messageC = $()
-        bootbox.dialog({
-            message: "<form method='Post' id='update'><br/>New End Date:  <input type='Date' name='coupon.endDate' ng-model=coupon.endDateString/><br/>\New Price : <input type='text'  class='form-control' name='couponPrice' ng-model='coupon.couponPrice'  />'</form>",
-            title: "Coupon Update",
-            buttons: {
-                confirm : {
-                    label: "Update",
-                    className: 'btn-success'
-                },
-                cancel: {
-                    label: 'Cancle',
-                    className: 'btn-danger'
-                }
-            }, callback: function (result) {
-                if (result == true) {
-                    //    var updateC = JSON.stringify($scope.updateCoupons);
-                     coupon =  $('#update').submit();
-                    $http.put('/CouponsProjectPhase2/rest/api/Coupons', coupon).then(function (success) {
-                        bootbox.alert("Update Success!!");
-                    }).then(function (error) {
-                        bootbox.alert("Failed");
-                    })
-                }
-            }
-        })
-    }
-    */
-
    
-
-    /*
-    $scope.updateCoupon = function () {
-       var update =  bootbox.dialog({
-           message: '<form method="Post"><label for="EndDate">End Date</label><input type="Date"  name="endDateString" placeholder="Date" ng-model="updateCoupons.endDateString" /><br/><label for="Price">Coupon Price :</label><input type="text"  name="couponPrice"placeholder="Price" ng-model="updateCoupons.couponPrice" /></form>',
-            title: "Update Coupon",
-            buttons: {
-                confirm: {
-                    label: "Update",
-                    className: 'btn-success'
-                },
-                cancel: {
-                    label: 'Cancle',
-                    className: 'btn-danger',   
+   
+          $scope.updateCoupon = function (coupon) {
+           var updateC = JSON.stringify($scope.updateCoupons);
+           $http.put('/CouponsProjectPhase2/rest/api/Coupons', updateC).then(function (response) {
+               if (response.data.errorBean.success == 'true') {
+                   bootbox.alert("Update Success!!");
+                   var updateStatus = 'success';
+               } else {
+                   var errorMessage = response.data.errorBean.errorMessage
+                   bootbox.alert("update Failed " + errorMessage);
+                   var updateStatus = 'fail';
+               }
+                       
+                  })
                 }
-            }, callback: function (result) {
-                if (result == true) {
-                        var updateC = JSON.stringify($scope.updateCoupons);
-                    $http.put('/CouponsProjectPhase2/rest/api/Coupons', updateC).then(function (success) {
-                        bootbox.alert("Update Success!!");
-                    }).then(function (error) {
-                        bootbox.alert("Failed");
-                    })
-                }
-            }
-        })
-    }
-    */
-
-    $scope.updateCoupon = function (coupon) {
-        bootbox.confirm({
-            message: '<label for="EndDate">End Date</label><input type="Date"  name="endDateString" placeholder="Date" ng-model="updateCoupons.endDateString" /><br/><label for="Price">Coupon Price :</label><input type="text"  name="couponPrice"placeholder="Price" ng-model="updateCoupons.couponPrice" />',
-            buttons: {
-                confirm: {
-                    label: 'Yes',
-                    className: 'btn-success',
-                },
-                cancel: {
-                    label: 'No',
-                    className: 'btn-danger'
-                }
-            }, callback: function (result) {
-                if (result == true) {
-                    var updateC = JSON.stringify($scope.updateCoupons);
-                    $http.put('/CouponsProjectPhase2/rest/api/Coupons', updateC).then(function (success) {
-                        bootbox.alert("Update Success!!");
-                    }).then(function (error) {
-                        bootbox.alert("Failed");
-                    })
-                }
-                return;
-
-            }
-        });
-    }
-
+              
+   
 
     $scope.deleteCoupon = function (couponID , couponTitle) {
         bootbox.confirm({

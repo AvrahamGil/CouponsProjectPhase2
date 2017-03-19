@@ -28,7 +28,7 @@ public class CompanyLogic {
 	}
 
 	// -----------------------------------------------Delete Company----------------------------------------------------
-	public void removeCompany(long companyID , long customerID) throws ApplicationException {
+	public void removeCompany(long companyID ) throws ApplicationException {
 		//if we want to remove companies ,we have do 4 step's :
 		//1st, we have to remove customer coupons
 		//2nd, we have to remove customer's
@@ -40,7 +40,7 @@ public class CompanyLogic {
 			throw new ApplicationException(ErrorType.COMPANY_DOSENT_EXIST,
 					"Error in CompanyLogic, removeCompany();,check your company ID again" + companyID);
 		}
-		customerDao.removeCustomerCoupons(customerID);
+		customerDao.removeCustomerCoupons(companyID);
 		companyDao.removeCompanyCoupons(companyID);
 		companyDao.removeCompany(companyID);
 

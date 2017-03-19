@@ -19,10 +19,50 @@
   
 
       <td style="background-color:#dddddd">
-          <button href="#" data-toggle="modal" data-target="#login-modal"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+          <button  data-toggle="modal" data-target="#Update-modal"><span class="glyphicon glyphicon-edit" ></span> Change Password</button>
       </td>
       
   
   </tr>
 </table>
+
+
+
+
+<div class="modal fade" id="Update-modal" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true"
+	style="display: none;">
+	<div class="modal-dialog">
+		<div class="modal-content">
+					
+			<div class="modal-header modal-header-info" align="center"
+				style="background-color: #dddddd">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+				</button>
+				<h4 class="modal-title">
+					<font color="white">Change Password</font>
+				</h4>
+				<br />
+			</div>
+	
+			
+            <div id="div-forms">
+                <form method="Post" id="login-form">
+                    <div class = "modal-body">
+                        <label>New Password</label>
+                        <input type="password" placeholder="Password" name= "customerPassword" ng-model="updateCustomers.customerPassword" />
+                        <br/>
+                        <br/>
+                        <br/>
+                        <input type="submit" value="Update Password" ng-click="updateCustomer()"/>
+                    </div>
+                </form>
+
+
+            </div>
+		</div>
+		</div>
+	</div>
 </center>

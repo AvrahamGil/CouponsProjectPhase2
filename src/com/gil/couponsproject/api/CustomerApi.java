@@ -45,6 +45,7 @@ public class CustomerApi {
 		SessonLogin sessionLogin = new SessonLogin();
 		long customerID = sessionLogin.getUserLogin(request);
 		customer = customerLogic.getCustomer(customerID);
+		System.out.println(customer);
 		return customer;
 		
 	}

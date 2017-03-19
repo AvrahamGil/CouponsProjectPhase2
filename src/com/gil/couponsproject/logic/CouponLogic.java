@@ -105,7 +105,7 @@ public class CouponLogic {
 		if (couponDao.isCouponExpired(endDate) < System.currentTimeMillis()) {
 			throw new ApplicationException(ErrorType.COUPON_EXPIRED, "the coupon is expired");
 		}
-		if (customerDao.getCustomerCoupon(customerID) == null) {
+		if (customerDao.getCustomerCoupon(customerID) != null) {
 			throw new ApplicationException(ErrorType.CUSTOMER_ALREADY_BUY_THIS_COUPON,
 					"The customer already bought the coupon, his ID = " + customerID);
 		}

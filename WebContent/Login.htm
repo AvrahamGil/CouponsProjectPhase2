@@ -4,6 +4,7 @@
 <p class="text-center">
 Please Login
 </p>
+
 <br>
 
 
@@ -14,7 +15,12 @@ Please Login
 <form  method="Post" class="login-page">
 <div class="login-header margin-bottom-30">
 <h2>Login</h2>
-</div>
+  Login Failed : {{vm.errorMessage}}
+</div>			
+<div class="alert alert-danger" role="alert" ng-show="vm.loginStatus =='fail'">
+							<strong><span class="glyphicon glyphicon-remove-circle"></span></strong>
+							Login Failed : {{vm.message}}
+						</div>
 <div class="input-group margin-bottom-20">
 <span class="input-group-addon">
 <i class="fa fa-user"></i>

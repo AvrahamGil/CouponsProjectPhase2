@@ -48,12 +48,7 @@ function customerController($http, $scope, serviceName) {
                })();
 
 
-    $scope.updateCustomer = function () {
-        var updateC = JSON.stringify($scope.updateCustomers);
-        $http.put('/CouponsProjectPhase2/rest/Customers', updateC).then(function (success) {
-            $scope.ServerResponse = updateC;
-        });
-    }
+  
 
   
 
@@ -157,9 +152,15 @@ angular.module("myApp").controller('mycouponList', ['$http', '$scope', function 
 
 
 
+
+
+
 }])
 
 angular.module("myApp").controller('customerControllerList', ['$http', '$scope', '$location', function ($http, $scope, $location) {
+    var vm = this;
+    vm.message = null;
+    vm.status = null;
 
     (
     $scope.getCustomer = function () {
@@ -167,6 +168,24 @@ angular.module("myApp").controller('customerControllerList', ['$http', '$scope',
             $scope.customerDetails = response.data;
         });
     })();
+
+
+    $scope.updateCustomer = function () {
+               var updateC = JSON.stringify($scope.updateCustomers);
+               $http.put('/CouponsProjectPhase2/rest/Customers', updateC).then(function (success) {
+                   if (response.data.errorBean.success == 'true') {
+                       bootbox.alert("Success, You just change your password");
+                       vm.status = 'success'
+                   } else {
+                       vm.statsu = 'fail';
+                       vm.message = response.data.message;
+                       bootbox.alert("Cant change password :" + vm.message);
+                   }
+               
+            });
+       
+   
+    }
 
 }])
 	

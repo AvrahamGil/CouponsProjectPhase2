@@ -45,8 +45,7 @@ public enum ErrorType {
 	}
 
 	public int getInternalErrorCode() {
-		
-		return 0;
+		return generalError;
 	}
 
 }

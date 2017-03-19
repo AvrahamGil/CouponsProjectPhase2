@@ -19,6 +19,7 @@ import com.gil.couponsproject.beans.Company;
 import com.gil.couponsproject.beans.Customer;
 import com.gil.couponsproject.beans.LoginOutput;
 import com.gil.couponsproject.exception.ApplicationException;
+import com.gil.couponsproject.exception.ExceptionsHandler;
 import com.gil.couponsproject.logic.CompanyLogic;
 import com.gil.couponsproject.utils.SessonLogin;
 
@@ -32,9 +33,16 @@ public class CompanyApi {
 	@GET
 	@Path("/companyID/{companyID}")
 	public Company getCompany(@PathParam("companyID")long companyID) throws ApplicationException {
+		ExceptionsHandler exceptionHanglder = new ExceptionsHandler();
 		CompanyLogic companyLogic = new CompanyLogic();
 		Company company = new Company();
+		
+		try {
 		company = companyLogic.getCompany(companyID);
+		}catch(ApplicationException e) {
+			e.printStackTrace();
+			exceptionHanglder.toResponse(e);
+		}
 		return company;
 		
 	}
@@ -65,10 +73,10 @@ public class CompanyApi {
 	}
 
 	@DELETE
-	@Path("/{customerID}/{companyID}")
-	public void removeCompany(@PathParam("customerID") long companyID , @PathParam("companyID") long customerID) throws ApplicationException {
+	@Path("/{companyID}")
+	public void removeCompany(@PathParam("companyID") long companyID ) throws ApplicationException {
 		CompanyLogic companyLogic = new CompanyLogic();
-		companyLogic.removeCompany(companyID , customerID);
+		companyLogic.removeCompany(companyID);
 
 	}
 

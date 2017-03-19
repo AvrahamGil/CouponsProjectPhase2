@@ -14,7 +14,7 @@ public class RemoveAndGetCompanyLogic {
 		//---------------------------------------remove company
 		
 		try {
-			removeAndGetCompanyLogic .removeCompany(1 , 1);
+			removeAndGetCompanyLogic .removeCompany(1 );
 		} catch (ApplicationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -43,9 +43,9 @@ public class RemoveAndGetCompanyLogic {
 	
 	
 	
-	public  void removeCompany (long companyID , long customerID) throws ApplicationException {
+	public  void removeCompany (long companyID ) throws ApplicationException {
 		CompanyLogic companyLogic = new CompanyLogic();
-		companyLogic.removeCompany(companyID , customerID);
+		companyLogic.removeCompany(companyID );
 	}
 	
 	public  void getCompany (long companyID) throws ApplicationException {

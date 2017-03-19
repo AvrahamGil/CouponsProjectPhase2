@@ -39,15 +39,59 @@
 	<span class="glyphicon glyphicon-trash"></span> Remove </button>
 	</td>
 
-	<td ng-if="$odd" style="background-color: white"><button ng-click="updateCoupon(coupon)" href="#"
+	<td ng-if="$odd" style="background-color: white"><button ng-click="updateCoupon(coupon)" 
 	data-toggle="modal" data-target="#Update-modal"> <span class="glyphicon glyphicon-edit"></span> Edit</button>
 	</td>
-	<td ng-if="$even"> <button ng-click="updateCoupon(coupon)" href="#" data-toggle="modal" data-target="#Update-modal">
+	<td ng-if="$even"> <button ng-click="updateCoupon(coupon)"  data-toggle="modal" data-target="#Update-modal">
 	<span class="glyphicon glyphicon-edit"></span> Edit </button>
 	</td>
  
   </tr>
 </table>
 
+<div class="modal fade" id="Update-modal" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true"
+	style="display: none;">
+	<div class="modal-dialog">
+		<div class="modal-content">
+					
+			<div class="modal-header modal-header-info" align="center"
+				style="background-color: #dddddd">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+				</button>
+				<h4 class="modal-title">
+					<font color="white">Update Coupon</font>
+				</h4>
+				<br />
+			</div>
+	
+			
+            <div id="div-forms">
+                <form id="login-form" ng-submit="updateCompany()">
+                    <div class = "modal-body">
+                        <label>Price</label>
+                        <input tye="number" placeholder="Price" ng-model="updateCoupons.couponPrice" />
+                        <br />
+                        <label>End Date : </label>
+                        <input type="Date" placeholder="Date" ng-model="updateCoupons.endDateString"/>
+                        <br/>
+                        <input type="submit" value="Update Coupon" ng-click="updateCompany()"/>
+                    </div>
+                </form>
+
+
+
+
+
+
+
+
+
+            </div>
+		</div>
+		</div>
+	</div>
 
 </center>

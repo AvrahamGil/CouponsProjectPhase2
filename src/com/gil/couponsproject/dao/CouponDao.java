@@ -940,6 +940,7 @@ public class CouponDao implements ICoupon {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		long current_time = System.currentTimeMillis();
+		
 		try {
 			// try to connect to our DB
 			connection = JdbcAndConnection.getConnection();
