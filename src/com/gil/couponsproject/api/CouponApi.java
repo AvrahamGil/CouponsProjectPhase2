@@ -69,18 +69,16 @@ public class CouponApi {
 	}
 
 	@PUT
-	public void updateCoupon(@Context HttpServletRequest request,Coupon coupon) throws ApplicationException, ParseException {
+	public void updateCoupon(Coupon coupon) throws ApplicationException, ParseException {
 		CouponLogic couponLogic = new CouponLogic();
-		SessonLogin sessionLogin = new SessonLogin();
+		
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 		
-
 		Date date = dateFormat.parse(coupon.getEndDateString());
 		long endDate = date.getTime();
 		
-		long couponID = sessionLogin.getUserLogin(request);
-		coupon.setcouponID(couponID);
+		coupon.getcouponID();
 		coupon.setEndDate(endDate);
 		coupon.getcouponPrice();
 		
@@ -131,6 +129,26 @@ public class CouponApi {
 		long companyID =  sessionLogin.getUserLogin(request);
 		companyCoupons = couponLogic.listOfCompanyCoupons(companyID);
 		return companyCoupons;
+	}
+	@GET
+	@Path("/CompanyCouponsType/{couponType}")
+	public List<Coupon> getListOfCompanyCouponsByType(@Context HttpServletRequest request,@PathParam("couponType")int couponType) throws ApplicationException {
+		List<Coupon> getListOfCompanyCouponsByType = new ArrayList<Coupon>();
+		CouponLogic couponLogic = new CouponLogic();
+		SessonLogin sessionLogin = new SessonLogin();
+		long companyID =  sessionLogin.getUserLogin(request);
+		getListOfCompanyCouponsByType = couponLogic.listOfCompanyCouponsByType(companyID, couponType);
+		return getListOfCompanyCouponsByType;
+	}
+	@GET
+	@Path("/CompanyCouponsPrice/{couponPrice}")
+	public List<Coupon> getListOfCompanyCouponsByPrice(@Context HttpServletRequest request,@PathParam("couponPrice")double couponPrice) throws ApplicationException {
+		List<Coupon> getListOfCompanyCouponsByPrice = new ArrayList<Coupon>();
+		CouponLogic couponLogic = new CouponLogic();
+		SessonLogin sessionLogin = new SessonLogin();
+		long companyID =  sessionLogin.getUserLogin(request);
+		getListOfCompanyCouponsByPrice = couponLogic.listOfCompanyCouponsByPrice(companyID, couponPrice);
+		return getListOfCompanyCouponsByPrice;
 	}
 	
 	@GET

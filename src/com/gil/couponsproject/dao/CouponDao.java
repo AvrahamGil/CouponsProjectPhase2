@@ -561,7 +561,7 @@ public class CouponDao implements ICoupon {
 			connection = JdbcAndConnection.getConnection();
 
 			// sql syntax -->in this way we talk with our DB
-			String sql = "SELECT * FROM COUPON JOIN COMPANY WHERE COUPON_TYPE = ? AND COMPANY.COMPANY_ID = ?";
+			String sql = "SELECT * FROM COUPON WHERE COMPANY_ID = ? AND COUPON_TYPE = ?";
 
 			// combining between syntax and our connection
 			preparedStatement = connection.prepareStatement(sql);
@@ -594,7 +594,7 @@ public class CouponDao implements ICoupon {
 	}
 
 	// make a list of coupons
-	public List<Coupon> getListOfCompanyPrices(long companyID, double couponPrice) throws ApplicationException {
+	public List<Coupon> getListOfCompanyCouponsByPrice(long companyID, double couponPrice) throws ApplicationException {
 
 		// turn on connections
 		Connection connection = null;
@@ -603,14 +603,14 @@ public class CouponDao implements ICoupon {
 		Coupon coupon = new Coupon();
 
 		// make a list of coupons
-		List<Coupon> listOfCouponsByType = new ArrayList<Coupon>();
+		List<Coupon> listOfCompanyCouponsByprice = new ArrayList<Coupon>();
 
 		try {
 			// try to connect to our DB
 			connection = JdbcAndConnection.getConnection();
 
 			// sql syntax -->in this way we talk with our DB
-			String sql = "SELECT * FROM COUPON JOIN COMPANY WHERE COUPON_PRICE < ? AND COMPANY.COMPANY_ID = ?";
+			String sql = "SELECT * FROM COUPON WHERE COMPANY_ID = ? AND COUPON_PRICE < ?";
 
 			// combining between syntax and our connection
 			preparedStatement = connection.prepareStatement(sql);
@@ -623,7 +623,7 @@ public class CouponDao implements ICoupon {
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				coupon = extractCouponFromResultSet(resultSet);
-				listOfCouponsByType.add(coupon);
+				listOfCompanyCouponsByprice.add(coupon);
 			}
 
 			// if we have problems "catch" will tell us
@@ -638,7 +638,7 @@ public class CouponDao implements ICoupon {
 			JdbcAndConnection.closePreparedStatement(preparedStatement);
 			JdbcAndConnection.closeResultSet(resultSet);
 		}
-		return listOfCouponsByType;
+		return listOfCompanyCouponsByprice;
 
 	}
 

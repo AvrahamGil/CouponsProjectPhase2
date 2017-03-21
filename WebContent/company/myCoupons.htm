@@ -1,7 +1,8 @@
 <center ng-include="'company/homeLogo.htm'"></center>
 
 <center>
- 
+ <button><a href = "#company/ByType">ByType</a></button>
+<button><a href = "#company/ByPrice">ByPrice</a></button>
 
 <table>
     <tr>
@@ -39,10 +40,10 @@
 	<span class="glyphicon glyphicon-trash"></span> Remove </button>
 	</td>
 
-	<td ng-if="$odd" style="background-color: white"><button ng-click="updateCoupon(coupon)" 
+	<td ng-if="$odd" style="background-color: white"><button 
 	data-toggle="modal" data-target="#Update-modal"> <span class="glyphicon glyphicon-edit"></span> Edit</button>
 	</td>
-	<td ng-if="$even"> <button ng-click="updateCoupon(coupon)"  data-toggle="modal" data-target="#Update-modal">
+	<td ng-if="$even"> <button   data-toggle="modal" data-target="#Update-modal">
 	<span class="glyphicon glyphicon-edit"></span> Edit </button>
 	</td>
  
@@ -69,15 +70,16 @@
 	
 			
             <div id="div-forms">
-                <form id="login-form" ng-submit="updateCompany()">
+                <form id="login-form" >
                     <div class = "modal-body">
-                        <label>Price</label>
-                        <input tye="number" placeholder="Price" ng-model="updateCoupons.couponPrice" />
+                        <label>Price :</label>
+                        <br/><input type="number" placeholder="Price"class="form-control" ng-model="coupon.couponPrice" />
+                       
                         <br />
-                        <label>End Date : </label>
-                        <input type="Date" placeholder="Date" ng-model="updateCoupons.endDateString"/>
+                       <label>End Date : </label> 
+                       &emsp;<br/><input type="Date" placeholder="Date" class="form-control" ng-model="coupon.endDateString"/>
                         <br/>
-                        <input type="submit" value="Update Coupon" ng-click="updateCompany()"/>
+                        <input type="submit" value="Update Coupon" ng-click="updateCoupons(coupon)"/>
                     </div>
                 </form>
 

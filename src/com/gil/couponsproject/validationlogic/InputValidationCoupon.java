@@ -15,7 +15,7 @@ public class InputValidationCoupon {
 	//-----------------------------------------------------------------------------------------
 		CouponDaoValidation couponDaoSecurity = new CouponDaoValidation();
 		//allowed Up to number(in this example its 10) letter = allowed up to 20 letter
-		int allowedUpToNumberLetter = 10;
+		int allowedUpToNumberLetter = 20;
 		//allowed more then number(in this example its 6) letter = allowed more then 6 letter
 		int allowMoreThenNumberLetter = 6;
 		
@@ -34,7 +34,7 @@ public class InputValidationCoupon {
 	//----------------------------------------------------------------------------------------------
 		CouponDaoValidation couponDaoSecurity = new CouponDaoValidation();
 		int maxAmount = 10000;
-		int minAmount = 500;
+		int minAmount = 200;
 	//----------------------------------------------------------------------------------------------	
 		boolean correct = true;
 		couponAmount = couponDaoSecurity.securityCouponAmount(couponAmount);
@@ -50,19 +50,15 @@ public class InputValidationCoupon {
 	//---------------------------------------------------------------------------------------
 		CouponDaoValidation couponDaoSecurity = new CouponDaoValidation();
 		//allowed Up to number(in this example its 10) letter = allowed up to 20 letter
-		int allowedUpToNumberLetter = 10;
+		int allowedUpToNumberLetter = 20;
 		//allowed more then number(in this example its 6) letter = allowed more then 6 letter
 		 int allowMoreThenNumberLetter = 6;
-		//allowed  lower case,capital letter,and numbers.. have to be "@" and .com
-		 String MESSAGE_VALID = "^[A-Z]+[a-z_-]{3,15}$";
+	
 	//--------------------------------------------------------------------------------------
 		boolean correct = true;
 		couponMessage = couponDaoSecurity.securityCouponMessage(couponMessage);
 		if (couponMessage.length() >= allowMoreThenNumberLetter && couponMessage.length() < allowedUpToNumberLetter  && couponMessage != null) {
-			if (couponMessage.matches(MESSAGE_VALID)) {
 			return correct;
-			}
-		throw new ApplicationException (ErrorType.SECURITY_ERROR , "Error in SecurityCouponRegistration,SecurityPassword,invalid message");
 		}
 	throw new ApplicationException (ErrorType.SECURITY_ERROR , "Error in SecurityCouponRegistration,SecurityMessage you should put 6-10 letter");
 	}

@@ -14,18 +14,65 @@
     </tr>
 
   <tr>
-    <td>  {{ companyDetail.companyName }}</td>
-    <td>  {{ companyDetail.companyPassword }}</td>
-    <td>  {{ companyDetail.companyEmail }}</td>
-    <td>  {{ companyDetail.companyID }}</td>
+    <td>  {{ company.companyName }}</td>
+    <td>  {{ company.companyPassword }}</td>
+    <td>  {{ company.companyEmail }}</td>
+    <td>  {{ company.companyID }}</td>
     
   
 
       <td style="background-color:#dddddd">
-          <button href="#" data-toggle="modal" data-target="#login-modal"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+          <button data-toggle="modal" data-target="#Update-modal"><span class="glyphicon glyphicon-edit"></span> Edit</button>
       </td>
       
   
   </tr>
 </table>
+
+<div class="modal fade" id="Update-modal" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true"
+	style="display: none;">
+	<div class="modal-dialog">
+		<div class="modal-content">
+					
+			<div class="modal-header modal-header-info" align="center"
+				style="background-color: #dddddd">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+				</button>
+				<h4 class="modal-title">
+					<font color="white">Update Company</font>
+				</h4>
+				<br />
+			</div>
+	
+			
+            <div id="div-forms">
+                <form id="login-form" >
+                    <div class = "modal-body">
+                    
+                        <label>Password :</label>
+                        <br/><input type="password" placeholder="Password"name="companyPassword"ng-model="company.companyPassword"  />
+                        <br />
+                       
+                        <label>Email :</label>
+                        &emsp;<br/><input type="email" placeholder="example@gmail.com"name="companyEmail" ng-model="company.companyEmail"/>
+                        <br/>
+                       <br/> <input type="submit" value="Update Company" ng-click="updateCompany(company)"/>
+                    </div>
+                </form>
+
+
+
+
+
+
+
+
+
+            </div>
+		</div>
+		</div>
+	</div>
 </center>

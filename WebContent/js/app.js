@@ -46,14 +46,13 @@
         
         vm.user = { userName: "" };
         vm.user.userName = '';
-        vm.errorMessage = null;
         vm.loginStatus = null;
         
 
         $scope.submit = function () {
             var user = JSON.stringify($scope.user);
             $http.post('/CouponsProjectPhase2/rest/Login', $scope.user).then(function (response) {
-                if ($scope.user != null) {
+                if ($scope.user !== null) {
 
                     if ($scope.user.type === 'ADMIN') {
                         $location.path('/admin');
@@ -67,12 +66,12 @@
 
                     vm.user.userName = response.data.userName;
                     serviceName.name = vm.user.userName;
-                     vm.loginStatus = 'success';
+                     vm.loginStatus = "success";
+
                 } else {
                     alert('here!!');
-                    vm.errorMessage = response.data.message;
-                    var message = vm.errorMessage;
-                     vm.loginStatus = 'fail';
+                    $scope.errorMessage = response.data.message;
+                     vm.loginStatus = "fail";
                 }
 
  

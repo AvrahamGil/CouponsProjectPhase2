@@ -5,6 +5,7 @@
     <tr>
     	<th>customerID</th>
     	<th>Name</th>
+        <th>Remove</th>
        
     </tr>
 
@@ -20,7 +21,7 @@
 	<button ng-click="deleteCustomer(x.customerID , x.customerName)" type="button" class="btn btn-default btn-sm">
 	<span class="glyphicon glyphicon-trash"></span> Remove </button>
 	</td>
-	<td ng-if="$even" style ="background-color: #dddddd"> <button ng-click="deleteCustomer(x.customerID , x.customerName)" type="button" class="btn btn-default btn-sm">
+	<td ng-if="$even" > <button ng-click="deleteCustomer(x.customerID , x.customerName)" type="button" class="btn btn-default btn-sm">
 	<span class="glyphicon glyphicon-trash"></span> Remove </button>
 	</td>
 

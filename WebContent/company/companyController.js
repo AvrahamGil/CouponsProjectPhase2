@@ -40,6 +40,14 @@ angular.module("myApp").config(function ($routeProvider) {
         templateUrl: "company/updateCustomer.htm",
         controller: "companyController"
 
+    }).when("/company/ByPrice", {
+        templateUrl: "company/ByPrice.htm",
+        controller: "couponController"
+
+    }).when("/company/ByType", {
+        templateUrl: "company/ByType.htm",
+        controller: "couponController"
+
     });
 
 
@@ -101,33 +109,14 @@ angular.module("myApp").controller('couponController', ['$http', '$scope', '$loc
 
             })();
     
-    /*
-    $scope.updateCoupon = function () {
-        bootbox.prompt("Update Coupon", function (result) { });
-        var updateC = JSON.stringify($scope.updateCoupons);
-        $http.put('/CouponsProjectPhase2/rest/api/Coupons', updateC).then(function (success) {
-            $scope.ServerResponse = updateC;
-        });
+ 
+   
+    $scope.updateCoupons = function (coupon ) {
+     //   var updateCo = JSON.stringify($scope.coupon);
+        $http.put('/CouponsProjectPhase2/rest/api/Coupons', coupon).then(function (success) {
+            bootbox.alert('Update Done');
+        })
     }
-    */
-   
-   
-          $scope.updateCoupon = function (coupon) {
-           var updateC = JSON.stringify($scope.updateCoupons);
-           $http.put('/CouponsProjectPhase2/rest/api/Coupons', updateC).then(function (response) {
-               if (response.data.errorBean.success == 'true') {
-                   bootbox.alert("Update Success!!");
-                   var updateStatus = 'success';
-               } else {
-                   var errorMessage = response.data.errorBean.errorMessage
-                   bootbox.alert("update Failed " + errorMessage);
-                   var updateStatus = 'fail';
-               }
-                       
-                  })
-                }
-              
-   
 
     $scope.deleteCoupon = function (couponID , couponTitle) {
         bootbox.confirm({
@@ -155,6 +144,41 @@ angular.module("myApp").controller('couponController', ['$http', '$scope', '$loc
         });
     }
 
+    
+    $scope.type = function (couponTypeByNumber) {
+        $http.get('/CouponsProjectPhase2/rest/api/Coupons/CompanyCouponsType/' + couponTypeByNumber).then(function (response) {
+            $scope.coupons = [];
+            $scope.listOfCouponsType = $scope.coupons.concat(response.data.coupon);
+            
+        })
+    }
+    $scope.price = function (couponPrice) {
+        $http.get('/CouponsProjectPhase2/rest/api/Coupons/CompanyCouponsPrice/' + couponPrice).then(function (response) {
+            $scope.coupons = [];
+            $scope.listOfCouponsPrice = $scope.coupons.concat(response.data.coupon);
+        })
+    }
+
+    var rangeSlider = function () {
+        var slider = $('.range-slider'),
+            range = $('.range-slider__range'),
+            value = $('.range-slider__value');
+
+        slider.each(function () {
+
+            value.each(function () {
+                var value = $(this).prev().attr('value');
+                $(this).html(value);
+            });
+
+            range.on('input', function () {
+                $(this).next(value).html(this.value);
+            });
+        });
+    };
+
+    rangeSlider();
+    
 }])
 
 
@@ -163,16 +187,15 @@ angular.module("myApp").controller('companyProfile', ['$http', '$scope', '$locat
    (
     $scope.getCompany = function () {
         $http.get('/CouponsProjectPhase2/rest/api/Companies/Profile').then(function (response) {
-            $scope.companyDetail = response.data;
+            $scope.company = response.data;
         });
     }
     )();
 
-   $scope.updateCoupon = function () {
-       bootbox.prompt("Update Coupon Price", function (result) { });
-       var updateC = JSON.stringify($scope.updateCoupons);
-       $http.put('/CouponsProjectPhase2/rest/api/Coupons', updateC).then(function (success) {
-           $scope.ServerResponse = updateC;
+   $scope.updateCompany = function () {
+       var createC = JSON.stringify($scope.company);
+       $http.put('/CouponsProjectPhase2/rest/api/Companies', createC ).then(function (success) {
+           bootbox.alert("Update Done");
        });
    }
   

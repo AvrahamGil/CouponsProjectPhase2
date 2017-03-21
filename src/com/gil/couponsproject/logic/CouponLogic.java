@@ -32,15 +32,7 @@ public class CouponLogic {
 		secureCoupon.checkIfTheInformationCurrect(coupon);
 		couponDao.createCoupon(coupon);
 	}
-	//------------------------------------------------Convert time to long----------------------------------------------------
-	public void convertTime() throws  ParseException {
-		String string_date = "12/December/2012";
 
-		SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
-		    Date d = f.parse(string_date);
-		    long milliseconds = d.getTime();
-		    System.out.println(milliseconds);
-	}
 
 	// -----------------------------------------------Update coupon----------------------------------------------------
 	public void updateCoupon(Coupon coupon) throws ApplicationException {
@@ -160,56 +152,45 @@ public class CouponLogic {
 	}
 	
 
-	// -----------------------------------------company coupons by date price and type------------------------
-	public void listOfCompanyCouponsByTypePriceAndDate(long companyID, int couponType) throws ApplicationException {
+	
+	// -----------------------------------------company coupons by  type------------------------
+	public List<Coupon> listOfCompanyCouponsByType(long companyID, int couponType) throws ApplicationException {
 		CompanyDao companyDao = new CompanyDao();
 		CouponDao couponDao = new CouponDao();
-		Coupon coupon = new Coupon();
-		//first, we have to write a date
-		//second,all the coupons that created before our date will join to the list
-		long couponStartDate = System.currentTimeMillis();
-		// we have to choose a number 
-		// to get all the coupons that lower from our number
-		double couponPrice = coupon.getcouponPrice();
+		
+		
 		// checking if company exist
 		if (companyDao.getCompany(companyID) == null) {
-			throw new ApplicationException(ErrorType.COMPANY_DOSENT_EXIST,"Error in CouponLogic,ListOfCompanyCouponsByTypePriceAndDate,check your company ID again"
+			throw new ApplicationException(ErrorType.COMPANY_DOSENT_EXIST,"check your company ID again"
 							 + companyID);
 		}
 		// get coupons from company by type
 		List<Coupon> getCouponsCompanyByType = couponDao.getListOfCompanyCouponByType(companyID, couponType);
 		System.out.println(getCouponsCompanyByType);
+		return getCouponsCompanyByType;
 		// get coupons from company by price
-		List<Coupon> getCouponCompanyByPrice = couponDao.getListOfCompanyPrices(companyID, couponPrice);
-		System.out.println(getCouponCompanyByPrice);
-		// get coupons from company by date
-		List<Coupon> getCouponCompanyByDate = couponDao.getListOfCompanyCouponByDate(companyID, couponStartDate);
-		System.out.println(getCouponCompanyByDate);
-	}
-
-	// -----------------------------------------customer coupons by price and type------------------------
-	public List<Coupon> listOfCustomerCouponsByTypeAndPrice(long customerID, int couponType) throws ApplicationException {
-		CustomerDao customerDao = new CustomerDao();
-		CouponDao couponDao = new CouponDao();
-		Coupon coupon = new Coupon();
-		// we need to put a number to get all the coupons that lower from our
-		// number
-		double couponPrice = coupon.getcouponPrice() ;
-		// check if customer exist
-		if (customerDao.getCustomer(customerID) == null) {
-			throw new ApplicationException(ErrorType.CUSTOMER_DOESNT_EXIST,"Error in CouponLogic,listOfCustomerCouponsByTypeAndPrice,check your customer ID again"
-							+ customerID);
-		}
-		// get coupons from company by type
-		List<Coupon> getCouponsCustomerByType = couponDao.getListOfCustomersCouponTypes(customerID, couponType);
-		System.out.println(getCouponsCustomerByType);
-		// get coupons from company by price
-		List<Coupon> getCouponCustomerByPrice = couponDao.getListOfCustomerPrices(customerID, couponPrice);
-		System.out.println(getCouponCustomerByPrice);
 		
-		return getCouponsCustomerByType;
-
 	}
+	// -----------------------------------------company coupons by  price------------------------
+	public List<Coupon> listOfCompanyCouponsByPrice(long companyID, double couponPrice) throws ApplicationException {
+		CompanyDao companyDao = new CompanyDao();
+		CouponDao couponDao = new CouponDao();
+		
+	
+		// checking if company exist
+		if (companyDao.getCompany(companyID) == null) {
+			throw new ApplicationException(ErrorType.COMPANY_DOSENT_EXIST,"Error in CouponLogic,ListOfCompanyCouponsByTypePriceAndDate,check your company ID again"
+							 + companyID);
+		}
+		
+		// get coupons from company by price
+		List<Coupon> getCompanyCouponsByPrice = couponDao.getListOfCompanyCouponsByPrice(companyID, couponPrice);
+		System.out.println(getCompanyCouponsByPrice);
+		return getCompanyCouponsByPrice;
+		
+	}
+
+	
 
 	
 }

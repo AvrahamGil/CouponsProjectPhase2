@@ -8,6 +8,7 @@ public class ErrorBean {
 	private int internalErrorCode;
 	private String message;
 	
+	
 	public ErrorBean() {
 	}
 
@@ -16,6 +17,7 @@ public class ErrorBean {
 		this.message = message;
 		
 	}
+	
 
 	public int getInternalErrorCode() {
 		return internalErrorCode;
@@ -32,6 +34,8 @@ public class ErrorBean {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+
+
 
 	
 	

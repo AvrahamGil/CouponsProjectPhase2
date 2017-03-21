@@ -30,18 +30,10 @@ public class LoginApi {
 			throws ApplicationException {
 		UserLogic user = new UserLogic();
 		LoginOutput loginOutPut = new LoginOutput();
-		ExceptionsHandler exceptionHandler = new ExceptionsHandler();
 		System.out.println("hi from login api");
-		try {
+		loginOutPut = user.userLogin(loginDetails.getUserName(), loginDetails.getUserPassword(),
+				loginDetails.getType());
 
-			loginOutPut = user.userLogin(loginDetails.getUserName(), loginDetails.getUserPassword(),
-					loginDetails.getType());
-
-		} catch (ApplicationException e) {
-			e.printStackTrace();
-			exceptionHandler.toResponse(e);
-
-		}
 		if (loginOutPut == null) {
 			throw new ApplicationException(ErrorType.LOGIN_ERROR, "UserName Or Password is incorrect");
 		} else {

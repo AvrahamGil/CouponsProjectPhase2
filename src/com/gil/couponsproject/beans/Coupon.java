@@ -2,7 +2,6 @@ package com.gil.couponsproject.beans;
 
 
 
-import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -15,7 +14,7 @@ public class Coupon {
 	private long startDate;
 	private long endDate;
 	private String endDateString;
-	private int couponPrice;
+	private double couponPrice;
 	private String couponMessage;
 	private int couponTypeByNumber;
 	private int couponAmount;
@@ -25,7 +24,7 @@ public class Coupon {
 	}
 
 	public Coupon(long couponID, long companyID, String couponTitle, long startDate, long endDate,
-			String couponMessage, int couponTypeByNumber, int couponAmount, int couponPrice,String endDateString) {
+			String couponMessage, int couponTypeByNumber, int couponAmount, double couponPrice,String endDateString) {
 		this.setcouponID(couponID);
 		this.setcompanyID(companyID);
 		this.setCouponTitle(couponTitle);
@@ -39,7 +38,7 @@ public class Coupon {
 	}
 	
 	public Coupon(String couponTitle, long startDate, long endDate, String couponMessage, int couponTypeByNumber,String endDateString,
-			int couponAmount, int couponPrice) {
+			int couponAmount, double couponPrice) {
 		this.setCouponTitle(couponTitle);
 		this.setStartDate(startDate);
 		this.setEndDate(endDate);
@@ -51,7 +50,7 @@ public class Coupon {
 	}
 
 	public Coupon(long companyID , String couponTitle, long startDate, long endDate,
-			String couponMessage, int couponTypeByNumber, int couponAmount, int couponPrice , String endDateString) {
+			String couponMessage, int couponTypeByNumber, int couponAmount, double couponPrice , String endDateString) {
 		this.setcompanyID(companyID);
 		this.setCouponTitle(couponTitle);
 		this.setStartDate(startDate);
@@ -105,11 +104,11 @@ public class Coupon {
 		this.endDate = endDate;
 	}
 
-	public int getcouponPrice() {
+	public double getcouponPrice() {
 		return couponPrice;
 	}
 
-	public void setcouponPrice(int couponPrice) {
+	public void setcouponPrice(double couponPrice) {
 		this.couponPrice = couponPrice;
 	}
 

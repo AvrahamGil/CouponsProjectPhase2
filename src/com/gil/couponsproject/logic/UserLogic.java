@@ -14,18 +14,18 @@ import com.gil.couponsproject.exception.ApplicationException;
 public class UserLogic {
 
 	//Who are you?, a company manager?, customer?..or, administrator?
-	public  LoginOutput userLogin(String name, String password , AccessType  type) throws ApplicationException {
+	public  LoginOutput userLogin(String name, String password , String  type) throws ApplicationException {
 		UserLogic userLogic  = new UserLogic ();
 		LoginOutput loginOutPut = new LoginOutput();
 		
 		switch(type) {
-		case ADMIN:
+		case "ADMIN":
 			loginOutPut = userLogic.adminLogin(name , password);
 			break;
-		case COMPANY:
+		case "COMPANY":
 			loginOutPut = userLogic.adminCompanyLogin(name,password);
 		break;
-		case CUSTOMER:
+		case "CUSTOMER":
 			loginOutPut = userLogic.customerLogin(name,password);
 			break;			
 		}

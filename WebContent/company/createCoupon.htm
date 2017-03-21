@@ -13,7 +13,7 @@
 <div class="row margin-bottom-20">
  <div class="col-md-6 col-md-offset-0">
 <input type="text" class="form-control"  name="couponTitle" ng-model="coupon.couponTitle" />
-<span style="color: green;" id="user-availability-status"> * Must be 6-10 characters.</span>
+<span style="color: green;" id="user-availability-status"> * Must be 6-20 characters.</span>
 <br>
 <span style="color: green;" id="user-availability-status"> * You have to include capital letter.</span>
 </div>
@@ -31,15 +31,15 @@
 &emsp;<label>Coupon Price: </label>
   <div class="row margin-bottom-20">
  <div class="col-md-6 col-md-offset-0">
- <input type="text"  class="form-control" name="couponPrice" ng-model="coupon.couponPrice"  />
-  <span style="color: green;" id="user-availability-status"> * Must be between 500-1000$  .</span>
+ <input type="text"  class="form-control" name="couponPrice"min=0 max=1000 ng-model="coupon.couponPrice"  />
+  <span style="color: green;" id="user-availability-status"> * Must be between 0-1000$  .</span>
 </div>
 </div>
 &emsp;<label>Coupon Message: </label>
   <div class="row margin-bottom-20">
  <div class="col-md-6 col-md-offset-0">
  <input type="text"  class="form-control" name="couponMessage" ng-model="coupon.couponMessage"  />
- <span style="color: green;" id="user-availability-status"> * Must be 6-10 characters.</span>
+ <span style="color: green;" id="user-availability-status"> * Must be 6-20 characters.</span>
 </div>
 </div>
 &emsp;<label>Coupon Type: </label>
@@ -55,8 +55,8 @@
 &emsp;<label>Coupon Amount: </label>
   <div class="row margin-bottom-20">
  <div class="col-md-6 col-md-offset-0">
- <input type="number"  class="form-control" name="couponAmount" ng-model="coupon.couponAmount"  />
- <span style="color: green;" id="user-availability-status"> * Must be between 500-10000 coupons  .</span>
+ <input type="number"  class="form-control" name="couponAmount"min=200 max=1000 ng-model="coupon.couponAmount"  />
+ <span style="color: green;" id="user-availability-status"> * Must be between 200-1000 coupons  .</span>
 
 <br>
 <input type="submit" class="btn btn-primary" value="Create Coupon" ng-click="createCoupon()" />

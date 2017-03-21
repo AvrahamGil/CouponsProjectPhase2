@@ -9,7 +9,7 @@ public class LoginUserDetails {
 	
 	private String userName;
 	private String userPassword;
-	private AccessType type;
+	private String type;
 	
 	
 	public LoginUserDetails() {
@@ -35,11 +35,11 @@ public class LoginUserDetails {
 		this.userPassword = userPassword;
 	}
 
-	public AccessType  getType() {
+	public String  getType() {
 		return type;
 	}
 
-	public void setType(AccessType  type) {
+	public void setType(String  type) {
 		this.type = type;
 	}
 

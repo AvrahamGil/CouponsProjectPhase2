@@ -204,11 +204,13 @@ public class TestCreateAndGetCoupon {
 		List<Coupon>getCompanyCouponsType = couponDao.getListOfCompanyCouponByType(companyID, couponType);
 		System.out.println(getCompanyCouponsType);
 	}
+	/*
 	public  void getCompanyCouponsPrice(long companyID , double couponPrice) throws ApplicationException {
 		CouponDao couponDao = new CouponDao();
-		List<Coupon>getCompanyCouponsPrice = couponDao.getListOfCompanyPrices(companyID, couponPrice);
+	//	List<Coupon>getCompanyCouponsPrice = couponDao.getListOfCompanyPrices(companyID, couponPrice);
 		System.out.println(getCompanyCouponsPrice);
 	}
+	*/
 	public  void getCompanyCouponsDate(long companyID , long couponStartDate) throws ApplicationException {
 		CouponDao couponDao = new CouponDao();
 		List<Coupon>getCompanyCouponsDate = couponDao.getListOfCompanyCouponByDate(companyID, couponStartDate);

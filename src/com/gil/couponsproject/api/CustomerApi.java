@@ -51,9 +51,11 @@ public class CustomerApi {
 	}
 
 	@PUT
-	public void updateCustomer(Customer customer) throws ApplicationException {
+	public void updateCustomer(@Context HttpServletRequest request,Customer customer) throws ApplicationException {
 		CustomerLogic customerLogic = new CustomerLogic();
-		customer.getCustomerID();
+		SessonLogin sessionLogin = new SessonLogin();
+		long customerID = sessionLogin.getUserLogin(request);
+		customer.setCustomerID(customerID);
 		customer.getCustomerName();
 		customer.getCustomerPassword();
 		customerLogic.updateCustomer(customer);

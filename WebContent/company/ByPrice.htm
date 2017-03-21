@@ -1,0 +1,50 @@
+<center ng-include="'company/homeLogo.htm'"></center>
+
+
+
+<center>
+<form class="range-slider">
+
+&emsp;Max Price  :  <input class="range-slider__range" type="range" min="0" max="1000" ng-model="coupon.couponPrice"/>
+<span class="range-slider__value">500</span>
+<br>
+ <input type="submit" value="Click To Get List" ng-click="price(coupon.couponPrice)"/>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Type</th>
+        <th>StartDate</th>
+        <th>EndDate</th>
+        <th>Price</th>
+        <th>Amount</th>
+        <th>Message</th>
+        <th>Buy</th>
+        
+    </tr>
+
+  <tr ng-repeat="x in listOfCouponsPrice">
+  
+    <td>{{ x.couponID }}</td>
+    <td>{{ x.couponTitle }}</td>
+    <td> {{ x.couponTypeByNumber }}</td>
+    <td> {{ x.startDate }}</td>
+    <td> {{ x.endDate }}</td>
+    <td> {{ x.couponPrice }}</td>
+    <td>{{ x.couponAmount }}</td>
+    <td>{{ x.couponMessage }}</td>
+  
+<td ng-if="$odd" style="background-color: white">
+	<button ng-click="deleteCoupon(coupon.couponID , coupon.couponTitle) " type="button" class="btn btn-default btn-sm">
+	<span class="glyphicon glyphicon-trash"></span> Remove </button>
+	</td>
+	<td ng-if="$even"> <button ng-click="deleteCoupon(coupon.couponID , coupon.couponTitle)" type="button" class="btn btn-default btn-sm">
+	<span class="glyphicon glyphicon-trash"></span> Remove </button>
+	</td>
+
+   
+   <button><a href = "#company/myCoupons">Back</a></button>
+  </tr>
+</table>
+</form>
+</center>

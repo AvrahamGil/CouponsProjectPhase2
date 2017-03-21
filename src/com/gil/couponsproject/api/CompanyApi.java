@@ -33,16 +33,10 @@ public class CompanyApi {
 	@GET
 	@Path("/companyID/{companyID}")
 	public Company getCompany(@PathParam("companyID")long companyID) throws ApplicationException {
-		ExceptionsHandler exceptionHanglder = new ExceptionsHandler();
 		CompanyLogic companyLogic = new CompanyLogic();
 		Company company = new Company();
 		
-		try {
 		company = companyLogic.getCompany(companyID);
-		}catch(ApplicationException e) {
-			e.printStackTrace();
-			exceptionHanglder.toResponse(e);
-		}
 		return company;
 		
 	}
@@ -65,6 +59,7 @@ public class CompanyApi {
 		CompanyLogic companyLogic = new CompanyLogic();
 		SessonLogin sessionLogin = new SessonLogin();
 		long companyID = sessionLogin.getUserLogin(request);
+		
 		company.setCompanyID(companyID);
 		company.getCompanyName();
 		company.getCompanyPassword();
