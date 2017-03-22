@@ -610,7 +610,7 @@ public class CouponDao implements ICoupon {
 			connection = JdbcAndConnection.getConnection();
 
 			// sql syntax -->in this way we talk with our DB
-			String sql = "SELECT * FROM COUPON WHERE COMPANY_ID = ? AND COUPON_PRICE < ?";
+			String sql = "SELECT * FROM COUPON WHERE  COUPON_PRICE < ?  AND COMPANY_ID = ?";
 
 			// combining between syntax and our connection
 			preparedStatement = connection.prepareStatement(sql);
