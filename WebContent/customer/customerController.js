@@ -165,22 +165,15 @@ angular.module("myApp").controller('customerControllerList', ['$http', '$scope',
     (
     $scope.getCustomer = function () {
         $http.get('/CouponsProjectPhase2/rest/api/Customers/Profile').then(function (response) {
-            $scope.customerDetails = response.data;
+            $scope.customer = response.data;
         });
     })();
 
 
     $scope.updateCustomer = function () {
-               var updateC = JSON.stringify($scope.updateCustomers);
-               $http.put('/CouponsProjectPhase2/rest/Customers', updateC).then(function (success) {
-                   if (response.data.errorBean.success == 'true') {
-                       bootbox.alert("Success, You just change your password");
-                       vm.status = 'success'
-                   } else {
-                       vm.statsu = 'fail';
-                       vm.message = response.data.message;
-                       bootbox.alert("Cant change password :" + vm.message);
-                   }
+               var updateC = JSON.stringify($scope.customer);
+               $http.put('/CouponsProjectPhase2/rest/api/Customers', updateC).then(function (success) {
+                   bootbox.alert("Change Password success!!");
                
             });
        

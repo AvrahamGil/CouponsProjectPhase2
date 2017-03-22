@@ -13,9 +13,9 @@
     </tr>
 
   <tr>
-    <td>  {{ customerDetails.customerName }}</td>
-    <td>  {{ customerDetails.customerPassword }}</td>
-    <td>  {{ customerDetails.customerID }}</td>
+    <td>  {{ customer.customerName }}</td>
+    <td>  {{ customer.customerPassword }}</td>
+    <td>  {{ customer.customerID }}</td>
   
 
       <td style="background-color:#dddddd">
@@ -52,11 +52,11 @@
                 <form method="Post" id="login-form">
                     <div class = "modal-body">
                         <label>New Password</label>
-                        <input type="password" placeholder="Password" name= "customerPassword" ng-model="updateCustomers.customerPassword" />
+                        <input type="password" placeholder="Password" name= "customerPassword" ng-model="customer.customerPassword" />
                         <br/>
                         <br/>
                         <br/>
-                        <input type="submit" value="Update Password" ng-click="updateCustomer()"/>
+                        <input type="submit" value="Update Password" ng-click="updateCustomer(customer)"/>
                     </div>
                 </form>
 

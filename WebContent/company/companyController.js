@@ -111,9 +111,9 @@ angular.module("myApp").controller('couponController', ['$http', '$scope', '$loc
     
  
    
-    $scope.updateCoupons = function (coupon ) {
-     //   var updateCo = JSON.stringify($scope.coupon);
-        $http.put('/CouponsProjectPhase2/rest/api/Coupons', coupon).then(function (success) {
+    $scope.updateCoupons = function ( ) {
+        var updateCo = JSON.stringify($scope.coupon);
+        $http.put('/CouponsProjectPhase2/rest/api/Coupons', updateCo).then(function (success) {
             bootbox.alert('Update Done');
         })
     }
