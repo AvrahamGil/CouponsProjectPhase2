@@ -41,59 +41,17 @@
 	</td>
 
 	<td ng-if="$odd" style="background-color: white"><button 
-	data-toggle="modal" data-target="#Update-modal"> <span class="glyphicon glyphicon-edit"></span> Edit</button>
+	data-toggle="modal"ng-click="showWeb(event)" > <span class="glyphicon glyphicon-edit"></span> Edit</button>
 	</td>
-	<td ng-if="$even"> <button   data-toggle="modal" data-target="#Update-modal">
-	<span class="glyphicon glyphicon-edit"></span> Edit </button>
+	<td ng-if="$even"> <button   data-toggle="modal" ng-click="showWeb(event">
+	<span class="glyphicon glyphicon-edit" ></span> Edit </button>
 	</td>
  
   </tr>
 </table>
 
-<div class="modal fade" id="Update-modal" tabindex="-1" role="dialog"
-	aria-labelledby="myModalLabel" aria-hidden="true"
-	style="display: none;">
-	<div class="modal-dialog">
-		<div class="modal-content">
-					
-			<div class="modal-header modal-header-info" align="center"
-				style="background-color: #dddddd">
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
-					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-				</button>
-				<h4 class="modal-title">
-					<font color="white">Update Coupon</font>
-				</h4>
-				<br />
-			</div>
-	
-			
-            <div id="div-forms">
-                <form id="login-form" >
-                    <div class = "modal-body">
-                        <label>Price :</label>
-                        <br/><input type="number" placeholder="Price"class="form-control" ng-model="coupon.couponPrice" />
-                       
-                        <br />
-                       <label>End Date : </label> 
-                       &emsp;<br/><input type="Date" placeholder="Date" class="form-control" ng-model="coupon.endDateString"/>
-                        <br/>
-                        <input type="submit" value="Update Coupon" ng-click="updateCoupons(coupon)"/>
-                    </div>
-                </form>
 
 
 
-
-
-
-
-
-
-            </div>
-		</div>
-		</div>
-	</div>
 
 </center>

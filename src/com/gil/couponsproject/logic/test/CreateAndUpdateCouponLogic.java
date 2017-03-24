@@ -52,7 +52,7 @@ public class CreateAndUpdateCouponLogic {
 		coupon.setcouponID(1);
 		coupon.setcouponPrice(51000);
 	///	coupon.setEndDate(12/7/2020);
-		couponLogic.updateCoupon(coupon);
+	//	couponLogic.updateCoupon(coupon);
 	}
 
 }

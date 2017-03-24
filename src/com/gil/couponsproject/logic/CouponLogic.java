@@ -27,7 +27,7 @@ public class CouponLogic {
 		CouponDao couponDao = new CouponDao();
 		if (couponDao.isCouponExistByTitle(coupon.getCouponTitle())) {
 			throw new ApplicationException(ErrorType.COUPON_NAME_ALREADY_EXIST,
-					"Error in CouponLogic, createCoupon();, coupon title already exist");
+					"Coupon Title Already Exist");
 		}
 		secureCoupon.checkIfTheInformationCurrect(coupon);
 		couponDao.createCoupon(coupon);
@@ -35,13 +35,13 @@ public class CouponLogic {
 
 
 	// -----------------------------------------------Update coupon----------------------------------------------------
-	public void updateCoupon(Coupon coupon) throws ApplicationException {
+	public void updateCoupon(long endDate , double couponPrice , long couponID) throws ApplicationException {
 		CouponDao couponDao = new CouponDao();
-		if (couponDao.getCoupon(coupon.getcouponID()) == null) {
+		if (couponDao.getCoupon(couponID) == null) {
 			throw new ApplicationException(ErrorType.COUPON_DOESNT_EXIST,
-					"Error in CouponLogic,updateCoupon();, coupon doesnt exist ");
+					" Check Your Coupon ID Again ");
 		}
-		couponDao.updateCouponPriceAndEndDate(coupon);
+		couponDao.updateCouponPriceAndEndDate(endDate ,couponPrice ,couponID);
 	}
 
 	// -----------------------------------------------Delete Coupon----------------------------------------------------
@@ -49,7 +49,7 @@ public class CouponLogic {
 		CouponDao couponDao = new CouponDao();
 		if (couponDao.getCoupon(couponID) == null) {
 			throw new ApplicationException(ErrorType.COUPON_DOESNT_EXIST,
-					"Error in CouponLogic,updateCoupon();, coupon doesnt exist" + couponID);
+					"Check Your Coupon ID Again" + couponID);
 		}
 		couponDao.removeCustomerCoupons(couponID);
 		couponDao.removeCoupon(couponID);
@@ -59,7 +59,7 @@ public class CouponLogic {
 		CouponDao couponDao = new CouponDao();
 		Coupon coupon = new Coupon();
 		if(couponDao.getCoupon(couponID) == null) {
-			throw new ApplicationException(ErrorType.COUPON_DOESNT_EXIST,"Error in CouponLogic,getCoupon();,coupon dosent exist" + couponID);
+			throw new ApplicationException(ErrorType.COUPON_DOESNT_EXIST,"Check Your Coupon ID(" + couponID + ") Again");
 		}
 		coupon = couponDao.getCoupon(couponID);
 		System.out.println(coupon);
@@ -88,18 +88,18 @@ public class CouponLogic {
 
 		if (couponDao.getCoupon(couponID) == null) {
 			throw new ApplicationException(ErrorType.COUPON_DOESNT_EXIST,
-					"Error in CouponLogic,buyCoupon();, coupon doesnt exist" + couponID);
+					"Check Your Coupon ID Again" + couponID);
 		}
 		if (couponsleft <= 0) {
 			throw new ApplicationException(ErrorType.COUPON_DOESNT_EXIST,
-					"Error in CouponLogic, buyCoupon();, no coupon left");
+					" No Coupons Left , Please Pick Another One");
 		}
 		if (couponDao.isCouponExpired(endDate) < System.currentTimeMillis()) {
-			throw new ApplicationException(ErrorType.COUPON_EXPIRED, "the coupon is expired");
+			throw new ApplicationException(ErrorType.COUPON_EXPIRED, "Coupon Expired");
 		}
 		if (customerDao.getCustomerCoupon(customerID) != null) {
 			throw new ApplicationException(ErrorType.CUSTOMER_ALREADY_BUY_THIS_COUPON,
-					"The customer already bought the coupon, his ID = " + customerID);
+					"You Already Buy Coupon From Coupon List");
 		}
 			couponDao.removeCouponFromStock(couponID);
 			couponDao.createCustomerCoupon(couponID, customerID);
@@ -130,7 +130,7 @@ public class CouponLogic {
 		if (companyDao.getCompany(companyID) == null) {
 			throw new ApplicationException(
 					ErrorType.COMPANY_DOSENT_EXIST,
-					"Error in CouponLogic,ListofCompanyCoupons();,check your id again" + companyID);
+					"Check Your Company ID Again" + companyID);
 		}
 		List<Coupon> listofCompany = couponDao.getListOfCompanyCoupons(companyID);
 		System.out.println(listofCompany);
@@ -144,7 +144,7 @@ public class CouponLogic {
 		if (customerDao.getCustomer(customerID) == null) {
 			throw new ApplicationException(
 					ErrorType.CUSTOMER_DOESNT_EXIST,
-					"Error in CouponLogic,listOfCustomerCoupons();,check your id again" + customerID);
+					"Check Your Customer ID Again" + customerID);
 		}
 		List<Coupon> listofCustomer = couponDao.getListOfCustomerCoupons(customerID);
 		System.out.println(listofCustomer);
@@ -161,7 +161,7 @@ public class CouponLogic {
 		
 		// checking if company exist
 		if (companyDao.getCompany(companyID) == null) {
-			throw new ApplicationException(ErrorType.COMPANY_DOSENT_EXIST,"check your company ID again"
+			throw new ApplicationException(ErrorType.COMPANY_DOSENT_EXIST,"Check Your Company ID Again"
 							 + companyID);
 		}
 		// get coupons from company by type
@@ -179,7 +179,7 @@ public class CouponLogic {
 	
 		// checking if company exist
 		if (companyDao.getCompany(companyID) == null) {
-			throw new ApplicationException(ErrorType.COMPANY_DOSENT_EXIST,"Error in CouponLogic,ListOfCompanyCouponsByTypePriceAndDate,check your company ID again"
+			throw new ApplicationException(ErrorType.COMPANY_DOSENT_EXIST,"Check Your Company ID Again"
 							 + companyID);
 		}
 		

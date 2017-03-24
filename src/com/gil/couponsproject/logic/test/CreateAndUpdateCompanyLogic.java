@@ -1,5 +1,9 @@
 package com.gil.couponsproject.logic.test;
 
+import java.text.ParseException;
+
+import com.gil.couponsproject.api.CompanyApi;
+import com.gil.couponsproject.api.CouponApi;
 import com.gil.couponsproject.beans.Company;
 import com.gil.couponsproject.dao.CompanyDao;
 import com.gil.couponsproject.exception.ApplicationException;
@@ -12,6 +16,8 @@ public class CreateAndUpdateCompanyLogic {
 	public static void main(String [] args) {
 		Company company = new Company();
 		CreateAndUpdateCompanyLogic  createAndUpdateCompanyLogic  = new CreateAndUpdateCompanyLogic ();
+		
+		
 		//-------------------------------------create an new company
 		
 		try {

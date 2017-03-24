@@ -39,12 +39,12 @@ angular.module("myApp").config(function ($routeProvider) {
 
 
 angular.module("myApp").controller('customerController', customerController);
-customerController.$inject = ['$http', '$scope' , 'serviceName'];
-function customerController($http, $scope, serviceName) {
+customerController.$inject = ['$http', '$scope', 'userService'];
+function customerController($http, $scope, userService) {
 
     (
                $scope.name = function () {
-                   $scope.name = serviceName.name;
+                   $scope.name = userService.name;
                })();
 
 
@@ -53,8 +53,10 @@ function customerController($http, $scope, serviceName) {
   
 
     $scope.logOut = function () {
-        $http.post('/CouponsProjectPhase2/rest/Login/logOut').then(function (success) {
-            alert("log out success");
+        $http.post('/CouponsProjectPhase2/rest/Login/logOut').then(function successCall(data) {
+            bootbox.alert("LogOut Success");
+        }, function errorCall(response) {
+            bootbox.alert(response.data.message);
         })
     }
 
@@ -67,24 +69,30 @@ angular.module("myApp").controller('couponList', ['$http', '$scope', function ($
 
     (
     $scope.getListOfAllCoupons = function () {
-        $http.get('/CouponsProjectPhase2/rest/api/Coupons').then(function (response) {
+        $http.get('/CouponsProjectPhase2/rest/api/Coupons').then(function successCall(response) {
             $scope.coupons = [];
             $scope.listOfCoupons = $scope.coupons.concat(response.data.coupon);
+        }, function errorCall(response) {
+            bootbox.alert(response.data.message);
         });
 
     })();
 
     $scope.type = function (couponTypeByNumber) {
-        $http.get('/CouponsProjectPhase2/rest/api/Coupons/CouonType/' + couponTypeByNumber).then(function (response) {
+        $http.get('/CouponsProjectPhase2/rest/api/Coupons/CouonType/' + couponTypeByNumber).then(function successCall(response) {
             $scope.coupons = [];
             $scope.listOfCouponsType = $scope.coupons.concat(response.data.coupon);
             
+        }, function errorCall(response) {
+            bootbox.alert(response.data.message);
         })
     }
     $scope.price = function (couponPrice) {
-        $http.get('/CouponsProjectPhase2/rest/api/Coupons/CouonPrice/' + couponPrice).then(function (response) {
+        $http.get('/CouponsProjectPhase2/rest/api/Coupons/CouonPrice/' + couponPrice).then(function successCall(response) {
             $scope.coupons = [];
             $scope.listOfCouponsPrice = $scope.coupons.concat(response.data.coupon);
+        }, function errorCall(response) {
+            bootbox.alert(response.data.message);
         })
     }
 
@@ -123,10 +131,10 @@ angular.module("myApp").controller('couponList', ['$http', '$scope', function ($
             }, callback: function (result) {
                 if (result == true) {
                     //       var deleteCo = JSON.stringify($scope.couponID);
-                    $http.put('/CouponsProjectPhase2/rest/api/Customers/' + couponID + '/' + endDate).then(function (success) {
+                    $http.put('/CouponsProjectPhase2/rest/api/Customers/' + couponID + '/' + endDate).then(function successCall(data) {
                         bootbox.alert("Success, You just buy a new Coupon");
-                    }).then(function (error) {
-                        console.error("Failed");
+                    }, function errorCall(response) {
+                        bootbox.alert(response.data.message);
                     })
                 }
                 return;
@@ -143,9 +151,11 @@ angular.module("myApp").controller('mycouponList', ['$http', '$scope', function 
 
     (
         $scope.getCustomerCoupons = function () {
-            $http.get('/CouponsProjectPhase2/rest/api/Coupons/CustomerCoupons').then(function (response) {
+            $http.get('/CouponsProjectPhase2/rest/api/Coupons/CustomerCoupons').then(function successCall(response) {
                 $scope.coupons = [];
                 $scope.couponscustomerDetails = $scope.coupons.concat(response.data.coupon);
+            }, function errorCall(response) {
+                bootbox.alert(response.data.message);
             });
 
         })();
@@ -164,18 +174,22 @@ angular.module("myApp").controller('customerControllerList', ['$http', '$scope',
 
     (
     $scope.getCustomer = function () {
-        $http.get('/CouponsProjectPhase2/rest/api/Customers/Profile').then(function (response) {
+        $http.get('/CouponsProjectPhase2/rest/api/Customers/Profile').then(function successCall(response) {
             $scope.customer = response.data;
+        }, function errorCall(response) {
+            bootbox.alert(response.data.message);
         });
     })();
 
 
     $scope.updateCustomer = function () {
                var updateC = JSON.stringify($scope.customer);
-               $http.put('/CouponsProjectPhase2/rest/api/Customers', updateC).then(function (success) {
+               $http.put('/CouponsProjectPhase2/rest/api/Customers', updateC).then(function successCall (data) {
                    bootbox.alert("Change Password success!!");
                
-            });
+               }, function errorCall(response) {
+                   bootbox.alert(response.data.message);
+               });
        
    
     }

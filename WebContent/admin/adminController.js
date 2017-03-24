@@ -45,11 +45,9 @@ var app = angular.module("myApp").config(function ($routeProvider) {
 
 
 
-
-
 angular.module("myApp").controller('adminController', adminController);
-adminController.$inject = ['$http', '$scope'];
-function adminController($http, $scope) {
+adminController.$inject = ['$http', '$scope' ,'userService'];
+function adminController($http, $scope, userService) {
 
     (
                $scope.name = function () {
@@ -59,27 +57,35 @@ function adminController($http, $scope) {
 
     $scope.getCompany = function () {
         var getC = JSON.stringify($scope.companyID);
-        $http.get('/CouponsProjectPhase2/rest/api/Companies/companyID/' + getC).then(function (response) {
+        $http.get('/CouponsProjectPhase2/rest/api/Companies/companyID/' + getC).then(function successCall(response) {
             $scope.companyDetail = response.data
+        }, function errorCall(response) {
+            bootbox.alert(response.data.message);
         });
     }
 
     $scope.getCoupon = function () {
         var getC = JSON.stringify($scope.couponID);
-        $http.get('/CouponsProjectPhase2/rest/api/Coupons/couponID/' + getC).then(function (response) {
+        $http.get('/CouponsProjectPhase2/rest/api/Coupons/couponID/' + getC).then(function successCall(response) {
             $scope.couponDetails = response.data
+        }, function errorCall(response) {
+            bootbox.alert(response.data.message);
         });
     }
     $scope.getCustomer = function () {
         var getC = JSON.stringify($scope.customerID);
-        $http.get('/CouponsProjectPhase2/rest/api/Customers/customerID/' + getC).then(function (response) {
+        $http.get('/CouponsProjectPhase2/rest/api/Customers/customerID/' + getC).then(function successCall(response) {
             $scope.customerDetails = response.data
+        }, function errorCall(response) {
+            bootbox.alert(response.data.message);
         });
     }
 
     $scope.logOut = function () {
-        $http.post('/CouponsProjectPhase2/rest/Login/logOut').then(function (success) {
-            alert("logout success");
+        $http.post('/CouponsProjectPhase2/rest/Login/logOut').then(function successCall(data) {
+            bootbox.alert("Logout Success");
+        }, function errorCall(response) {
+            bootbox.alert(response.data.message);
         })
     }
     
@@ -93,16 +99,18 @@ function companyControllerList ($http, $scope, $location) {
 
     (
     $scope.getListOfAllCompanies = function () {
-        $http.get('/CouponsProjectPhase2/rest/api/Companies').then(function (response) {
+        $http.get('/CouponsProjectPhase2/rest/api/Companies').then(function successCall(response) {
             $scope.company = [];
             $scope.companiesDetails = $scope.company.concat(response.data.company); 
+        }, function errorCall(response) {
+            bootbox.alert(response.data.message);
         });
     })();
 
 
     $scope.deleteCompany = function (companyID, companyTitle) {
         bootbox.confirm({
-            message: "Are you sure you want to delete " + companyTitle + " coupon?",
+            message: "Delete Company ?",
             buttons: {
                 confirm: {
                     label: 'Yes',
@@ -116,11 +124,10 @@ function companyControllerList ($http, $scope, $location) {
                 if (result == true)  {
                     var deleteCo = JSON.stringify($scope.deleteCompanies);
 
-                    $http.delete('/CouponsProjectPhase2/rest/api/Companies/' + companyID).then(function (success)
-                    {
+                    $http.delete('/CouponsProjectPhase2/rest/api/Companies/' + companyID).then(function successCall(data) {
                         bootbox.alert("Remove Done");
-                    }).then(function (error) {
-                        bootbox.alert("Remove Failed");
+                    }, function errorCall(response) {
+                        bootbox.alert(response.data.message);
                     })
 
                 }
@@ -139,9 +146,11 @@ function customersControllerList($http, $scope, $location) {
 
     (
     $scope.getListOfAllCustomers = function () {
-        $http.get('/CouponsProjectPhase2/rest/api/Customers').then(function (response) {
+        $http.get('/CouponsProjectPhase2/rest/api/Customers').then(function successCall(response) {
             $scope.customer = [];
             $scope.customersDetails = $scope.customer.concat(response.data.customer);
+        }, function errorCall(response) {
+            bootbox.alert(response.data.message);
         });
 
     })();
@@ -149,7 +158,7 @@ function customersControllerList($http, $scope, $location) {
 
     $scope.deleteCustomer = function (customerID, customerName) {
         bootbox.confirm({
-            message: "Are you sure you want to delete " + customerName + "?",
+            message: "Delete Customer ? ",
             buttons: {
                 confirm: {
                     label: 'Yes',
@@ -161,8 +170,10 @@ function customersControllerList($http, $scope, $location) {
                 }
             }, callback: function (result) {
                 if (result == true) {
-                    $http.delete('/CouponsProjectPhase2/rest/api/Customers/' + customerID).then(function (success) {
+                    $http.delete('/CouponsProjectPhase2/rest/api/Customers/' + customerID).then(function successCall(data) {
                         bootbox.alert("Remove Done");
+                    }, function errorCall(response) {
+                        bootbox.alert(response.data.message);
                     })
                 }
                 return;
@@ -181,9 +192,11 @@ function coupons($http, $scope, $location) {
 
     (
     $scope.getListOfAllCoupons = function () {
-        $http.get('/CouponsProjectPhase2/rest/api/Coupons').then(function (response) {
+        $http.get('/CouponsProjectPhase2/rest/api/Coupons').then(function successCall(response) {
             $scope.coupons = [];
             $scope.listOfCoupons = $scope.coupons.concat(response.data.coupon);
+        }, function errorCall(response) {
+            bootbox.alert(response.data.message);
         });
 
     })();
@@ -191,7 +204,7 @@ function coupons($http, $scope, $location) {
 
     $scope.deleteCoupons = function (couponID, couponTitle) {
         bootbox.confirm({
-            message: "Are you sure you want to delete " + couponTitle + " coupon?",
+            message: "Delete Coupon ?",
             buttons: {
                 confirm: {
                     label: 'Yes',
@@ -203,10 +216,10 @@ function coupons($http, $scope, $location) {
                 }
             }, callback: function (result) {
                 if (result == true) {
-                    $http.delete('/CouponsProjectPhase2/rest/api/Coupons/' + couponID).then(function (success) {
+                    $http.delete('/CouponsProjectPhase2/rest/api/Coupons/' + couponID).then(function successCall (data) {
                         bootbox.alert("Remove Done");
-                    }).then(function (error) {
-                        console.error("Remove Failed");
+                    }, function errorCall(response) {
+                        bootbox.alert(response.data.message);
                     })
                 }
                 return;

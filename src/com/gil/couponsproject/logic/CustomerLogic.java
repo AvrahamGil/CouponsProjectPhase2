@@ -19,7 +19,7 @@ public class CustomerLogic {
 		if (customerDao.isCustomerExistByName(customer.getCustomerName())) {
 			throw new ApplicationException(
 					ErrorType.CUSTOMER_NAME_ALREADY_IN_USE,
-					" Error in CustomerLogic,createCustomer();,customer with the same name cant be create");
+					" Customer Name Already In Use");
 		}
 		if (companyDao.isCompanyExistByID(customer.getCompanyID()) == null) {
 			throw new ApplicationException(
@@ -35,7 +35,7 @@ public class CustomerLogic {
 		CustomerDao customerDao = new CustomerDao();
 		if (customerDao.getCustomer(customerID) == null) {
 			throw new ApplicationException(ErrorType.CUSTOMER_DOESNT_EXIST,
-					"Error in CustomerLogic,removeCustomer(),customer dosnt exsit");
+					"Check Your Customer ID Again");
 		}
 		//if we want to remove a customer, we have to delete his coupons first
 		customerDao.removeCustomerCoupons(customerID);
@@ -43,11 +43,13 @@ public class CustomerLogic {
 	}
 	// ------------------------------------------------Update Customer--------------------------------------------------
 	public void updateCustomer(Customer customer) throws ApplicationException {
+		InputValidationCustomerRegistration secureRegistraion = new InputValidationCustomerRegistration();
 		CustomerDao customerDao = new CustomerDao();
 		if (customerDao.getCustomer(customer.getCustomerID()) == null) {
-			throw new ApplicationException(ErrorType.CUSTOMER_DOESNT_EXIST,"Error in CustomerLogic,updateCustomer();,check your customer ID again" 
+			throw new ApplicationException(ErrorType.CUSTOMER_DOESNT_EXIST,"Check Your Customer ID Again" 
 							+customer);
 		} else if (customerDao.isCustomerExistByName(customer.getCustomerName())) {
+			secureRegistraion.checkIfTheInformationisCurrect(customer);
 			customerDao.updateCustomer(customer);
 		} else {
 			throw new ApplicationException(
@@ -61,8 +63,7 @@ public class CustomerLogic {
 		CustomerDao customerDao = new CustomerDao();
 		Customer customer = new Customer();
 		if (customerDao.getCustomer(customerID) == null) {
-			throw new ApplicationException(ErrorType.CUSTOMER_DOESNT_EXIST,"Error in CustomerLogic, getCustomer();, check your customer ID again"
-							+customerID);
+			throw new ApplicationException(ErrorType.CUSTOMER_DOESNT_EXIST,"Check Your Customer ID(" + customerID + ") Again");
 		}
 		customer = customerDao.getCustomer(customerID);
 		return customer;

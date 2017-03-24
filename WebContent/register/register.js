@@ -24,12 +24,11 @@ angular.module("myApp").controller('register', ['$http', '$scope', '$location', 
 	
     $scope.createCustomer = function () {
         var createC = JSON.stringify($scope.customer);
-        $http.post('http://localhost:8080/CouponsProjectPhase2/rest/register/customer', createC).then(function (successs) {
+        $http.post('http://localhost:8080/CouponsProjectPhase2/rest/register/customer', createC).then(function successCall(successs) {
             $scope.PostDataResponse = createC;
-        }).
-      then(function () {
-          $location.path("/register/success");
-      });
+        }, function errorCall(response) {
+            bootbox.alert(response.data.message)
+        });
 
     }
 
@@ -37,12 +36,11 @@ angular.module("myApp").controller('register', ['$http', '$scope', '$location', 
 
     $scope.createCompany = function () {
         var createC = JSON.stringify($scope.company);
-        $http.post('http://localhost:8080/CouponsProjectPhase2/rest/register/company', createC).then(function (successs) {
+        $http.post('http://localhost:8080/CouponsProjectPhase2/rest/register/company', createC).then(function successCall(successs) {
             $scope.PostDataResponse = createC;
-        }).
-      then(function () {
-    	  $location.path("/register/success");
-      });
+        }, function errorCall(response) {
+            bootbox.alert(response.data.message)
+        });
 
     }
 

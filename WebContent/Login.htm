@@ -13,11 +13,11 @@ Please Login
 <div ng-controller="LoginController">
 
 <form  method="Post" class="login-page">
+<img class="loginPic" src="http://svtrading.in/assets/img/login_icon.png" alt="LoginPic">
 <div class="login-header margin-bottom-30">
 <h2>Login</h2>
-  Login Failed : {{ errorMessage}}
 </div>			
-<div class="alert alert-danger" role="alert" ng-show="vm.loginStatus =='fail'">
+<div class="alert alert-danger" role="alert" ng-show="vm.loginStatus=='fail'">
 <strong><span class="glyphicon glyphicon-remove-circle"></span></strong>
 Login Failed : {{ vm.errorMessage}}
 </div>
@@ -41,7 +41,7 @@ Type:
 <input type="radio" name="type" class="portfolio-selected btn btn-default" ng-model="user.type" value="ADMIN">Admin
 <input type="radio" name="type" class="portfolio-selected btn btn-default" ng-model="user.type" value="COMPANY">Company
 <input type="radio" name="type" class="portfolio-selected btn btn-default" ng-model="user.type" value="CUSTOMER">Customer
-<input type="submit" value="Sign In"class="btn btn-primary pull-right" ng-click="submit()">
+<input type="submit" value="Sign In"class="btn btn-primary pull-center" ng-click="submit()">
      <label class="checkbox">
        You Dont have acoount yet?, <a href="#PickRegister" >SignUp</a>
      </label>

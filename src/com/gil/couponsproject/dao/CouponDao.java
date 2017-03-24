@@ -67,7 +67,7 @@ public class CouponDao implements ICoupon {
 			e.printStackTrace();
 			throw new ApplicationException(
 					ErrorType.CREATE_ERROR,
-					"Error in CouponDao, createCoupon();,cant create a coupon,check coupon DETAILS again");
+					"Create Coupon Failed");
 		}
 
 		// turn off connections
@@ -106,7 +106,7 @@ public class CouponDao implements ICoupon {
 			e.printStackTrace();
 			throw new ApplicationException(
 					ErrorType.REMOVE_ERROR,
-					"Error in CouponDao, removeCoupon();,remove coupon failed ,check your coupon ID again");
+					"Check Your Coupon ID Again");
 
 			// turn off connections
 		} finally {
@@ -159,7 +159,7 @@ public class CouponDao implements ICoupon {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(ErrorType.UPDATE_ERROR,
-					"Error in CouponDao,updateCoupon();update failed , check your ID again");
+					"Check Your Coupon ID Again");
 
 			// turn off connections
 		} finally {
@@ -203,7 +203,7 @@ public class CouponDao implements ICoupon {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(ErrorType.GET_ERROR,
-					"Error in CouponDao,getCoupon();get coupon failed, check your ID again");
+					"Check Your Coupon ID Again");
 
 			// turn off connections
 		} finally {
@@ -247,7 +247,7 @@ public class CouponDao implements ICoupon {
 			// if we have problems "catch" will tell us
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new ApplicationException(ErrorType.MISSING_LIST, "Error in CouponDao,getAllCoupons,no such LIST");
+			throw new ApplicationException(ErrorType.MISSING_LIST, "No Such LIST");
 
 			// turn off connections
 		} finally {
@@ -294,7 +294,7 @@ public class CouponDao implements ICoupon {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(ErrorType.MISSING_LIST,
-					"Error In CusomerDao(),getAllCustomerCoupons();, no such LIST");
+					" No Such LIST");
 
 			// turn off connections
 		} finally {
@@ -342,7 +342,7 @@ public class CouponDao implements ICoupon {
 			} catch (SQLException e) {
 				e.printStackTrace();
 				throw new ApplicationException(ErrorType.MISSING_LIST,
-						"Error In CouponDao(),listOfCouponsByPrice();, no such LIST");
+						" no such LIST");
 
 				// turn off connections
 			} finally {
@@ -387,7 +387,7 @@ public class CouponDao implements ICoupon {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(ErrorType.MISSING_LIST,
-					"Error In CompanyDao(),getAllCompanyCoupons();, no such LIST");
+					"no Such LIST");
 
 			// turn off connections
 		} finally {
@@ -435,7 +435,7 @@ public class CouponDao implements ICoupon {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(ErrorType.MISSING_LIST,
-					"Error In CusomerDao(),listOfAllCustomerCoupons();, no such LIST");
+					"No Such LIST");
 
 			// turn off connections
 		} finally {
@@ -483,7 +483,7 @@ public class CouponDao implements ICoupon {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(ErrorType.MISSING_LIST,
-					"Error In CouponDao(),getCustomerCouponsByType();, no such LIST");
+					" No Such LIST");
 
 			// turn off connections
 		} finally {
@@ -532,7 +532,7 @@ public class CouponDao implements ICoupon {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(ErrorType.MISSING_LIST,
-					"Error In CouponDao(),listOfCustomerCouponsByPrice();, no such LIST");
+					" No Such LIST");
 
 			// turn off connections
 		} finally {
@@ -581,7 +581,7 @@ public class CouponDao implements ICoupon {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(ErrorType.MISSING_LIST,
-					"Error In Coupon(),listOfCompanyCouponsByType();, no such LIST");
+					"No Such LIST");
 
 			// turn off connections
 		} finally {
@@ -630,7 +630,7 @@ public class CouponDao implements ICoupon {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(ErrorType.MISSING_LIST,
-					"Error In CouponDao(),listOfCompanyPrice();, no such LIST");
+					"No Such LIST");
 
 			// turn off connections
 		} finally {
@@ -679,7 +679,7 @@ public class CouponDao implements ICoupon {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(ErrorType.MISSING_LIST,
-					"Error In CouponDao(),listOfCompanyCouponByDate();, no such LIST");
+					"No Such LIST");
 
 			// turn off connections
 		} finally {
@@ -719,7 +719,7 @@ public class CouponDao implements ICoupon {
 			e.printStackTrace();
 			throw new ApplicationException(
 					ErrorType.REMOVE_ERROR,
-					"Error in CouponDao, removeCustomerCoupons(); please check your  coupon ID again");
+					"Check Your  Coupon ID Again");
 
 			// turn off connections
 		} finally {
@@ -761,7 +761,7 @@ public class CouponDao implements ICoupon {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(ErrorType.COUPON_NAME_ALREADY_IN_USE,
-					"Error in CouponDao,isCouponExistByTitle();,coupon title already exist");
+					"Coupon Title Already In Use");
 
 			// turn off connections
 		} finally {
@@ -795,7 +795,7 @@ public class CouponDao implements ICoupon {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(ErrorType.REMOVE_ERROR,
-					"Error in CouponDao, isCouponExpired();,coupon expired");
+					"Coupon Expired");
 
 			// turn off connections
 		} finally {
@@ -808,7 +808,7 @@ public class CouponDao implements ICoupon {
 	}
 
 	// change only price and end date
-	public void updateCouponPriceAndEndDate(Coupon coupon) throws ApplicationException {
+	public void updateCouponPriceAndEndDate(long endDate , double couponPrice , long couponID) throws ApplicationException {
 		// turn on connections
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -827,9 +827,9 @@ public class CouponDao implements ICoupon {
 			preparedStatement = connection.prepareStatement(sql);
 
 			// we should have the same parameters that we have in the syntax
-			preparedStatement.setLong(1, coupon.getEndDate());
-			preparedStatement.setDouble(2, coupon.getcouponPrice());
-			preparedStatement.setLong(3, coupon.getcouponID());
+			preparedStatement.setLong(1, endDate);
+			preparedStatement.setDouble(2, couponPrice);
+			preparedStatement.setLong(3, couponID);
 
 			// DB Updated
 			preparedStatement.executeUpdate();
@@ -839,7 +839,7 @@ public class CouponDao implements ICoupon {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(ErrorType.UPDATE_ERROR,
-					"Error in CouponDao,updateCouponPriceAndEndDate();update failed,check your ID again");
+					"Check Your  Coupon ID Again");
 
 			// turn off connections
 		} finally {
@@ -879,7 +879,7 @@ public class CouponDao implements ICoupon {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(ErrorType.ERROR,
-					"Error in CouponDao,removeCouponFromStock;, check your coupon_id again");
+					"Check Your  Coupon ID Again");
 
 			// turn off connections
 		} finally {
@@ -923,7 +923,7 @@ public class CouponDao implements ICoupon {
 			e.printStackTrace();
 			throw new ApplicationException(
 					ErrorType.CREATE_ERROR,
-					"Error in CouponDao, createCustomerCoupon();,cant create a coupon,check your coupon ID again");
+					"Check Your  Coupon ID Again");
 		}
 
 		// turn off connections
@@ -961,7 +961,7 @@ public class CouponDao implements ICoupon {
 			e.printStackTrace();
 			throw new ApplicationException(
 					ErrorType.REMOVE_ERROR,
-					"Error in CouponDao, removeExpiredCustomerCoupon();,removeCoupon failed ,check your coupon ID again");
+					"Check Your  Coupon ID Again");
 
 			// turn off connections
 		} finally {
@@ -997,7 +997,7 @@ public class CouponDao implements ICoupon {
 			e.printStackTrace();
 			throw new ApplicationException(
 					ErrorType.REMOVE_ERROR,
-					"Error in CouponDao, removeExpiredCoupon();,removeCoupon failed ,check your coupon ID again");
+					"Check Your  Coupon ID Again");
 
 			// turn off connections
 		} finally {

@@ -20,7 +20,7 @@ public class CompanyLogic {
 		if (companyDao.isCompanyExistsByName(company.getCompanyName())) {
 			throw new ApplicationException(
 					ErrorType.COMPANY_NAME_ALREADY_IN_USE,
-					"Error In companyDao, companyExsitByName(); ,cant createCompany,companyName already existt" + company);
+					"Company Name Already In use" + company);
 		}
 		//check if the information is correct , help us to protect our server from hacker's.
 		secureRegistraion.checkIfTheInformationisCurrect(company);
@@ -38,7 +38,7 @@ public class CompanyLogic {
 		CustomerDao customerDao = new CustomerDao();
 		if (companyDao.getCompany(companyID) == null) {
 			throw new ApplicationException(ErrorType.COMPANY_DOSENT_EXIST,
-					"Error in CompanyLogic, removeCompany();,check your company ID again" + companyID);
+					"Check Your Company ID Again" + companyID);
 		}
 		customerDao.removeCustomerCoupons(companyID);
 		companyDao.removeCompanyCoupons(companyID);
@@ -49,17 +49,18 @@ public class CompanyLogic {
 	// ------------------------------------------------Update Company--------------------------------------------------
 	public void updateCompany(Company company) throws ApplicationException {
 		CompanyDao companyDao = new CompanyDao();
-
+		InputValidationCompanyRegistration secureRegistraion = new InputValidationCompanyRegistration();
 		if (companyDao.getCompany(company.getCompanyID()) == null) {
 			throw new ApplicationException(ErrorType.COMPANY_DOSENT_EXIST,
-					"Error in CompanyLogic,updateCompany(),check your companyID again" + company);
+					"Check Your Company ID Again" + company);
 		}
 
 		else if (companyDao.isCompanyExistsByName(company.getCompanyName())) {
+			secureRegistraion.checkIfTheInformationisCurrect(company);
 			companyDao.updateCompany(company);
 		} else {
 			throw new ApplicationException(ErrorType.UPDATE_ERROR,
-					"Error in CompanyLogic.updateCompany(),you cant change your company name");
+					"Company Name Has To Be The Same");
 		}
 
 	}
@@ -70,7 +71,7 @@ public class CompanyLogic {
 		Company company = new Company();
 		if (companyDao.getCompany(companyID) == null) {
 			throw new ApplicationException(ErrorType.COMPANY_DOSENT_EXIST,
-					"Error in CompanyLogic,getCompany();,  check your id again" + companyID);
+					"Check Your Company ID(" + companyID + ") Again");
 		}
 
 		company = companyDao.getCompany(companyID);

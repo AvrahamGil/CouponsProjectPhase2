@@ -13,4 +13,50 @@ table {
 	tr:nth-child(even) {
 	    background-color: #dddddd;
 	}
+
+
+
+.loginPic {
+     float : right ;
+    padding-top:20px;
 }
+
+.adminPic {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 300px; 
+}
+
+.companyPic {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 300px; 
+}
+
+.customerPic {
+     display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 300px; 
+}
+
+.customerReg {
+    position: absolute;
+    top: 150px;
+    right: 50px;
+    height: 500px; 
+}
+
+.companyReg {
+      position: absolute;
+    top: 150px;
+    right: 50px;
+    height: 500px; 
+}
+
+h2 {
+    clear : left;
+}
+

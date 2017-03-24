@@ -15,7 +15,7 @@
 <input type="text" class="form-control" placeholder="Name"  name="customerName" ng-model="customer.customerName" />
 <span style="color: green;" id="user-availability-status"> * Must be 6-20 characters.</span>
 <br>
-<span style="color: green;" id="user-availability-status"> * You have to include capital letter.</span>
+<span style="color: green;" id="user-availability-status"> * You have to include capital letter first.</span>
 </div>
 </div>
 
@@ -23,8 +23,11 @@
   <div class="row margin-bottom-20">
  <div class="col-md-6 col-md-offset-0">
  <input type="password"  class="form-control" placeholder="Password" name="customerPassword" ng-model="customer.customerPassword"  />
- <span style="color: green;" id="user-availability-status"> * You have to include capital letter and numbers.</span>
+ <span style="color: green;" id="user-availability-status"> * You have to include capital letter first and numbers last.</span>
 </div>
 </div>
 <input type="submit" class="btn btn-primary" value="Create Account" ng-click="createCustomer()" />
 </form>
+
+<img class="customerReg" src="https://mobunti.co.uk/images/Address-Book-blue-icon.png" alt="customerPicR">
+

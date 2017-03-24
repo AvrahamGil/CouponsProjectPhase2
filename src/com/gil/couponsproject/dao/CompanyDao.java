@@ -58,7 +58,7 @@ public class CompanyDao implements ICompany {
 			e.printStackTrace();
 			throw new ApplicationException(
 					ErrorType.CREATE_ERROR,
-					"Error in companyDao.createCompany();,create compnay failed, check your company DETAILS again");
+					"Create Company Failed , Check Your Company DETAILS Again");
 		}
 		// turn off our connections
 		finally {
@@ -97,7 +97,7 @@ public class CompanyDao implements ICompany {
 			e.printStackTrace();
 			throw new ApplicationException(
 					ErrorType.REMOVE_ERROR,
-					"Error in CompanyDao, removeCompany();removeCompnay failed,please check your ID again");
+					"Remove Failed");
 			// time to turn off our connections
 		} finally {
 			JdbcAndConnection.closeConnection(connection);
@@ -143,7 +143,7 @@ public class CompanyDao implements ICompany {
 			e.printStackTrace();
 			throw new ApplicationException(
 					ErrorType.UPDATE_ERROR,
-					"Error in CompanyDao, UpdateCompany();,update company failed, check  your ID");
+					"Update Company Failed,Please  Check Your Company Details Again");
 		}
 		// time to turn off our connections
 		finally {
@@ -186,7 +186,7 @@ public class CompanyDao implements ICompany {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(ErrorType.GET_ERROR,
-					"Error in CompanyDao, GetCompany();,check your company ID again ");
+					"Please Check Your Company ID Again ");
 		}
 		// time to turn off our connections
 		finally {
@@ -229,7 +229,7 @@ public class CompanyDao implements ICompany {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(ErrorType.MISSING_LIST,
-					"Error In CompanyDao(),ListOfAllCompanies();, no such LIST");
+					" No Such LIST");
 
 			// time to turn off our connections
 		} finally {
@@ -272,7 +272,7 @@ public class CompanyDao implements ICompany {
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new ApplicationException(ErrorType.COMPANY_NAME_ALREADY_IN_USE,
-					"Error in CompanyDao isCompanyExistbyName (); , company NAME alreadyExsit ");
+					" Company Name Already In Use ");
 		}
 		// time to turn off our connections
 		finally {
@@ -305,7 +305,7 @@ public class CompanyDao implements ICompany {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(ErrorType.GET_ERROR,
-					"Error in CompanySecurity, GetCompanyName();,check your company name again ");
+					"Check Your Company Name Again ");
 		}
 		// turn off our connections
 		finally {
@@ -352,7 +352,7 @@ public class CompanyDao implements ICompany {
 			e.printStackTrace();
 			throw new ApplicationException(
 					ErrorType.INVAILD_PASSWORD,
-					"Error in CompanyDao, isCompanyExist;. please check your details again");
+					" Please Check Your Details Again");
 
 			// time to turn off our connections
 		} finally {
@@ -391,7 +391,7 @@ public class CompanyDao implements ICompany {
 			e.printStackTrace();
 			throw new ApplicationException(
 					ErrorType.REMOVE_ERROR,
-					"Error in CompanyDao, removeCouponByCompany();..removeCompnayCoupon failed.. please check your ID again");
+					" Please  Check  Your ID Again");
 
 			// time to turn off our connections
 		} finally {

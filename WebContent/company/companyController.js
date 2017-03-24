@@ -55,21 +55,24 @@ angular.module("myApp").config(function ($routeProvider) {
 
 
 angular.module("myApp").controller('companyController', companyController);
-companyController.$inject = ['$http', '$scope', '$location', '$rootScope' , 'serviceName'];
-function companyController($http, $scope, $location, $rootScope, serviceName) {
+companyController.$inject = ['$http', '$scope', '$location', '$rootScope', 'userService'];
+function companyController($http, $scope, $location, $rootScope, userService) {
 
   
    
 	  (
 			     $scope.name = function () {
-			    	 $scope.name = serviceName.name;
+			         $scope.name = userService.name;
 			     })();
  
 
     $scope.companyName = function () {
         var getC = JSON.stringify($scope.companyID);
-        $http.get('/CouponsProjectPhase2/rest/api/Companies/' + getC).then(function (response) {
+        $http.get('/CouponsProjectPhase2/rest/api/Companies/' + getC).then(function successCall(response) {
+            userService.errorMessage;
             $scope.companyDetail = response.data.company;
+        }, function errorCall(response) {
+            bootbox.alert(response.data.message);
         });
     }
 
@@ -77,19 +80,18 @@ function companyController($http, $scope, $location, $rootScope, serviceName) {
 
     $scope.createCoupon = function () {
         var createC = JSON.stringify($scope.coupon);
-        $http.post('/CouponsProjectPhase2/rest/api/Coupons', createC).then(function (successs) {
-            $scope.PostDataResponse = createC;
-        }).
-      then(function () {
-          alert('success!!');
-      });
+        $http.post('/CouponsProjectPhase2/rest/api/Coupons', createC).then(function successCall (data) {
+           bootbox.alert("Create Done")
+        },function errorCall(response) {
+            bootbox.alert(response.data.message);
+        })
 
     }
 
   
     $scope.logOut = function () {
-        $http.post('/CouponsProjectPhase2/rest/Login/logOut').then(function (success) {
-            alert("logout success");
+        $http.post('/CouponsProjectPhase2/rest/Login/logOut').then(function successCall(data) {
+            bootbox.alert("LogOut Success");
         })
     }
 
@@ -102,22 +104,91 @@ angular.module("myApp").controller('couponController', ['$http', '$scope', '$loc
 
     ( 
             $scope.getCompanyCoupon = function () {
-                $http.get('/CouponsProjectPhase2/rest/api/Coupons/CompanyCoupons').then(function (response) {
+                $http.get('/CouponsProjectPhase2/rest/api/Coupons/CompanyCoupons').then(function successCall(response) {
                     $scope.coupons = [];
                     $scope.couponsDetails = $scope.coupons.concat(response.data.coupon);
-            });
+                }, function errorCall(response) {
+                    bootbox.alert(response.data.message)
+                });
 
             })();
     
  
-   
-    $scope.updateCoupons = function ( ) {
+    /*
+    $scope.showWeb = function (event) {
+        $mdDialog.show({
+            controller: DialogController,
+            templateUrl: 'updateCoupon.htm',
+            parent: angular.element(document.body),
+            targetEvent: event,
+            clickOutsideToClose: true
+        })
+        .then(function (answer) {
+            $scope.status = 'You said the information was "' + answer + '".';
+        }, function () {
+            $scope.status = 'You cancelled the dialog.';
+        });
+    };
+
+    function DialogController($scope, $mdDialog) {
+        $scope.hide = function () {
+            $mdDialog.hide();
+        };
+
+        $scope.cancel = function () {
+            $mdDialog.cancel();
+        };
+
+        $scope.answer = function (answer) {
+            $mdDialog.hide(answer);
+        };
+    }
+
+    */
+
+
+
+
+
+
+
+
+
+   /*
+    $scope.updateCoupons = function (couponID) {
+        bootbox.confirm({
+            message: "Are you sure you want to update " + couponID + " coupon?",
+            buttons: {
+                confirm: {
+                    label: 'Yes',
+                    className: 'btn-success',
+                },
+                cancel: {
+                    label: 'No',
+                    className: 'btn-danger'
+                }
+            }, callback: function (result) {
+                if (result == true) {
+                    $http.put('/CouponsProjectPhase2/rest/api/Coupons/uCoupon/' + couponID ).then(function (success) {
+                        bootbox.alert('Update Done');
+                    }, function errorCall(error) {
+                        bootbox.alert("Update Failed" + response.data.message);
+                    })
+                }
+                return;
+
+            }
+        });
+    }
+    */
+    /*
+    $scope.updateCoupons = function (coupon) {
         var updateCo = JSON.stringify($scope.coupon);
-        $http.put('/CouponsProjectPhase2/rest/api/Coupons', updateCo).then(function (success) {
+        $http.put('/CouponsProjectPhase2/rest/api/Coupons/uCoupon/'  , updateCo).then(function (success) {
             bootbox.alert('Update Done');
         })
     }
-
+    */
     $scope.deleteCoupon = function (couponID , couponTitle) {
         bootbox.confirm({
             message: "Are you sure you want to delete " + couponTitle +  " coupon?" ,
@@ -132,10 +203,10 @@ angular.module("myApp").controller('couponController', ['$http', '$scope', '$loc
                 }
             }, callback: function (result) {
                 if (result == true) {
-                    $http.delete('/CouponsProjectPhase2/rest/api/Coupons/' + couponID).then(function (success) {
+                    $http.delete('/CouponsProjectPhase2/rest/api/Coupons/' + couponID).then(function successCall (data) {
                         bootbox.alert("Remove Done");
-                    }).then(function (error) {
-                        console.error("Remove Failed");
+                    },function errorCall(response) {
+                        bootbox.alert("Remove Failed" + response.data.message);
                     })
                 }
                 return;
@@ -146,16 +217,20 @@ angular.module("myApp").controller('couponController', ['$http', '$scope', '$loc
 
     
     $scope.type = function (couponTypeByNumber) {
-        $http.get('/CouponsProjectPhase2/rest/api/Coupons/CompanyCouponsType/' + couponTypeByNumber).then(function (response) {
+        $http.get('/CouponsProjectPhase2/rest/api/Coupons/CompanyCouponsType/' + couponTypeByNumber).then(function successCall(response) {
             $scope.coupons = [];
             $scope.listOfCouponsType = $scope.coupons.concat(response.data.coupon);
             
+        }, function errorCall(response) {
+            bootbox.alert(response.data.message)
         })
     }
     $scope.price = function (couponPrice) {
-        $http.get('/CouponsProjectPhase2/rest/api/Coupons/CompanyCouponsPrice/' + couponPrice).then(function (response) {
+        $http.get('/CouponsProjectPhase2/rest/api/Coupons/CompanyCouponsPrice/' + couponPrice).then(function successCall(response) {
             $scope.coupons = [];
             $scope.listOfCouponsPrice = $scope.coupons.concat(response.data.coupon);
+        }, function errorCall(response) {
+            bootbox.alert(response.data.message)
         })
     }
 
@@ -186,16 +261,20 @@ angular.module("myApp").controller('companyProfile', ['$http', '$scope', '$locat
 
    (
     $scope.getCompany = function () {
-        $http.get('/CouponsProjectPhase2/rest/api/Companies/Profile').then(function (response) {
+        $http.get('/CouponsProjectPhase2/rest/api/Companies/Profile').then(function successCall(response) {
             $scope.company = response.data;
+        }, function errorCall(response) {
+            bootbox.alert(response.data.message)
         });
     }
     )();
 
    $scope.updateCompany = function () {
        var createC = JSON.stringify($scope.company);
-       $http.put('/CouponsProjectPhase2/rest/api/Companies', createC ).then(function (success) {
+       $http.put('/CouponsProjectPhase2/rest/api/Companies', createC).then(function successCall(data) {
            bootbox.alert("Update Done");
+       }, function errorCall(response) {
+           bootbox.alert(response.data.message)
        });
    }
   

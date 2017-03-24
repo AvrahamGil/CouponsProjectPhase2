@@ -1,7 +1,7 @@
 
 (function () {
 
-    var app = angular.module("myApp", ["ngRoute"]);
+    var app = angular.module("myApp", [ "ngRoute"]);
     
     
     app.config(function ($routeProvider, $locationProvider) {
@@ -28,19 +28,11 @@
 	     });
     });
 
-    
-    
-   app.service('serviceName', function() {
-	   var name;
-   })
    
-
-
-
-
+  
     app.controller('LoginController', LoginController);
-    LoginController.$inject = ['serviceName', '$http', '$scope', '$location', '$rootScope'];
-    function LoginController (serviceName,$http, $scope, $location, $rootScope  ) {
+    LoginController.$inject = ['userService', '$http', '$scope', '$location', '$rootScope'];
+    function LoginController(userService, $http, $scope, $location, $rootScope) {
 
         var vm = this;
         
@@ -51,7 +43,8 @@
 
         $scope.submit = function () {
             var user = JSON.stringify($scope.user);
-            $http.post('/CouponsProjectPhase2/rest/Login', $scope.user).then(function (response) {
+            $http.post('/CouponsProjectPhase2/rest/Login', $scope.user)
+            .then(function success (response) {
                 if ($scope.user !== null) {
 
                     if ($scope.user.type === 'ADMIN') {
@@ -65,16 +58,15 @@
                     }
 
                     vm.user.userName = response.data.userName;
-                    serviceName.name = vm.user.userName;
-                     vm.loginStatus = "success";
+                    userService.name = vm.user.userName;
+                    vm.loginStatus = "success";
+                    
 
-                } else {
-                    alert('here!!');
-                    $scope.errorMessage = response.data.message;
-                     vm.loginStatus = "fail";
-                }
-
- 
+                } 
+            }, function error(response) {
+                bootbox.alert(response.data.message);
+                vm.loginStatus = "fail";
+               
             })
 
         }

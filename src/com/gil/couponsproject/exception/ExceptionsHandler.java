@@ -26,7 +26,7 @@ public class ExceptionsHandler extends Exception implements ExceptionMapper<Thro
     		int internalErrorCode = e.getErrortype().getInternalErrorCode();
     		String message = e.getMessage();
     		ErrorBean errorBean = new ErrorBean(internalErrorCode, message);
-    		return Response.status(500).entity(errorBean).build();
+    		return Response.status(700).entity(errorBean).build();
     	}
     	
     	System.out.println("Returning 500 as the http status");
