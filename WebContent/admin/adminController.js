@@ -228,6 +228,17 @@ function coupons($http, $scope, $location) {
         });
     }
 
+    $scope.couponPic = function (couponTypeByNumber) {
+        if (couponTypeByNumber == 1) {
+            bootbox.alert("<html><body><img src='http://www.restaurantfanatix.com/wp-content/uploads/2015/10/luquin.jpg' alt='Holiday'</body></html>")
+        } else if (couponTypeByNumber == 2) {
+            bootbox.alert("<html><body><img src='http://www.aviationexplorer.com/airline_coupon_code_promos.png' alt='Holiday'</body></html>")
+        } else if (couponTypeByNumber == 3) {
+            bootbox.alert("<html><body><img src='http://hunt4freebies.com/coupons/wp-content/uploads/2013/12/Chilis-Holiday.png' alt='Holiday'</body></html>")
+        }
+
+    }
+
 }
 
 

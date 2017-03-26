@@ -22,6 +22,7 @@
         <th>Amount</th>
         <th>Message</th>
         <th>Buy</th>
+         <th>Picture</th>
         
     </tr>
 
@@ -44,6 +45,13 @@
 	<span class="glyphicon glyphicon-trash"></span> Remove </button>
 	</td>
 
+<td ng-if="$odd" style="background-color: white">
+	<button ng-click="couponPic(coupon.couponTypeByNumber)" type="button" class="btn btn-default btn-sm">
+	<span class="glyphicon glyphicon-picture"></span> Picture </button>
+	</td>
+	<td ng-if="$even"> <button ng-click="couponPic(coupon.couponTypeByNumber)" type="button" class="btn btn-default btn-sm">
+	<span class="glyphicon glyphicon-picture"></span> Picture </button>
+	</td>
    
    <button><a href = "#company/myCoupons">Back</a></button>
   </tr>

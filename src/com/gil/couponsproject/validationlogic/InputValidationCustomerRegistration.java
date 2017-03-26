@@ -27,9 +27,9 @@ public class InputValidationCustomerRegistration  {
 			if (customerName.matches(userNameValid)) {
 				return correct;
 			}
-			throw new ApplicationException (ErrorType.SECURITY_ERROR , "Invalid Username");
+			throw new ApplicationException (ErrorType.SECURITY_ERROR , "Invalid username");
 		}
-		throw new ApplicationException (ErrorType.SECURITY_ERROR , "Customer Name Has To Contain More Then 6 Letters");
+		throw new ApplicationException (ErrorType.SECURITY_ERROR , "Customer name has to contain more then 6 letters");
 	}
 
 	//UserPassword have to be with lower case and capital letter
@@ -50,9 +50,9 @@ public class InputValidationCustomerRegistration  {
 			if (customerPassword.matches(passwordValid)) {
 				return correct;
 			}
-			throw new ApplicationException (ErrorType.SECURITY_ERROR , "Invalid Password");
+			throw new ApplicationException (ErrorType.SECURITY_ERROR , "Invalid password");
 		}
-		throw new ApplicationException (ErrorType.SECURITY_ERROR , "Password Has To Contain More Then 6 Letters ");
+		throw new ApplicationException (ErrorType.SECURITY_ERROR , "Password has to contain more then 6 letters ");
 	}
 
 	

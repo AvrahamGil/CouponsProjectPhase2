@@ -15,17 +15,13 @@ public class CustomerLogic {
 	public void createCustomer(Customer customer ) throws ApplicationException {
 		InputValidationCustomerRegistration secureRegistraion = new InputValidationCustomerRegistration();
 		CustomerDao customerDao = new CustomerDao();
-		CompanyDao companyDao = new CompanyDao();
+		
 		if (customerDao.isCustomerExistByName(customer.getCustomerName())) {
 			throw new ApplicationException(
 					ErrorType.CUSTOMER_NAME_ALREADY_IN_USE,
-					" Customer Name Already In Use");
+					" Customer name already in use");
 		}
-		if (companyDao.isCompanyExistByID(customer.getCompanyID()) == null) {
-			throw new ApplicationException(
-					ErrorType.COMPANY_DOSENT_EXIST,
-					" Error in CustomerLogic,createCustomer();,company dosent exist");	
-		}
+		
 		//check if the information is correct , help us to protect our server from hacker's.
 		secureRegistraion.checkIfTheInformationisCurrect(customer);
 		customerDao.createCustomer(customer);
@@ -35,7 +31,7 @@ public class CustomerLogic {
 		CustomerDao customerDao = new CustomerDao();
 		if (customerDao.getCustomer(customerID) == null) {
 			throw new ApplicationException(ErrorType.CUSTOMER_DOESNT_EXIST,
-					"Check Your Customer ID Again");
+					"Check your customer ID again");
 		}
 		//if we want to remove a customer, we have to delete his coupons first
 		customerDao.removeCustomerCoupons(customerID);
@@ -46,7 +42,7 @@ public class CustomerLogic {
 		InputValidationCustomerRegistration secureRegistraion = new InputValidationCustomerRegistration();
 		CustomerDao customerDao = new CustomerDao();
 		if (customerDao.getCustomer(customer.getCustomerID()) == null) {
-			throw new ApplicationException(ErrorType.CUSTOMER_DOESNT_EXIST,"Check Your Customer ID Again" 
+			throw new ApplicationException(ErrorType.CUSTOMER_DOESNT_EXIST,"Check your customer ID again" 
 							+customer);
 		} else if (customerDao.isCustomerExistByName(customer.getCustomerName())) {
 			secureRegistraion.checkIfTheInformationisCurrect(customer);
@@ -54,7 +50,7 @@ public class CustomerLogic {
 		} else {
 			throw new ApplicationException(
 					ErrorType.UPDATE_ERROR,
-					"Error in CustomerLogic,updateCustomer();,you cant change your customer name");
+					"You cant change your customer name");
 		}
 
 	}
@@ -63,7 +59,7 @@ public class CustomerLogic {
 		CustomerDao customerDao = new CustomerDao();
 		Customer customer = new Customer();
 		if (customerDao.getCustomer(customerID) == null) {
-			throw new ApplicationException(ErrorType.CUSTOMER_DOESNT_EXIST,"Check Your Customer ID(" + customerID + ") Again");
+			throw new ApplicationException(ErrorType.CUSTOMER_DOESNT_EXIST,"Check your customer ID(" + customerID + ") again");
 		}
 		customer = customerDao.getCustomer(customerID);
 		return customer;

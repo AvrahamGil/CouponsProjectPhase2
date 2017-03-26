@@ -25,7 +25,7 @@ public class InputValidationCoupon {
 		if (couponTitle.length() >= allowMoreThenNumberLetter && allowedUpToNumberLetter  > couponTitle.length() && couponTitle != null) {
 			return correct;
 		}
-		throw new ApplicationException (ErrorType.SECURITY_ERROR , "Coupon Title Has To Contain More Then 6 Letters");
+		throw new ApplicationException (ErrorType.SECURITY_ERROR , "Coupon title has to contain more then 6 letters");
 	}
 
 	//Coupon amount only with numbers
@@ -41,7 +41,7 @@ public class InputValidationCoupon {
 		if (couponAmount >= minAmount && couponAmount  < maxAmount ) {
 			return correct;
 		}
-		throw new ApplicationException (ErrorType.SECURITY_ERROR , "Coupon Amount Has To Be More Then 200 Coupons But Less Then 1000");
+		throw new ApplicationException (ErrorType.SECURITY_ERROR , "Coupon amount has to be more then 200 Coupons but less then 1000");
 	}
 
 	//Coupon message have to be with lower case and capital letter, and "@" + .com
@@ -60,7 +60,7 @@ public class InputValidationCoupon {
 		if (couponMessage.length() >= allowMoreThenNumberLetter && couponMessage.length() < allowedUpToNumberLetter  && couponMessage != null) {
 			return correct;
 		}
-	throw new ApplicationException (ErrorType.SECURITY_ERROR , "Coupon Message Has To Contain More Then 6 Letters");
+	throw new ApplicationException (ErrorType.SECURITY_ERROR , "Coupon message has to contain more then 6 letters");
 	}
 	
 	//Coupon price  only with numbers
@@ -76,7 +76,7 @@ public class InputValidationCoupon {
 			if (couponPrice >= minPrice && couponPrice  < maxPrice ) {
 				return correct;
 			}
-			throw new ApplicationException (ErrorType.SECURITY_ERROR , "Coupon Price Must Be high than 500$ but lower than 1000$");
+			throw new ApplicationException (ErrorType.SECURITY_ERROR , "Coupon price must be high than 500$ but lower than 1000$");
 		}
 	
 

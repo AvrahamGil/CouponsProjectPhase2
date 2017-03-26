@@ -32,7 +32,7 @@ public class InputValidationCompanyRegistration  {
 		if (companyName.length() >= allowMoreThenNumberLetter && allowedUpToNumberLetter  > companyName.length() && companyName != null) {
 			return correct;
 		}
-		throw new ApplicationException (ErrorType.SECURITY_ERROR , "Company Name Has To Contain More Then 6 Letters");
+		throw new ApplicationException (ErrorType.SECURITY_ERROR , "Company namehas to contain more then 6 letters");
 	}
 
 	//UserPassword have to be with lower case and capital letter
@@ -55,7 +55,7 @@ public class InputValidationCompanyRegistration  {
 			}
 			throw new ApplicationException (ErrorType.SECURITY_ERROR , "Invalid Password");
 		}
-		throw new ApplicationException (ErrorType.SECURITY_ERROR , "Company Password Has To Contain More Then 6 Letters");
+		throw new ApplicationException (ErrorType.SECURITY_ERROR , "Company password has to contain more then 6 letters");
 	}
 
 	//UserEmail have to be with lower case and capital letter, and "@" + .com
@@ -77,9 +77,9 @@ public class InputValidationCompanyRegistration  {
 			if (companyEmail.matches(emailValid)) {
 			return correct;
 			}
-		throw new ApplicationException (ErrorType.SECURITY_ERROR , "Invalid Email");
+		throw new ApplicationException (ErrorType.SECURITY_ERROR , "Invalid email");
 		}
-	throw new ApplicationException (ErrorType.SECURITY_ERROR , "Company Email Has To Contain More Then 6 Letters");
+	throw new ApplicationException (ErrorType.SECURITY_ERROR , "Company email has to contain more then 6 letters");
 	}
 
 	public  void checkIfTheInformationisCurrect (Company company) throws ApplicationException {

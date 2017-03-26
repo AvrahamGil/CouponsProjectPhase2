@@ -17,6 +17,7 @@
         <th>Message</th>
         <th>Remove</th>
         <th>Edit</th>
+        <th>Picture</th>
     </tr>
 
   <tr ng-repeat="coupon in couponsDetails">
@@ -43,8 +44,16 @@
 	<td ng-if="$odd" style="background-color: white"><button 
 	data-toggle="modal"ng-click="showWeb(event)" > <span class="glyphicon glyphicon-edit"></span> Edit</button>
 	</td>
-	<td ng-if="$even"> <button   data-toggle="modal" ng-click="showWeb(event">
+	<td ng-if="$even"> <button   data-toggle="modal">
 	<span class="glyphicon glyphicon-edit" ></span> Edit </button>
+	</td>
+	
+	<td ng-if="$odd" style="background-color: white">
+	<button ng-click="couponPic(coupon.couponTypeByNumber)" type="button" class="btn btn-default btn-sm">
+	<span class="glyphicon glyphicon-picture"></span> Picture </button>
+	</td>
+	<td ng-if="$even"> <button ng-click="couponPic(coupon.couponTypeByNumber)" type="button" class="btn btn-default btn-sm">
+	<span class="glyphicon glyphicon-picture"></span> Picture </button>
 	</td>
  
   </tr>

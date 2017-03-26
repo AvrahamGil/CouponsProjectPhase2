@@ -14,7 +14,7 @@ angular.module("myApp").config(function ($routeProvider) {
    })
    .when("/customer/Profile", {
        templateUrl: "customer/Profile.htm",
-       controller: "customerControllerList"
+       controller: "customerProfile"
    })
     .when("/customer/customerCoupons", {
         templateUrl: "customer/customerCoupons.htm",
@@ -96,6 +96,21 @@ angular.module("myApp").controller('couponList', ['$http', '$scope', function ($
         })
     }
 
+    $scope.couponPic = function (couponTypeByNumber) {
+        if (couponTypeByNumber == 1) {
+            bootbox.alert("<html><body><img src='http://www.restaurantfanatix.com/wp-content/uploads/2015/10/luquin.jpg' alt='Holiday'</body></html>")
+        } else if (couponTypeByNumber == 2) {
+            bootbox.alert("<html><body><img src='http://www.aviationexplorer.com/airline_coupon_code_promos.png' alt='Holiday'</body></html>")
+        } else if (couponTypeByNumber == 3) {
+            bootbox.alert("<html><body><img src='http://hunt4freebies.com/coupons/wp-content/uploads/2013/12/Chilis-Holiday.png' alt='Holiday'</body></html>")
+        }
+
+    }
+
+
+
+
+
     var rangeSlider = function () {
         var slider = $('.range-slider'),
             range = $('.range-slider__range'),
@@ -161,13 +176,22 @@ angular.module("myApp").controller('mycouponList', ['$http', '$scope', function 
         })();
 
 
+    $scope.couponPic = function (couponTypeByNumber) {
+        if (couponTypeByNumber == 1) {
+            bootbox.alert("<html><body><img src='http://www.restaurantfanatix.com/wp-content/uploads/2015/10/luquin.jpg' alt='Holiday'</body></html>")
+        } else if (couponTypeByNumber == 2) {
+            bootbox.alert("<html><body><img src='http://www.aviationexplorer.com/airline_coupon_code_promos.png' alt='Holiday'</body></html>")
+        } else if (couponTypeByNumber == 3) {
+            bootbox.alert("<html><body><img src='http://hunt4freebies.com/coupons/wp-content/uploads/2013/12/Chilis-Holiday.png' alt='Holiday'</body></html>")
+        }
 
+    }
 
 
 
 }])
 
-angular.module("myApp").controller('customerControllerList', ['$http', '$scope', '$location', function ($http, $scope, $location) {
+angular.module("myApp").controller('customerProfile', ['$http', '$scope', '$location', function ($http, $scope, $location) {
     var vm = this;
     vm.message = null;
     vm.status = null;

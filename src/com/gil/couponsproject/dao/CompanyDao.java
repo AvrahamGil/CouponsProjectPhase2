@@ -58,7 +58,7 @@ public class CompanyDao implements ICompany {
 			e.printStackTrace();
 			throw new ApplicationException(
 					ErrorType.CREATE_ERROR,
-					"Create Company Failed , Check Your Company DETAILS Again");
+					"Create company failed , Check your company DETAILS again");
 		}
 		// turn off our connections
 		finally {
@@ -97,7 +97,7 @@ public class CompanyDao implements ICompany {
 			e.printStackTrace();
 			throw new ApplicationException(
 					ErrorType.REMOVE_ERROR,
-					"Remove Failed");
+					"Remove failed");
 			// time to turn off our connections
 		} finally {
 			JdbcAndConnection.closeConnection(connection);
@@ -143,7 +143,7 @@ public class CompanyDao implements ICompany {
 			e.printStackTrace();
 			throw new ApplicationException(
 					ErrorType.UPDATE_ERROR,
-					"Update Company Failed,Please  Check Your Company Details Again");
+					"Update company failed,Please  check your company details again");
 		}
 		// time to turn off our connections
 		finally {
@@ -186,7 +186,7 @@ public class CompanyDao implements ICompany {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(ErrorType.GET_ERROR,
-					"Please Check Your Company ID Again ");
+					"Please check your company ID again ");
 		}
 		// time to turn off our connections
 		finally {
@@ -229,7 +229,7 @@ public class CompanyDao implements ICompany {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(ErrorType.MISSING_LIST,
-					" No Such LIST");
+					" No such LIST");
 
 			// time to turn off our connections
 		} finally {
@@ -272,7 +272,7 @@ public class CompanyDao implements ICompany {
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new ApplicationException(ErrorType.COMPANY_NAME_ALREADY_IN_USE,
-					" Company Name Already In Use ");
+					" Company name already in use ");
 		}
 		// time to turn off our connections
 		finally {
@@ -305,7 +305,7 @@ public class CompanyDao implements ICompany {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ApplicationException(ErrorType.GET_ERROR,
-					"Check Your Company Name Again ");
+					"Check your company name again ");
 		}
 		// turn off our connections
 		finally {
@@ -352,7 +352,7 @@ public class CompanyDao implements ICompany {
 			e.printStackTrace();
 			throw new ApplicationException(
 					ErrorType.INVAILD_PASSWORD,
-					" Please Check Your Details Again");
+					" Please check your details again");
 
 			// time to turn off our connections
 		} finally {
@@ -391,7 +391,7 @@ public class CompanyDao implements ICompany {
 			e.printStackTrace();
 			throw new ApplicationException(
 					ErrorType.REMOVE_ERROR,
-					" Please  Check  Your ID Again");
+					" Please  check  your ID again");
 
 			// time to turn off our connections
 		} finally {

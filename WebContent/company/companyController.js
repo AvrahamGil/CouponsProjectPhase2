@@ -189,6 +189,19 @@ angular.module("myApp").controller('couponController', ['$http', '$scope', '$loc
         })
     }
     */
+
+    $scope.couponPic = function (couponTypeByNumber) {
+        if (couponTypeByNumber == 1) {
+            bootbox.alert("<html><body><img src='http://www.restaurantfanatix.com/wp-content/uploads/2015/10/luquin.jpg' alt='Holiday'</body></html>")
+        } else if (couponTypeByNumber == 2) {
+            bootbox.alert("<html><body><img src='http://www.aviationexplorer.com/airline_coupon_code_promos.png' alt='Holiday'</body></html>")
+        } else if (couponTypeByNumber == 3) {
+            bootbox.alert("<html><body><img src='http://hunt4freebies.com/coupons/wp-content/uploads/2013/12/Chilis-Holiday.png' alt='Holiday'</body></html>")
+        }
+      
+    }
+
+
     $scope.deleteCoupon = function (couponID , couponTitle) {
         bootbox.confirm({
             message: "Are you sure you want to delete " + couponTitle +  " coupon?" ,

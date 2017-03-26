@@ -20,7 +20,7 @@ public class CompanyLogic {
 		if (companyDao.isCompanyExistsByName(company.getCompanyName())) {
 			throw new ApplicationException(
 					ErrorType.COMPANY_NAME_ALREADY_IN_USE,
-					"Company Name Already In use" + company);
+					"Company name already in use" );
 		}
 		//check if the information is correct , help us to protect our server from hacker's.
 		secureRegistraion.checkIfTheInformationisCurrect(company);
@@ -38,7 +38,7 @@ public class CompanyLogic {
 		CustomerDao customerDao = new CustomerDao();
 		if (companyDao.getCompany(companyID) == null) {
 			throw new ApplicationException(ErrorType.COMPANY_DOSENT_EXIST,
-					"Check Your Company ID Again" + companyID);
+					"Check your company ID again" );
 		}
 		customerDao.removeCustomerCoupons(companyID);
 		companyDao.removeCompanyCoupons(companyID);
@@ -52,7 +52,7 @@ public class CompanyLogic {
 		InputValidationCompanyRegistration secureRegistraion = new InputValidationCompanyRegistration();
 		if (companyDao.getCompany(company.getCompanyID()) == null) {
 			throw new ApplicationException(ErrorType.COMPANY_DOSENT_EXIST,
-					"Check Your Company ID Again" + company);
+					"Check Your Company ID Again" );
 		}
 
 		else if (companyDao.isCompanyExistsByName(company.getCompanyName())) {
@@ -60,7 +60,7 @@ public class CompanyLogic {
 			companyDao.updateCompany(company);
 		} else {
 			throw new ApplicationException(ErrorType.UPDATE_ERROR,
-					"Company Name Has To Be The Same");
+					"Company name has to be the same");
 		}
 
 	}
@@ -71,7 +71,7 @@ public class CompanyLogic {
 		Company company = new Company();
 		if (companyDao.getCompany(companyID) == null) {
 			throw new ApplicationException(ErrorType.COMPANY_DOSENT_EXIST,
-					"Check Your Company ID(" + companyID + ") Again");
+					"Check your company ID(" + companyID + ") again");
 		}
 
 		company = companyDao.getCompany(companyID);

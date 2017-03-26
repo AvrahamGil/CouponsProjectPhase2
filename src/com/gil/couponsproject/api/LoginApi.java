@@ -35,7 +35,7 @@ public class LoginApi {
 				loginDetails.getType());
 
 		if (loginOutPut == null) {
-			throw new ApplicationException(ErrorType.LOGIN_ERROR, "UserName Or Password is incorrect");
+			throw new ApplicationException(ErrorType.LOGIN_ERROR, "Username or password is incorrect");
 		} else {
 			request.getSession();
 			request.getSession(false).setAttribute("userID", loginOutPut.getuserID());
