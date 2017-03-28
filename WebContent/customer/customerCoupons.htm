@@ -13,7 +13,7 @@
         <th>Amount</th>
         <th>Message</th>
         <th>Picture</th>
-        
+        <th>Remove</th>
         
     </tr>
 
@@ -33,6 +33,14 @@
 	</td>
 	<td ng-if="$even"> <button ng-click="couponPic(coupon.couponTypeByNumber)" type="button" class="btn btn-default btn-sm">
 	<span class="glyphicon glyphicon-picture"></span> Picture </button>
+	</td>
+	
+	 <td ng-if="$odd" style="background-color: white">
+	<button ng-click="deleteCustomerCoupon(coupon.couponID) " type="button" class="btn btn-default btn-sm">
+	<span class="glyphicon glyphicon-trash"></span> Remove </button>
+	</td>
+	<td ng-if="$even"> <button ng-click="deleteCustomerCoupon(coupon.couponID)" type="button" class="btn btn-default btn-sm">
+	<span class="glyphicon glyphicon-trash"></span> Remove </button>
 	</td>
    
   </tr>

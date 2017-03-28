@@ -67,6 +67,12 @@ public class CustomerApi {
 		CustomerLogic customerLogic = new CustomerLogic();
 		customerLogic.removeCustomer(customerID);
 	}
+	@DELETE
+	@Path("/customerCoupon/{customerID}")
+	public void deleteCustomerCoupon(@PathParam("customerID") long customerID) throws ApplicationException {
+		CustomerLogic customerLogic = new CustomerLogic();
+		customerLogic.removeCustomerCoupon(customerID);
+	}
 
 	@GET
 	public List<Customer> getAllCustomeres() throws ApplicationException {

@@ -180,6 +180,31 @@ angular.module("myApp").controller('mycouponList', ['$http', '$scope', function 
 
     }
 
+    $scope.deleteCustomerCoupon = function (customerID) {
+        bootbox.confirm({
+            message: "Delete Coupon ? ",
+            buttons: {
+                confirm: {
+                    label: 'Yes',
+                    className: 'btn-success',
+                },
+                cancel: {
+                    label: 'No',
+                    className: 'btn-danger'
+                }
+            }, callback: function (result) {
+                if (result == true) {
+                    $http.delete('/CouponsProjectPhase2/rest/api/Customers/customerCoupon/' + customerID).then(function successCall(data) {
+                        bootbox.alert("Remove Done");
+                    }, function errorCall(response) {
+                        bootbox.alert(response.data.message);
+                    })
+                }
+                return;
+
+            }
+        });
+    }
 
 
 }])

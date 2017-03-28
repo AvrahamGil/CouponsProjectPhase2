@@ -37,6 +37,15 @@ public class CustomerLogic {
 		customerDao.removeCustomerCoupons(customerID);
 		customerDao.removeCustomer(customerID);
 	}
+	// -----------------------------------------------Delete Customer Coupon----------------------------------------------------
+		public void removeCustomerCoupon(long customerID) throws ApplicationException {
+			CustomerDao customerDao = new CustomerDao();
+			if (customerDao.getCustomer(customerID) == null) {
+				throw new ApplicationException(ErrorType.CUSTOMER_DOESNT_EXIST,
+						"Check your customer ID again");
+			}
+			customerDao.removeCustomerCoupons(customerID);
+		}
 	// ------------------------------------------------Update Customer--------------------------------------------------
 	public void updateCustomer(Customer customer) throws ApplicationException {
 		InputValidationCustomerRegistration secureRegistraion = new InputValidationCustomerRegistration();

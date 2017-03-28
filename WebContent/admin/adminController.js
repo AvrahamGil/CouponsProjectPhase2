@@ -108,7 +108,7 @@ function companyControllerList ($http, $scope, $location) {
     })();
 
 
-    $scope.deleteCompany = function (companyID, companyTitle) {
+    $scope.deleteCompany = function (companyID) {
         bootbox.confirm({
             message: "Delete Company ?",
             buttons: {
@@ -156,7 +156,7 @@ function customersControllerList($http, $scope, $location) {
     })();
 
 
-    $scope.deleteCustomer = function (customerID, customerName) {
+    $scope.deleteCustomer = function (customerID) {
         bootbox.confirm({
             message: "Delete Customer ? ",
             buttons: {
@@ -202,7 +202,7 @@ function coupons($http, $scope, $location) {
     })();
 
 
-    $scope.deleteCoupons = function (couponID, couponTitle) {
+    $scope.deleteCoupons = function (couponID) {
         bootbox.confirm({
             message: "Delete Coupon ?",
             buttons: {
