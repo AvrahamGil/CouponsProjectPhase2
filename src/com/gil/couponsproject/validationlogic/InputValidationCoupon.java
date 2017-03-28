@@ -84,7 +84,7 @@ public class InputValidationCoupon {
 			boolean correct = true;
 		//--------------------------------------------------------------------------------------
 			if (endDate < System.currentTimeMillis()) {
-				throw new ApplicationException(ErrorType.SECURITY_ERROR , "End Date cannot be today");
+				throw new ApplicationException(ErrorType.SECURITY_ERROR , "The entered date must be greater than today");
 			} else {
 				return correct;
 			}

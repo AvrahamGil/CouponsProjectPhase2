@@ -17,21 +17,17 @@ Please Login
 <div class="login-header margin-bottom-30">
 <h2>Login</h2>
 </div>			
-<div class="alert alert-danger" role="alert" ng-show="vm.loginStatus=='fail'">
-<strong><span class="glyphicon glyphicon-remove-circle"></span></strong>
-Login Failed : {{ vm.errorMessage}}
-</div>
 <div class="input-group margin-bottom-20">
 <span class="input-group-addon">
 <i class="fa fa-user"></i>
  </span>
-<input type="text" placeholder="Username" name="userName" ng-model="user.userName"></input>
+<input type="text" placeholder="Username" name="userName" ng-model="user.userName"/>
 </div>
 <div class="input-group margin-bottom-20">
  <span class="input-group-addon">
 <i class="fa fa-lock"></i>
 </span>
-<input type="password"placeholder="Password" name="userPassword" ng-model="user.userPassword"/></input>
+<input type="password"placeholder="Password" name="userPassword" ng-model="user.userPassword"/>
 </div>
 <div class="portfolio-filter-container margin-top-20">
  <ul class="portfolio-filter">

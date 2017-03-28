@@ -2,7 +2,7 @@
 
 <!-- create Coupon -->
  <div id="post_header" class="container" style="height: 40px">
- <!-- Spacing below header -->
+ 
 </div>
 
 <div class="headline">
@@ -13,7 +13,7 @@
 <div class="row margin-bottom-20">
  <div class="col-md-6 col-md-offset-0">
 <input type="text" class="form-control"  name="couponTitle" ng-model="coupon.couponTitle" />
-<span style="color: green;" id="user-availability-status"> * Must contain 6-20 characters.</span>
+<span style="color: green;" id="user-availability-status"> * Title Must contain 6-20 characters.</span>
 <br>
 <span style="color: green;" id="user-availability-status"> * You have to include capital letter.</span>
 </div>
@@ -25,7 +25,7 @@
 <div class="row margin-bottom-20">
 <div class="col-md-6 col-md-offset-0">
 <input type="Date" class="form-control"  name="endDateString" ng-model="coupon.endDateString" /> 
-<span style="color: green;" id="user-availability-status"> * The date has to be tomorrow +  .</span>
+<span style="color: green;" id="user-availability-status"> * The entered date must be greater than today  .</span>
 </div>
 </div>
 &emsp;<label>Coupon Price: </label>
@@ -39,7 +39,7 @@
   <div class="row margin-bottom-20">
  <div class="col-md-6 col-md-offset-0">
  <input type="text"  class="form-control" name="couponMessage" ng-model="coupon.couponMessage"  />
- <span style="color: green;" id="user-availability-status"> * Must be 6-20 characters.</span>
+ <span style="color: green;" id="user-availability-status"> * Message must contain 6-20 characters.</span>
 </div>
 </div>
 &emsp;<label>Coupon Type: </label>
