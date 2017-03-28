@@ -38,7 +38,6 @@
         
         vm.user = { userName: "" };
         vm.user.userName = '';
-        vm.loginStatus = null;
         
 
         $scope.submit = function () {
@@ -59,14 +58,10 @@
 
                     vm.user.userName = response.data.userName;
                     userService.name = vm.user.userName;
-                    vm.loginStatus = "success";
-                    
 
                 } 
             }, function error(response) {
-                bootbox.alert(response.data.message);
-                vm.loginStatus = "fail";
-               
+                bootbox.alert(response.data.message);   
             })
 
         }

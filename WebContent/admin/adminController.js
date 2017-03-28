@@ -83,7 +83,7 @@ function adminController($http, $scope, userService) {
 
     $scope.logOut = function () {
         $http.post('/CouponsProjectPhase2/rest/Login/logOut').then(function successCall(data) {
-            bootbox.alert("Logout Success");
+            bootbox.alert("<html><body><center>Logout Success</center></body></html>");
         }, function errorCall(response) {
             bootbox.alert(response.data.message);
         })

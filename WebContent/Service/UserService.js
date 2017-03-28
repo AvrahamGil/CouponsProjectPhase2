@@ -5,9 +5,6 @@
     app.service('userService', userService);
     userService.$inject = ['$location'];
     function userService($locaion) {
-        var vm = this;
-        vm.errorMessage = '';
-
        
 
         var name = function () {

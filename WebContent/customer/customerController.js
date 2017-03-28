@@ -49,12 +49,9 @@ function customerController($http, $scope, userService) {
 
 
   
-
-  
-
     $scope.logOut = function () {
         $http.post('/CouponsProjectPhase2/rest/Login/logOut').then(function successCall(data) {
-            bootbox.alert("LogOut Success");
+            bootbox.alert("<html><body><center>Logout Success</center></body></html>");
         }, function errorCall(response) {
             bootbox.alert(response.data.message);
         })
@@ -108,10 +105,7 @@ angular.module("myApp").controller('couponList', ['$http', '$scope', function ($
     }
 
 
-
-
-
-    var rangeSlider = function () {
+    var rangeSliderForPriceToMakeItMoreEasy = function () {
         var slider = $('.range-slider'),
             range = $('.range-slider__range'),
             value = $('.range-slider__value');
@@ -129,7 +123,7 @@ angular.module("myApp").controller('couponList', ['$http', '$scope', function ($
         });
     };
 
-    rangeSlider();
+    rangeSliderForPriceToMakeItMoreEasy();
 
     $scope.buyCoupon = function (couponID,endDate, couponTitle) {
         bootbox.confirm({
@@ -145,7 +139,6 @@ angular.module("myApp").controller('couponList', ['$http', '$scope', function ($
                 }
             }, callback: function (result) {
                 if (result == true) {
-                    //       var deleteCo = JSON.stringify($scope.couponID);
                     $http.put('/CouponsProjectPhase2/rest/api/Customers/' + couponID + '/' + endDate).then(function successCall(data) {
                         bootbox.alert("Success, You just buy a new Coupon");
                     }, function errorCall(response) {
@@ -192,10 +185,7 @@ angular.module("myApp").controller('mycouponList', ['$http', '$scope', function 
 }])
 
 angular.module("myApp").controller('customerProfile', ['$http', '$scope', '$location', function ($http, $scope, $location) {
-    var vm = this;
-    vm.message = null;
-    vm.status = null;
-
+    
     (
     $scope.getCustomer = function () {
         $http.get('/CouponsProjectPhase2/rest/api/Customers/Profile').then(function successCall(response) {
