@@ -35,13 +35,13 @@ public class CouponLogic {
 
 
 	// -----------------------------------------------Update coupon----------------------------------------------------
-	public void updateCoupon(long endDate , double couponPrice , long couponID) throws ApplicationException {
+	public void updateCoupon(Coupon coupon) throws ApplicationException {
 		CouponDao couponDao = new CouponDao();
-		if (couponDao.getCoupon(couponID) == null) {
+		if (couponDao.getCoupon(coupon.getcouponID()) == null) {
 			throw new ApplicationException(ErrorType.COUPON_DOESNT_EXIST,
 					" Check your coupon ID again ");
 		}
-		couponDao.updateCouponPriceAndEndDate(endDate ,couponPrice ,couponID);
+		couponDao.updateCouponPriceAndEndDate(coupon);
 	}
 
 	// -----------------------------------------------Delete Coupon----------------------------------------------------

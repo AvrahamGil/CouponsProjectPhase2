@@ -81,7 +81,8 @@ function companyController($http, $scope, $location, $rootScope, userService) {
     $scope.createCoupon = function () {
         var createC = JSON.stringify($scope.coupon);
         $http.post('/CouponsProjectPhase2/rest/api/Coupons', createC).then(function successCall (data) {
-           bootbox.alert("Create Done")
+            bootbox.alert("Create Done");
+            $location.path('company/company.htm')
         },function errorCall(response) {
             bootbox.alert(response.data.message);
         })
@@ -100,7 +101,7 @@ function companyController($http, $scope, $location, $rootScope, userService) {
 
 angular.module("myApp").controller('couponController', ['$http', '$scope', '$location', function ($http, $scope, $location) {
 
-
+    
 
     ( 
             $scope.getCompanyCoupon = function () {
@@ -181,15 +182,46 @@ angular.module("myApp").controller('couponController', ['$http', '$scope', '$loc
         });
     }
     */
-    /*
-    $scope.updateCoupons = function (coupon) {
-        var updateCo = JSON.stringify($scope.coupon);
-        $http.put('/CouponsProjectPhase2/rest/api/Coupons/uCoupon/'  , updateCo).then(function (success) {
+    
+    $scope.updateCoupons = function () {
+        var createC = JSON.stringify($scope.currentCouponNew);
+        $http.put('/CouponsProjectPhase2/rest/api/Coupons/uCoupon/', createC).then(function successCall(data) {
             bootbox.alert('Update Done');
-        })
+       },function errorCall(response) {
+      //     bootbox.alert(response.data.message);
+       })
     }
-    */
 
+   $scope.setCurrentCoupon = function (coupon) {
+       $scope.currentCouponNew = angular.copy(coupon);
+
+       $scope.currentCouponNew.couponPrice = Math.floor($scope.currentCouponNew.couponPrice);
+       $scope.currentCouponNew.couponID = Math.floor($scope.currentCouponNew.couponID);
+       $scope.currentCouponNew.endDate = Math.floor($scope.currentCouponNew.endDate);
+   //    var st = $scope.currentCouponNew.endDate;
+   //    var pattern = /(\d{4})(\d{2})(\d{2})/;
+   //    var date = new Date(st.replace(pattern, '$1-$2-$3'));
+
+   //    $scope.currentCouponNew.endDate = date;
+   }
+
+    /*
+   function setCurrentCoupon(coupon) {
+       vm.currentCoupon = coupon;
+       vm.currentCouponNew = angular.copy(coupon);
+
+       var price = Math.floor(vm.currentCouponNew.couponPrice);
+       vm.currentCouponNew.couponPrice = price;
+
+       var st = vm.currentCouponNew.couponEndDateYyyyMmDd;
+       var pattern = /(\d{4})(\d{2})(\d{2})/;
+       var date = new Date(st.replace(pattern, '$1-$2-$3'));
+
+       vm.currentCouponNew.couponEndDate = date;
+
+       vm.updateCouponStatus = null;
+   }
+   */
     $scope.couponPic = function (couponTypeByNumber) {
         if (couponTypeByNumber == 1) {
             bootbox.alert("<html><body><img src='http://www.restaurantfanatix.com/wp-content/uploads/2015/10/luquin.jpg' alt='Holiday'</body></html>")

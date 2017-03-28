@@ -61,9 +61,7 @@ public class CompanyApi {
 		long companyID = sessionLogin.getUserLogin(request);
 		
 		company.setCompanyID(companyID);
-		company.getCompanyName();
-		company.getCompanyPassword();
-		company.getCompanyEmail();
+		
 		companyLogic.updateCompany(company);
 	}
 

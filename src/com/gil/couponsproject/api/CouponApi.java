@@ -69,22 +69,19 @@ public class CouponApi {
 	}
 
 	@PUT
-	@Path("/uCoupon/{couponID}")
+	@Path("/uCoupon/")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void updateCoupon(@PathParam("couponID")long couponID) throws ApplicationException, ParseException {
+	public void updateCoupon(Coupon coupon) throws ApplicationException, ParseException {
 		CouponLogic couponLogic = new CouponLogic();
-		Coupon coupon = new Coupon();
+		
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 		
 		Date date = dateFormat.parse(coupon.getEndDateString());
 		long endDate = date.getTime();
-		
-		coupon.setcouponID(couponID);
 		coupon.setEndDate(endDate);
-		double couponPrice = coupon.getcouponPrice();
 		
-		couponLogic.updateCoupon(endDate ,couponPrice ,couponID);
+		couponLogic.updateCoupon(coupon);
 
 	}
 

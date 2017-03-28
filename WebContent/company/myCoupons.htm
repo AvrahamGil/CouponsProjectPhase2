@@ -42,9 +42,9 @@
 	</td>
 
 	<td ng-if="$odd" style="background-color: white"><button 
-	data-toggle="modal"ng-click="showWeb(event)" > <span class="glyphicon glyphicon-edit"></span> Edit</button>
+	data-toggle="modal" data-target="#Update-modal" ng-click="setCurrentCoupon(coupon)"> <span class="glyphicon glyphicon-edit"></span> Edit</button>
 	</td>
-	<td ng-if="$even"> <button   data-toggle="modal">
+	<td ng-if="$even"> <button   data-toggle="modal" data-target="#Update-modal" ng-click="setCurrentCoupon(coupon)">
 	<span class="glyphicon glyphicon-edit" ></span> Edit </button>
 	</td>
 	
@@ -79,16 +79,16 @@
 	
 			
             <div id="div-forms">
-                <form id="update-form" ng-submit="updateCoupons(coupon.couponID )" >
+                <form id="update-form"  >
                     <div class = "modal-body">
                         <label>Price :</label>
-                        <br/><input type="number" placeholder="Price"class="form-control"name="couponPrice"min=0 max=1000 ng-model="coupon.couponPrice"/>
+                        <br/><input type="number" class="form-control"name="couponPrice"min=0 max=1000 ng-model="currentCouponNew.couponPrice"/>
                        
                         <br />
                        <label>End Date : </label> 
-                       &emsp;<br/><input type="Date" placeholder="Date" class="form-control" name="endDateString" ng-model="coupon.endDateString"/>
+                       &emsp;<br/><input type="Date"  class="form-control" name="endDate" ng-model="currentCouponNew.endDateString" />
                         <br/>
-                        <input type="submit" value="Update Coupon" ng-click="updateCoupons(coupon.couponID )"/>
+                        <input type="submit" value="Update Coupon" ng-click="updateCoupons(coupon)"/>
                     </div>
                 </form>
 

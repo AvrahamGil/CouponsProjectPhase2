@@ -78,10 +78,22 @@ public class InputValidationCoupon {
 			}
 			throw new ApplicationException (ErrorType.SECURITY_ERROR , "Coupon price must be high than 500$ but lower than 1000$");
 		}
-	
+	//Coupon endDate must be more then today
+		public boolean checkingCouponEndDate( long endDate ) throws ApplicationException {
+			//local variables :
+			boolean correct = true;
+		//--------------------------------------------------------------------------------------
+			if (endDate < System.currentTimeMillis()) {
+				throw new ApplicationException(ErrorType.SECURITY_ERROR , "End Date cannot be today");
+			} else {
+				return correct;
+			}
+		}
+			
 
 	public void checkIfTheInformationCurrect (Coupon coupon) throws ApplicationException {
 		checkingCouponTitle(coupon.getCouponTitle());
+		checkingCouponEndDate(coupon.getEndDate());
 		checkingCouponAmount(coupon.getCouponAmount());
 		checkingCouponMessage(coupon.getCouponMessage());
 		checkingCouponPrice(coupon.getcouponPrice());

@@ -808,7 +808,7 @@ public class CouponDao implements ICoupon {
 	}
 
 	// change only price and end date
-	public void updateCouponPriceAndEndDate(long endDate , double couponPrice , long couponID) throws ApplicationException {
+	public void updateCouponPriceAndEndDate(Coupon coupon) throws ApplicationException {
 		// turn on connections
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -827,9 +827,9 @@ public class CouponDao implements ICoupon {
 			preparedStatement = connection.prepareStatement(sql);
 
 			// we should have the same parameters that we have in the syntax
-			preparedStatement.setLong(1, endDate);
-			preparedStatement.setDouble(2, couponPrice);
-			preparedStatement.setLong(3, couponID);
+			preparedStatement.setLong(1, coupon.getEndDate());
+			preparedStatement.setDouble(2, coupon.getcouponPrice());
+			preparedStatement.setLong(3, coupon.getcouponID());
 
 			// DB Updated
 			preparedStatement.executeUpdate();
